@@ -1,0 +1,21 @@
+package com.example.DEMO;
+
+//import org.springframework.boot.CommandLineRunner;
+//import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoAaaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoAaaApplication.class, args);
+	}
+	/*
+	  @Override
+
+	  public void run(String... args) throws Exception {
+	    System.out.println(this.cityMapper.findByState("CA"));
+	  }
+	 */
+}

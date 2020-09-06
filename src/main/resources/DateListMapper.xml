@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        <mapper namespace="com.example.DEMO.DateListMapper">
+                                              <!--UserMapper.javaのパッケージ名  -->
+           <select id="selectAll" resultType="com.example.DEMO.DateList">
+                                              <!-- id = UserMapper.java で指定したメソッド名 -->
+                                              <!-- resultType = 返却する型 -->
+               select id,datename,ymd from datelist where id = #{id}
+           </select>
+           <select id="select" resultType="com.example.DEMO.DateList">
+           </select>
+           <insert id="insert">
+               insert into datelist (datename) values (#{datename})
+           </insert>
+           <update id="update">
+                update datelist set datename = #{datename} where id = #{id}
+           </update>
+           <delete id="delete">
+                delete from datelist where id = #{id}
+           </delete>
+        </mapper>
