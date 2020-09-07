@@ -9,7 +9,12 @@
                                               <!-- resultType = 返却する型 -->
                select id,datename,ymd from datelist where id = #{id}
            </select>
+
            <select id="select" resultType="com.example.DEMO.DateList">
+                  select id,datename,ymd from datelist where id = #{id}
+           </select>
+           <select id = "selectCount" parameterType="int" resultType="com.example.DEMO.DateList">
+                  select count(id) from datelist = #{count}
            </select>
            <insert id="insert">
                insert into datelist (datename) values (#{datename})
