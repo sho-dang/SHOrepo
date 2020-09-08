@@ -68,6 +68,16 @@
             <th>編集</th>
         </tr>
         <tr class ="date-list" th:each="dateList:${dateList}">
+            <td>1</td>
+            <td th:text="${dateList.id}"/>
+            <td th:text="${dateList.dateName}"/>
+            <td>1</td>
+            <td th:text="${dateList.ymd}"/>
+            <td>1</td>
+        </tr>
+        <tr class ="date-list" th:each="dateList:${list}"> <!--  th:each="変数 : ${コレクション}" -->
+            <td>2</td>
+                         <!-- model.attributeでdetaListの変数を取得、 -->
             <td th:text="${dateList.id}"/>
             <td th:text="${dateList.dateName}"/>
             <td>1</td>

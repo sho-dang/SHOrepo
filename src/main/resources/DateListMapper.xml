@@ -2,20 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
         <mapper namespace="com.example.DEMO.DateListMapper">
                                               <!--UserMapper.javaのパッケージ名  -->
-           <select id="selectAll" resultType="com.example.DEMO.DateList">
-                                              <!-- id = UserMapper.java で指定したメソッド名 -->
+           <select id="selectAll" resultType="List">
+                                              <!-- id = DateListMapper.java で指定したメソッド名 -->
                                               <!-- resultType = 返却する型 -->
-               select id,datename,ymd from datelist where id = #{id}
+               select id,datename,ymd from datelist where id= #{id}
            </select>
+           <!--  resultMap id="DateList" type="com.example.DEMO.DateList">
+              <id column="id" jdbcType="int"></id>
+              <result column="datename" jdbcType="varcher" property="dateName"/>
+              <result column="ymd" jdbcType="varcher" property="ymd"></result>
+           </resultMap-->
 
            <select id="select" resultType="com.example.DEMO.DateList">
                   select id,datename,ymd from datelist where id = #{id}
            </select>
-           <select id = "selectCount" parameterType="int" resultType="com.example.DEMO.DateList">
+           <!--  select id = "count" resultType="com.example.DEMO.DateList">
                   select count(id) from datelist = #{count}
-           </select>
+           </select-->
            <insert id="insert">
                insert into datelist (datename) values (#{datename})
            </insert>
