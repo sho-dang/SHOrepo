@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/dateList")
@@ -38,25 +37,34 @@ public class DateListController {
 		//int number = 1;
 		//for(int i = 1; i <= numberList;i++) {}
 
-		List<DateList> list =dateListMapper.selectAll(3);
+		List<DateList> list =dateListMapper.selectAll();
 		//for(int i = 1; i <= )
 		System.out.println(list);
 		model.addAttribute("dateList",list);//add=追加 attribute=属性 ("htmlで使う変数名",オブジェクトを渡す)
 		return "index-dateList";
 		//　"○○○"にテキストを返す
 	}
+	@GetMapping("new")
+	public String getDateListNew() {
 
+		return "index-new";
+	}
+	@GetMapping("update")
+	public String getDateListUpdate() {
+
+		return "index-update";
+	}
 	   //詳細画面の表示
-
+    /*
 	@GetMapping("{id}")//←{pass変数の指定} ↓＠PathVariable この引数が、パス変数によって値を渡される
 	public String getDateList(@PathVariable int id,Model model) {
-		DateList dateList = (DateList) dateListMapper.selectAll(2);
+		DateList dateList = (DateList) dateListMapper.selectAll();
 		model.addAttribute("dateList",dateList);//("テンプレートから参照する")
 		return "dateList";
 	}
 	  /**
 	   * 新規作成画面の挿入処理
-       */
+
 	@GetMapping("new")
 	public String getDateListNew(Model model) {
 		DateList dateList = new DateList();

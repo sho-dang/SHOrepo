@@ -4,60 +4,81 @@
 <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
 <title>Top Page</title>
     <style>
-    body-style{
+           body{  width : 90% ;
+                  margin : auto ;
+               }
+              *{  margin : 0px ;
+                  padding : 0px ;
+               }
+        .header{
+                  margin : 0px 30px ;
+                  width : 90% ;
+               }
+             h3{  font-size : 20px ;
+                  padding-top : 45px ;
+               }
+           form{  background-color : #C2EEFF ;
+                  height : 200px ;
+               }
+     .text-area{  margin : 10px 0px 20px 0px ; }
+      .text-box{  width : 450px ;
+                  height : 30px ;
+                  font-size : 15px;
+               }
 
-              }
-    .header{
-           padding:0px 30px;
-           }
-    h3{font-size:20px;
-       padding-top:45px;
-
-      }
-    form{background-color:#C2EEFF;
-         height:200px;
-
-    }
-    .text-area{margin:10px 0px 20px 0px;}
-    .text-box{width:450px;
-              height:30px;
-              font-size : 15px;
-    }
-
-    .subRun,.subNew{float:left;
-            padding:5px 15px;
-            border:solid 1px white;
-            margin-right : 5px;
-            font-color:white;
-            background-color :#3b5998;
-            }
-    .btn{color:white;
-         display:inline-block;}
-
-    table{clear:both;
-          width:100%;
-
-          }
-    tr{height:50px;}
-
-    </style>
+          table{  clear : both ;
+                  width : 100% ;
+               }
+             tr{  height : 50px ; }
+             th{  background-color : #77EEFF ; }
+             td{  width : 17% ;
+                  text-align : center ;
+               }
+           .btn{  color : white ;
+                  display : inline-block ;
+                  height : 40px ;
+                  width : 100px ;
+                  margin-right: 20px;
+                  background-color : blue ;
+                  text-align : center ;
+                  line-height : 40px ;
+                  text-decoration : none ;
+                  font-weight : bold ;
+                  border : solid  #BBBBBB 2px ;
+               }
+           .bot{  display : flex ;
+               }
+    .min_button{  display : flex ;
+               }
+    .u_d_button{  margin : auto ;
+                  text-align : center ;
+                  padding : 5px 20px  ;
+                  border : solid #BBBBBB 3px ;
+                  text-decoration : none ;
+                  font-weight : bold ;
+               }
+        .update{  color : red ;
+                  background-color : #FFFFEE ;
+               }
+        .delete{  color : #EEEEEE ;
+                  background-color : red ;
+               }
+  </style>
 </head>
- <body class = "body-style">
+ <body>
 <form>
-     <div class = "header">
-      <h3>計算の基準となる日付を入力してください。</h3>
-       <div class ="text-area">
+    <div class = "header">
+        <h3>計算の基準となる日付を入力してください。</h3>
+        <div class ="text-area">
            <input class ="text-box" type = "text">
-       </div>
-       <div class = "subRun">
+        </div>
+        <div class = "bot">
            <a class ="btn run" href="#">計算実行</a>
-       </div>
-       <div class = "subNew" >
-           <a class ="btn new" th:href="${'/dateLists/new'}">新規登録</a>
-       </div>
-     </div>
- </form>
+           <a class ="btn new" th:href="${'/dateList/new'}"> 新規登録</a>
+        </div>
 
+     </div>
+</form>
      <table border = "1">
         <tr>
             <th>NO.</th>
@@ -68,26 +89,21 @@
             <th>編集</th>
         </tr>
         <tr class ="date-list" th:each="dateList:${dateList}">
-            <td>1</td>
             <td th:text="${dateList.id}"/>
+            <td th:text="${dateList.dateId}"/>
             <td th:text="${dateList.dateName}"/>
             <td>1</td>
             <td th:text="${dateList.ymd}"/>
-            <td>1</td>
+            <td >
+              <div class = "min_button" >
+               <a class ="u_d_button update" href="/dateList/update">更新</a>
+               <a class ="u_d_button delete" href="#">削除</a>
+              </div>
+            </td>
         </tr>
-        <tr class ="date-list" th:each="dateList:${list}"> <!--  th:each="変数 : ${コレクション}" -->
-            <td>2</td>
-                         <!-- model.attributeでdetaListの変数を取得、 -->
-            <td th:text="${dateList.id}"/>
-            <td th:text="${dateList.dateName}"/>
-            <td>1</td>
-            <td th:text="${dateList.ymd}"/>
-            <td>1</td>
-        </tr>
+
     </table>
-          <h2 th:text="${name}"></h2>
-          <p th:text="${get}" />
-          <p th:text="${post}" />
+
 
    </body>
 </html>

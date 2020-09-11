@@ -5,10 +5,10 @@
 
         <mapper namespace="com.example.DEMO.DateListMapper">
                                               <!--UserMapper.javaのパッケージ名  -->
-           <select id="selectAll" resultType="List">
+           <select id="selectAll" resultType="com.example.DEMO.DateList">
                                               <!-- id = DateListMapper.java で指定したメソッド名 -->
                                               <!-- resultType = 返却する型 -->
-               select id,datename,ymd from datelist where id= #{id}
+               select * from datelist
            </select>
            <!--  resultMap id="DateList" type="com.example.DEMO.DateList">
               <id column="id" jdbcType="int"></id>
