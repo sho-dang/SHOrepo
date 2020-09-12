@@ -29,17 +29,16 @@ public class DateListController {
        ///System.out.println(this.dateListMapper.count());
 	  }
       */
+  @GetMapping
+  public String index() {
+      return "index-dateList";
+  }
 
 
-
-	@GetMapping       //GetMappingのメソッドは書き方が決まっている・・・public String ****(){ return *****}
+	@GetMapping("list")
 	public String getDateLists(Model model) {
-		//int number = 1;
-		//for(int i = 1; i <= numberList;i++) {}
 
 		List<DateList> list =dateListMapper.selectAll();
-		//for(int i = 1; i <= )
-		System.out.println(list);
 		model.addAttribute("dateList",list);//add=追加 attribute=属性 ("htmlで使う変数名",オブジェクトを渡す)
 		return "index-dateList";
 		//　"○○○"にテキストを返す
@@ -114,6 +113,5 @@ public class DateListController {
       dateListMapper.delete(id);
       return "redirect:/dateLists";
     }
-
 */
 }

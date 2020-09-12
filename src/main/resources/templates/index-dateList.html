@@ -73,8 +73,8 @@
            <input class ="text-box" type = "text">
         </div>
         <div class = "bot">
-           <a class ="btn run" href="#">計算実行</a>
-           <a class ="btn new" th:href="${'/dateList/new'}"> 新規登録</a>
+           <a class ="btn run" th:href="@{/dateList/list}">計算実行</a>
+           <a class ="btn new" th:href="@{/dateList/new}"> 新規登録</a>
         </div>
 
      </div>
@@ -96,7 +96,7 @@
             <td th:text="${dateList.ymd}"/>
             <td >
               <div class = "min_button" >
-               <a class ="u_d_button update" href="/dateList/update">更新</a>
+               <a class ="u_d_button update" th:href="@{/dateList/update}">更新</a>
                <a class ="u_d_button delete" href="#">削除</a>
               </div>
             </td>
