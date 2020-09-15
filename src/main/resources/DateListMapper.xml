@@ -10,25 +10,22 @@
                                               <!-- resultType = 返却する型 -->
                select * from datelist
            </select>
-           <!--  resultMap id="DateList" type="com.example.DEMO.DateList">
-              <id column="id" jdbcType="int"></id>
-              <result column="datename" jdbcType="varcher" property="dateName"/>
-              <result column="ymd" jdbcType="varcher" property="ymd"></result>
-           </resultMap-->
-
            <select id="select" resultType="com.example.DEMO.DateList">
                   select id,datename,ymd from datelist where id = #{id}
            </select>
-           <!--  select id = "count" resultType="com.example.DEMO.DateList">
-                  select count(id) from datelist = #{count}
-           </select-->
+           <select id = "ymd" resultType="com.example.DEMO.DateList">
+                  select ymd from dateList where id = #{id}
+           </select>
+
+
+           <update id="update">
+                update datelist set calc = #{data} where id = #{idd}
+           </update>
+
            <insert id="insert">
                insert into datelist (datename) values (#{datename})
            </insert>
-           <update id="update">
-                update datelist set datename = #{datename} where id = #{id}
-           </update>
-           <delete id="delete">
+                      <delete id="delete">
                 delete from datelist where id = #{id}
            </delete>
         </mapper>

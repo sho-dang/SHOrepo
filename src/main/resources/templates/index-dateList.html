@@ -66,17 +66,17 @@
   </style>
 </head>
  <body>
-<form>
+<form th:method="post" action="/dateList" >
     <div class = "header">
         <h3>計算の基準となる日付を入力してください。</h3>
-        <div class ="text-area">
-           <input class ="text-box" type = "text">
+        <div class ="text-area" >
+           <input class ="text-box" type = "text" name="textData" th:value="${text}">
+
         </div>
         <div class = "bot">
-           <a class ="btn run" th:href="@{/dateList/list}">計算実行</a>
+           <input type="submit" class ="btn run" value="計算実行"/>
            <a class ="btn new" th:href="@{/dateList/new}"> 新規登録</a>
         </div>
-
      </div>
 </form>
      <table border = "1">
@@ -88,12 +88,12 @@
             <th>計算式(年月日)</th>
             <th>編集</th>
         </tr>
-        <tr class ="date-list" th:each="dateList:${dateList}">
-            <td th:text="${dateList.id}"/>
-            <td th:text="${dateList.dateId}"/>
-            <td th:text="${dateList.dateName}"/>
-            <td>1</td>
-            <td th:text="${dateList.ymd}"/>
+        <tr class ="date-list" th:each="dateList:${dateList}" th:object="${dateList}">
+            <td th:text="*{id}"/>
+            <td th:text="*{dateId}"/>
+            <td th:text="*{dateName}"/>
+            <td th:text="*{calc}"/>
+            <td th:text="*{ymd}"/>
             <td >
               <div class = "min_button" >
                <a class ="u_d_button update" th:href="@{/dateList/update}">更新</a>

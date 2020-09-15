@@ -9,6 +9,8 @@ public class DateList {
 
     private String dateName;
 
+    private String calc;
+
     private String ymd;
 
 
@@ -32,8 +34,12 @@ public class DateList {
     public void setDateName(String dateName) {
         this.dateName = dateName;
     }
-
-
+    public String getCalc() {
+        return calc;
+    }
+    public void setCalc(String calc) {
+        this.calc = calc;
+    }
     public String  getYmd() {
     	return ymd;
     }
