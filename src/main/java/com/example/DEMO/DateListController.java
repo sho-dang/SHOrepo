@@ -1,6 +1,8 @@
 package com.example.DEMO;
 
-//import java.util.Collection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -28,26 +30,27 @@ public class DateListController {
   }
 	@PostMapping
 	public String getDateLists(@RequestParam(name="textData")String text, Model model) {
-		List<DateList> id = dateListMapper.id();
-		for(int i = 1 ; i <= id.size();i++ ) {
-		String[] textRead = { text.substring(0,4), text.substring(4,6), text.substring(6,8),};  //入力された文字を３分割して配列に変換
-		int[] textInt = Stream.of(textRead).mapToInt(Integer::parseInt).toArray();  //Stream 配列そのものをString型からint型へ変換するAPI
-        String[] ymdSplit =dateListMapper.ymd(i).split("/");                       //データベースから呼び出した/区切りのStringを/ごとに分割し配列に変換
-        int[] ymdInt = Stream.of(ymdSplit).mapToInt(Integer::parseInt).toArray();    //Stream 配列そのものをString型からint型へ変換するAPI
-		int[][] ymdIndex = {      //２次元配列使用     [レコード(上から下)][カラム(左から右)]
-				{textInt[0],textInt[1],textInt[2]},             //0行目
-				{ymdInt[0],ymdInt[1],ymdInt[2],}                //1行目
-		        } ;
-		int year = ymdIndex[0][0]+ymdIndex[1][0];           //年計算
-		int month = ymdIndex[0][1]+ymdIndex[1][1];          //月計算
-		int day = ymdIndex[0][2]+ymdIndex[1][2];            //日計算
-		String ymdCalc = year + "/" + month + "/" + day ;    //年月日結合
-        dateListMapper.updateCalc(ymdCalc,i); //
+
+		List<DateList> id = dateListMapper.id();                                       //idをList化  forのところで件数呼び出しに使う
+		for(int i = 1 ; i <= id.size();i++ ) {                                         //取得したidの数だけデータ更新を繰り返す(id全てにデータを入れる)
+		   String[] textRead =
+		    	{ text.substring(0,4), text.substring(4,6), text.substring(6,8),};     //入力された文字を３分割して配列に変換
+		   String textX = textRead[0] + "/" + textRead[1] + "/" + textRead[2];         //テキストを日付パターンへ変更
+		   DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd")          //日付がオーバーしたら自動修正
+				                       .withResolverStyle(ResolverStyle.LENIENT);
+		   LocalDate ymd = LocalDate.parse(textX,date);                                //日付パターンと自動修正を組み合わせて日付の完成
+		   String[] ymdSplit =dateListMapper.ymd(i).split("/");                        //データベースから呼び出した/区切りのStringを/ごとに分割し配列に変換
+           int[] ymdInt = Stream.of(ymdSplit).mapToInt(Integer::parseInt).toArray();   //Stream 配列そのものをString型からint型へ変換するAPI
+		       ymd = ymd.plusYears(ymdInt[0]);                                         //年の値
+		       ymd = ymd.plusMonths(ymdInt[1]);                                        //月の値
+		       ymd = ymd.plusDays(ymdInt[2]);                                          //日の値
+		   String ymdCalc = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(ymd);     //LocalDate型からString型に変更
+		   dateListMapper.updateCalc(ymdCalc,i);                                       //データの更新
 		}
-        model.addAttribute("text",text);                 //出力確認用
-		List<DateList> list =dateListMapper.selectAll();      //selectAllでデータをList配列に入れる
-		model.addAttribute("dateList",list);            //add=追加 attribute=属性 ("htmlで使う変数名",オブジェクトを渡す)
-		return "index-dateList";                        //　"○○○"にテキストを返す
+        model.addAttribute("text",text);                                               //出力確認で使用可能
+		List<DateList> list =dateListMapper.selectAll();                               //selectAllでデータをList配列に入れる
+		model.addAttribute("dateList",list);                                           //add=追加 attribute=属性 ("htmlで使う変数名",オブジェクトを渡す)
+		return "index-dateList";                                                       //"○○○"にテキストを返す
 	}
 	@GetMapping("new")
 	public String getDateListNew() {
