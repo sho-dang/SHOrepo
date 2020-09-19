@@ -18,10 +18,13 @@
            </select>
 
 
-           <update id="update">
+           <update id="updateCalc">
                 update datelist set calc = #{data} where id = #{idd}
            </update>
-
+           <update id="update">
+            update datelist set dateId=#{dateId},datename=#{dateName},ymd=#[ymd] where id = #{iddd}
+           </update>
+           
            <insert id="insert">
                insert into datelist (datename) values (#{datename})
            </insert>

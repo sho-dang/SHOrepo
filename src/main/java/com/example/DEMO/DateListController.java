@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,16 @@ public class DateListController {
   public String index() {
       return "index-dateList";
   }
+  @GetMapping("new")
+	public String getDateListNew() {
+		return "index-new";
+	}
+
+  @GetMapping("update/{id}")
+	public String getDateListUpdate() {
+		return "index-update";
+	}
+
 	@PostMapping
 	public String getDateLists(@RequestParam(name="textData")String text, Model model) {
 
@@ -52,17 +63,23 @@ public class DateListController {
 		model.addAttribute("dateList",list);                                           //add=追加 attribute=属性 ("htmlで使う変数名",オブジェクトを渡す)
 		return "index-dateList";                                                       //"○○○"にテキストを返す
 	}
-	@GetMapping("new")
-	public String getDateListNew() {
+	@PostMapping("update/{id}")
+	public String DateListUpdate(
+			@PathVariable("id")int id,
+			@RequestParam(name="idText") String idText,
+			@RequestParam(name="nameText") String nameText,
+			@RequestParam(name="yearText") String yearText,
+			@RequestParam(name="monthText") String monthText,
+			@RequestParam(name="dayText") String dayText,
+			Model model
+      ) {
+		String ymdS =yearText + "/" + monthText + "/" + dayText;
 
-		return "index-new";
-	}
-	@GetMapping("update")
-	public String getDateListUpdate() {
+        dateListMapper.update(idText, nameText, ymdS, id);
 
 		return "index-update";
-	}
-	   //詳細画面の表示
+	    }
+			   //詳細画面の表示
     /*
 	@GetMapping("{id}")//←{pass変数の指定} ↓＠PathVariable この引数が、パス変数によって値を渡される
 	public String getDateList(@PathVariable int id,Model model) {

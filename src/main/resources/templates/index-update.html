@@ -41,22 +41,24 @@
     </style>
 </head>
  <header>
+       <form th:method="post">
        <div class = "block">
               <p class = "title">日付ID</p>
-                  <input class ="text-box" type = "text">
+                  <input class ="text-box" type = "text" name="idText">
               <p class = "title">日付名</p>
-                  <input class ="text-box" type = "text">
+                  <input class ="text-box" type = "text" name="nameText">
               <p class = "title">加減値(年)</p>
-                  <input class ="text-box" type = "text">
+                  <input class ="text-box" type = "text" name="yearText">
               <p class = "title">加減値(月)</p>
-                  <input class ="text-box" type = "text">
+                  <input class ="text-box" type = "text" name="monthText">
               <p class = "title">加減値(日)</p>
-                  <input class ="text-box" type = "text">
+                  <input class ="text-box" type = "text" name="dayText">
               <div class = "menu" >
-                  <a class ="btn add" href="#" > 更新 </a>
+                  <input type="submit" class ="btn add" value="更新" />
                   <a class ="btn return" th:href="@{/dateList}" > 戻る </a>
               </div>
         </div>
+        </form>
   </header>
   <body>
   </body>

@@ -96,7 +96,7 @@
             <td th:text="*{ymd}"/>
             <td >
               <div class = "min_button" >
-               <a class ="u_d_button update" th:href="@{/dateList/update}">更新</a>
+               <a class ="u_d_button update" th:href="@{'/dateList/update/' + *{id}}">更新</a>
                <a class ="u_d_button delete" href="#">削除</a>
               </div>
             </td>

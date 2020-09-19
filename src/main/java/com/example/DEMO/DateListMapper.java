@@ -17,5 +17,6 @@ import org.apache.ibatis.annotations.Update;
 		    String ymd(@Param("id")int id);
         @Update("update datelist set calc=#{data} where id = #{idd}")
             void updateCalc(@Param("data")String data,@Param("idd")int id);
-
+        @Update("update datelist set dateId=#{dateId},datename=#{dateName},ymd=#{ymd} where id = #{iddd}")
+        void update(@Param("dateId")String dateId,@Param("dateName")String dateName,@Param("ymd")String ymd,@Param("iddd")int id);
     }
