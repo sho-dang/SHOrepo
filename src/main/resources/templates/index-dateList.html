@@ -17,7 +17,7 @@
              h3{  font-size : 20px ;
                   padding-top : 45px ;
                }
-           form{  background-color : #C2EEFF ;
+         header{  background-color : #C2EEFF ;
                   height : 200px ;
                }
      .text-area{  margin : 10px 0px 20px 0px ; }
@@ -65,7 +65,9 @@
                }
   </style>
 </head>
- <body>
+<body>
+ <header>
+ <div class="form_head">
 <form th:method="post" action="/dateList" >
     <div class = "header">
         <h3>計算の基準となる日付を入力してください。</h3>
@@ -79,6 +81,7 @@
         </div>
      </div>
 </form>
+</div>
      <table border = "1">
         <tr>
             <th>NO.</th>
@@ -96,14 +99,17 @@
             <td th:text="*{ymd}"/>
             <td >
               <div class = "min_button" >
+               <form>
                <a class ="u_d_button update" th:href="@{'/dateList/update/' + *{id}}">更新</a>
-               <a class ="u_d_button delete" href="#">削除</a>
+               </form>
+               <form th:method = "post" th:action="@{/dateList/{id}(id=*{id})}">
+               <input type="submit"  class ="u_d_button delete" value="削除"/>
+               </form>
               </div>
             </td>
         </tr>
 
     </table>
-
-
-   </body>
+   </header>
+ </body>
 </html>

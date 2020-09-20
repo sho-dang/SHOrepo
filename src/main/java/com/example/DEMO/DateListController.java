@@ -79,6 +79,23 @@ public class DateListController {
 
 		return "index-update";
 	    }
+    @PostMapping("{id}")
+    public String deleteUser(@PathVariable int id) {
+      dateListMapper.delete(id);
+      return "redirect:/dateList";
+    }
+    @PostMapping("new")
+	public String indexCreate(
+			@RequestParam(name="NewId")String NewId,
+			@RequestParam(name="NewName")String NewName,
+			@RequestParam(name="NewYear")String NewYear,
+			@RequestParam(name="NewMonth")String NewMonth,
+			@RequestParam(name="NewDay")String NewDay
+			) {
+    	String ymdS = NewYear + "/" + NewMonth + "/" + NewDay;
+    	dateListMapper.create(NewId, NewName, ymdS);
+		return "redirect:/dateList";
+	}
 			   //詳細画面の表示
     /*
 	@GetMapping("{id}")//←{pass変数の指定} ↓＠PathVariable この引数が、パス変数によって値を渡される

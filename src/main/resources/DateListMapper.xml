@@ -24,11 +24,11 @@
            <update id="update">
             update datelist set dateId=#{dateId},datename=#{dateName},ymd=#[ymd] where id = #{iddd}
            </update>
-           
-           <insert id="insert">
-               insert into datelist (datename) values (#{datename})
+
+           <insert id="create" parameterType="com.example.DEMO.DateList">
+                insert into datelist (dateId,datename,ymd) value(#{dateId},#{dateName},#{ymd})
            </insert>
-                      <delete id="delete">
-                delete from datelist where id = #{id}
+           <delete id="delete">
+                delete from datelist where id = #{idddd}
            </delete>
         </mapper>
