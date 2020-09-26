@@ -3,8 +3,6 @@ package com.example.DEMO;
 
 public class DateList {
 
-    private int id ;
-
     private String dateId;
 
     private String dateName;
@@ -13,13 +11,6 @@ public class DateList {
 
     private String ymd;
 
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getDateId() {
     	return dateId;

@@ -91,18 +91,18 @@
             <th>計算式(年月日)</th>
             <th>編集</th>
         </tr>
-        <tr class ="date-list" th:each="dateList:${dateList}" th:object="${dateList}">
-            <td th:text="*{id}"/>
+        <tr class ="date-list" th:each="dateList,list:${dateList}" th:object="${dateList}">
+            <td th:text="${list.count}"/>
             <td th:text="*{dateId}"/>
             <td th:text="*{dateName}"/>
             <td th:text="*{calc}"/>
             <td th:text="*{ymd}"/>
             <td >
               <div class = "min_button" >
-               <form>
-               <a class ="u_d_button update" th:href="@{'/dateList/update/' + *{id}}">更新</a>
+               <form th:method="post">
+               <a  class ="u_d_button update" th:href="'dateList/update/'+ *{dateId}" >更新</a>
                </form>
-               <form th:method = "post" th:action="@{/dateList/{id}(id=*{id})}">
+               <form th:method = "post" th:action="@{/dateList/{dateId}(dateId=*{dateId})}">
                <input type="submit"  class ="u_d_button delete" value="削除"/>
                </form>
               </div>
