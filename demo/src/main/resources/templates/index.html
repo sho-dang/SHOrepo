@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
     <title>Document</title>
+          <style>
+                .index {  height: 40px;
+                          color: brown;
+
+                        }
+
+          </style>
 </head>
 <body>
     <p th:text=${num}></p>
-    <table>
+    <table border = 1 >
         <tr>
-            <td>No.</td>
-            <td>日付ID</td>
-            <td>日付名</td>
-            <td>年月日</td>
-            <td>計算式</td>
-            <td>編集</td>
+            <th>No.</th>
+            <th>日付ID</th>
+            <th>日付名</th>
+            <th>年月日</th>
+            <th>計算式</th>
+            <th>編集</th>
+        </tr>
+        <tr class="index" th:each="listVariable , eachVariable : ${list}">
+            <td th:text="${eachVariable.count}"></td>
+            <td th:text="${listVariable.dateId}"/>
+            <td th:text="${listVariable.dateName}"/>
+            <td th:text="${listVariable.year}"/>
+            <td th:text="${listVariable.month}"/>
+            <td th:text="${listVariable.day}"/>
         </tr>
     </table>
 </body>
