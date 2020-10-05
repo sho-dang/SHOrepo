@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface AppMapper {
-    @Select("select year from datelist where dateID = #{dateID}")
-       int year (@Param("dateID")String id);
+    @Select("select year from datelist where dateId = #{dateId}")
+       int year (@Param("dateId")String id);
 }
