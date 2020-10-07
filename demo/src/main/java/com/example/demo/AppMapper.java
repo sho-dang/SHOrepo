@@ -12,4 +12,5 @@ public interface AppMapper {
        int year (@Param("dateId")String id);
     @Select("select * from datelist")
        List<DateList> datelist();
+    //@Select("select year month day from datelist")
 }
