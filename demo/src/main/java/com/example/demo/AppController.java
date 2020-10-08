@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController{
     @Autowired AppMapper appM;
+    DateList dl = new DateList();
+    DateFormula df = new DateFormula(dl);
 
     @GetMapping
     public String indexView(Model model){
-       int N =  appM.year("3Y");
-       model.addAttribute("num", N);
+       //int N =  appM.year("3Y");
+       //model.addAttribute("num", N);
        List<DateList> list = appM.datelist();
        model.addAttribute("list", list);
+      
         return "index";
     }
 
