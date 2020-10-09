@@ -31,8 +31,8 @@ public class DateFormula {
 
 
     private DateList dateList;    //クラス型　 ここではゲットセットを使える　型を定義しただけ？
-    private String dateCalc;      //計算結果を入れる
-
+    private String dateResult;      //計算結果を入れる
+    private String dateCalc;
 
     public DateFormula(DateList dateList){   //インスタンス作成されてた時に行う初期設定
           this.dateList= dateList;           //this  は private DateList dateList;のことを指している
@@ -45,7 +45,13 @@ public class DateFormula {
     public String getDateName(){
         return dateList.getDateName();      //コンストラクタ２　日付名
     }
-
+    
+    public String getDateResult(){
+        return this.dateResult;
+    }
+    public void setDateResult(String dateResult){
+        this.dateResult=dateResult;
+    }
     public String getDateCalc(){
         return this.dateCalc;
     }
@@ -55,7 +61,7 @@ public class DateFormula {
     }
 
 
-    public String ymdCalcration(){
+    public void setYmdCalclation(){
         int[] YMDList = {dateList.getYear(),dateList.getMonth(),dateList.getDay()};
         StringJoiner joinYMD = new StringJoiner("/");
         Arrays.stream(YMDList).forEach(i -> joinYMD.add(String.valueOf(i)));
@@ -67,7 +73,7 @@ public class DateFormula {
 */
 
 
-        return joinYMD.toString();
+        this.dateCalc=joinYMD.toString();
     }
 
 }

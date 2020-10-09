@@ -23,10 +23,10 @@ public class DateConvert {
 
 
 
-       public DateConvert(String valueYMD,List<DateList> dateFormula){
+       public DateConvert(String valueYMD,List<DateList> dateList){
              this.valueYMD = valueYMD;
              this.dateFormula = new ArrayList<>();
-             dateFormula.stream().forEach(e -> this.dateFormula.add(dateFormulaInstance(e)));
+             dateList.stream().forEach(e -> this.dateFormula.add(dateFormulaInstance(e)));
        }
 
        public String getValueYMD(){
@@ -35,7 +35,9 @@ public class DateConvert {
        public void setValueYMD(String valueYMD){
            this.valueYMD = valueYMD;
        }
-
+       public List<DateFormula> getDateFormula(){
+           return dateFormula;
+       }
        //ここが実行されたときDateFormulaがインスタンス化される　DateList5つのフィールドが反映
        //値が入るのはdateId,dateName,year,month,day
        public DateFormula dateFormulaInstance(DateList dateList){

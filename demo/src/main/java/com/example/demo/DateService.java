@@ -1,23 +1,29 @@
 package com.example.demo;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class Service {
+@Service
+public class DateService {
 
         @Autowired
         AppMapper appM;
 
-         public String calced(String valueYMD,List<DateList> dateList){
+
+        public List<DateList> dateLists(){
+            List<DateList> serch =  appM.datelist();
+            return serch;
+            }
+
+         public String calced(String valueYMD){
             //LocalDate date = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             LocalDate parsedDate = LocalDate.parse(valueYMD, formatter);
-            return null;
+            return parsedDate.format(formatter);
          }
          //List<DateList> dateList = appM.datelist();
 
