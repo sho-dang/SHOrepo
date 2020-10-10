@@ -13,23 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController{
     @Autowired 
-    AppMapper appM;
     DateService service;
     DateList dateList;
-    
+    DateConvert dateConvert;
     DateFormula dateFormula;
 
     @GetMapping
     public String indexView(Model model){
        //int N =  appM.year("3Y");
        //model.addAttribute("num", N);
-       List<DateList> list = appM.datelist();
+       List<DateList> list = service.dateLists();
       //model.addAttribute("list", list);
 
        DateConvert df = new DateConvert("20200101",list);
        List<DateFormula> listDF = df.getDateFormula();
-       listDF.stream().forEach(e -> dateFormula.setYmdCalclation());
-       //listDF.stream().forEach(e -> e.setDateCalc(service.calced(df.getValueYMD())));
+       listDF.stream().forEach(e -> e.setYmdCalclation());
+       listDF.stream().forEach(e -> e.setDateResult(service.calced(df.getValueYMD(),e.getDateList())));
        model.addAttribute("list", listDF);
         return "index";
     }

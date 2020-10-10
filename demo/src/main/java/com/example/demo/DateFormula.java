@@ -45,7 +45,27 @@ public class DateFormula {
     public String getDateName(){
         return dateList.getDateName();      //コンストラクタ２　日付名
     }
-    
+    public DateList getDateList(){
+        return this.dateList;
+    }
+
+
+    /*
+     DateFormula型でDateListの値を呼び出すときゲットで呼び出していないと使えない
+     （呼び出していたdateId,dateNameはエラーにならなかった）
+
+     public int getYear(){
+        return dateList.getYear();      //コンストラクタ２　日付名
+    }
+    public int getMonth(){
+        return dateList.getMonth();      //コンストラクタ２　日付名
+    }
+    public int getDay(){
+        return dateList.getDay();      //コンストラクタ２　日付名
+    }
+    */
+
+
     public String getDateResult(){
         return this.dateResult;
     }

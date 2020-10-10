@@ -36,7 +36,7 @@ public class DateConvert {
            this.valueYMD = valueYMD;
        }
        public List<DateFormula> getDateFormula(){
-           return dateFormula;
+           return this.dateFormula;
        }
        //ここが実行されたときDateFormulaがインスタンス化される　DateList5つのフィールドが反映
        //値が入るのはdateId,dateName,year,month,day
