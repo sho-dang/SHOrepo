@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+<title>更新</title>
+    <style>
+      header{  background-color : #006699 ;
+               margin : auto ;
+               width : 90% ;
+               height : 600px ;
+            }
+         *  {  margin : 0 ;
+               padding : 0 ;
+            }
+      .block{  padding : 30px ;
+
+
+            }
+      .title{  color : white ;
+               font-size : 20px ;
+               margin : 10px 0px ;
+            }
+   .text-box{  width : 100%;
+               height : 40px ;
+               font-size : 30px ;
+            }
+      .menu {  display : flex ;
+               margin-top : 20px ;
+               justify-content : space-between ;
+            }
+        .btn{  display : inline-block;
+               border : solid #999999 2px ;
+               background-color : #66CCFF ;
+               text-align : center ;
+               height : 35px ;
+               width : 50px ;
+               line-height : 35px ;
+               text-decoration: none;
+               color :  #6927FF ;
+            }
+    </style>
+</head>
+ <header>
+       <form th:object = "${list}">
+       <div class = "block">
+              <p th:field= "*{day}"></p>
+              <p class = "title">日付ID</p>
+                  <input class ="text-box" type = "text" >
+              <p class = "title">日付名</p>
+                  <input class ="text-box" type = "text" >
+              <p class = "title">加減値(年)</p>
+                  <input class ="text-box" type = "text" >
+              <p class = "title">加減値(月)</p>
+                  <input class ="text-box" type = "text" >
+              <p class = "title">加減値(日)</p>
+                  <input class ="text-box" type = "text" >
+              <div class = "menu" >
+                  <input type="submit" class ="btn add" value="更新" />
+                  <a class ="btn return" th:href="@{/index}" > 戻る </a>
+              </div>
+        </div>
+        </form>
+  </header>
+  <body>
+  </body>
+</html>

@@ -29,7 +29,10 @@ public class DateService {
             return dateCalced.format(formatter);
          }
          //List<DateList> dateList = appM.datelist();
-
+        public DateList select(String dateId){
+                DateList selectDate = appM.selectData(dateId);
+                return selectDate;
+        }
 
 
 
