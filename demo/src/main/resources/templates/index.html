@@ -1,36 +1,118 @@
 <!DOCTYPE html>
-<html xmlns:th="http;//www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
-    <title>Document</title>
-          <style>
-                .index {  height: 40px;
-                          color: brown;
+<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+<title>日付計算</title>
+    <style>
+           body{  width : 90% ;
+                  margin : auto ;
+               }
+              *{  margin : 0px ;
+                  padding : 0px ;
+               }
+        .header{
+                  margin : 0px 30px ;
+                  width : 90% ;
+               }
+             h3{  font-size : 20px ;
+                  padding-top : 45px ;
+               }
+         header{  background-color : #C2EEFF ;
+                  height : 200px ;
+               }
+     .text-area{  margin : 10px 0px 20px 0px ; }
+      .text-box{  width : 450px ;
+                  height : 30px ;
+                  font-size : 15px;
+               }
 
-                        }
-
-          </style>
+          table{  clear : both ;
+                  width : 100% ;
+               }
+             tr{  height : 50px ; }
+             th{  background-color : #77EEFF ; }
+             td{  width : 17% ;
+                  text-align : center ;
+               }
+           .btn{  color : white ;
+                  display : inline-block ;
+                  height : 40px ;
+                  width : 100px ;
+                  margin-right: 20px;
+                  background-color : blue ;
+                  text-align : center ;
+                  line-height : 40px ;
+                  text-decoration : none ;
+                  font-weight : bold ;
+                  border : solid  #BBBBBB 2px ;
+               }
+           .bot{  display : flex ;
+               }
+    .min_button{  display : flex ;
+               }
+    .u_d_button{  margin : auto ;
+                  text-align : center ;
+                  padding : 5px 20px  ;
+                  border : solid #BBBBBB 3px ;
+                  text-decoration : none ;
+                  font-weight : bold ;
+               }
+        .update{  color : red ;
+                  background-color : #FFFFEE ;
+               }
+        .delete{  color : #EEEEEE ;
+                  background-color : red ;
+               }
+  </style>
 </head>
 <body>
-    <p th:text=${String}></p>
-    <table border = 1 >
-        <tr>
-            <th>No.</th>
-            <th>日付ID</th>
-            <th>日付名</th>
-            <th>年月日</th>
-            <th>計算式</th>
-            <th>編集</th>
+ <header>
+ <div class="form_head">
+<form th:method="post" action="/dateList" >
+    <div class = "header">
+        <h3>計算の基準となる日付を入力してください。</h3>
+        <div class ="text-area" >
+           <input class ="text-box" type = "text" name="textData" th:value="${text}">
+
+        </div>
+        <div class = "bot">
+           <input type="submit" class ="btn run" value="計算実行"/>
+           <a class ="btn new" th:href="@{/dateList/new}"> 新規登録</a>
+        </div>
+     </div>
+</form>
+</div>
+     <table border = "1">
+            <tr>
+                <th>No.</th>
+                <th>日付ID</th>
+                <th>日付名</th>
+                <th>年月日</th>
+                <th>計算式(年月日)</th>
+                <th>編集</th>
+            </tr>
+            <tr class="date-list" th:each="listVariable , eachVariable : ${list}" th:object="${list}">
+                <td th:text="${eachVariable.count}"/>
+                <td th:text="${listVariable.dateId}"/>
+                <td th:text="${listVariable.dateName}"/>
+                <td th:text="${listVariable.dateResult}"/>
+                <td th:text="${listVariable.dateCalc}"/>
+                <td >
+                    <div class = "min_button" >
+                     <form th:method="post">
+                     <a  class ="u_d_button update" th:href="'update/'+ ${listVariable.dateId}" >更新</a>
+                     </form>
+                     <!--form th:method = "post" th:action="@{/dateList/{dateId}(dateId=*{dateId})}"-->
+                     <input type="submit"  class ="u_d_button delete" value="削除"/>
+                     <!--/form-->
+                    </div>
+                <td/>
+            </tr>
+            </td>
         </tr>
-        <tr class="index" th:each="listVariable , eachVariable : ${list}">
-            <td th:text="${eachVariable.count}"></td>
-            <td th:text="${listVariable.dateId}"/>
-            <td th:text="${listVariable.dateName}"/>
-            <td th:text="${listVariable.dateResult}"/>
-            <td th:text="${listVariable.dateCalc}"/>
-            <td/>
-        </tr>
+
     </table>
-</body>
+   </header>
+ </body>
 </html>

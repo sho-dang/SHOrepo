@@ -43,20 +43,19 @@
  <header>
        <form th:object = "${list}">
        <div class = "block">
-              <p th:field= "*{day}"></p>
               <p class = "title">日付ID</p>
-                  <input class ="text-box" type = "text" >
+                  <input class ="text-box" type = "text" th:value="*{dateId}">
               <p class = "title">日付名</p>
-                  <input class ="text-box" type = "text" >
+                  <input class ="text-box" type = "text" th:value="*{dateName}">
               <p class = "title">加減値(年)</p>
-                  <input class ="text-box" type = "text" >
+                  <input class ="text-box" type = "text" th:value="*{year}">
               <p class = "title">加減値(月)</p>
-                  <input class ="text-box" type = "text" >
+                  <input class ="text-box" type = "text" th:value="*{month}">
               <p class = "title">加減値(日)</p>
-                  <input class ="text-box" type = "text" >
+                  <input class ="text-box" type = "text" th:value="*{day}">
               <div class = "menu" >
                   <input type="submit" class ="btn add" value="更新" />
-                  <a class ="btn return" th:href="@{/index}" > 戻る </a>
+                  <a class ="btn return" th:href="@{/}" > 戻る </a>
               </div>
         </div>
         </form>
