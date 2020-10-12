@@ -19,14 +19,14 @@
                   padding-top : 45px ;
                }
          header{  background-color : #C2EEFF ;
-                  height : 200px ;
+                  height : 185px ;
                }
      .text-area{  margin : 10px 0px 20px 0px ; }
       .text-box{  width : 450px ;
                   height : 30px ;
                   font-size : 15px;
                }
-
+     .form_head{  clear:both;  }
           table{  clear : both ;
                   width : 100% ;
                }
@@ -69,16 +69,15 @@
 <body>
  <header>
  <div class="form_head">
-<form th:method="post" action="/dateList" >
+<form th:method="post" action="/" >
     <div class = "header">
         <h3>計算の基準となる日付を入力してください。</h3>
         <div class ="text-area" >
-           <input class ="text-box" type = "text" name="textData" th:value="${text}">
-
+           <input class ="text-box" type = "text" name="textData">
         </div>
         <div class = "bot">
            <input type="submit" class ="btn run" value="計算実行"/>
-           <a class ="btn new" th:href="@{/dateList/new}"> 新規登録</a>
+           <a class ="btn new" th:href="@{/create}"> 新規登録</a>
         </div>
      </div>
 </form>
@@ -92,7 +91,7 @@
                 <th>計算式(年月日)</th>
                 <th>編集</th>
             </tr>
-            <tr class="date-list" th:each="listVariable , eachVariable : ${list}" th:object="${list}">
+            <tr class="date-list" th:each="listVariable , eachVariable : ${list}">
                 <td th:text="${eachVariable.count}"/>
                 <td th:text="${listVariable.dateId}"/>
                 <td th:text="${listVariable.dateName}"/>
