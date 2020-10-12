@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 
@@ -32,6 +33,10 @@ public class DateService {
         public DateList select(String dateId){
                 DateList selectDate = appM.selectData(dateId);
                 return selectDate;
+        }
+        @Transactional
+        public void create(DateList dateList){
+                appM.create(dateList);
         }
 
 
