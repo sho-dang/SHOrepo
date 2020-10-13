@@ -44,11 +44,11 @@
       <form th:method="post" th:object="${dateList}">
        <div class = "block">
               <p class = "title">日付ID</p>
-                  <input class ="text-box" type = "text" th:field="*{dateId}" value>
+                  <input class ="text-box" type = "text"  th:field="*{dateId}" >
               <p class = "title">日付名</p>
                   <input class ="text-box" type = "text" th:field="*{dateName}">
               <p class = "title">加減値(年)</p>
-              <input class ="text-box" type = "text" th:field="*{year}">
+                  <input class ="text-box" type = "text" th:field="*{year}" >
               <p class = "title">加減値(月)</p>
                   <input class ="text-box" type = "text" th:field="*{month}">
               <p class = "title">加減値(日)</p>
