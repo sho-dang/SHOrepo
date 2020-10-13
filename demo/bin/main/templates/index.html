@@ -102,9 +102,9 @@
                      <form th:method="post">
                      <a  class ="u_d_button update" th:href="'update/'+ ${listVariable.dateId}" >更新</a>
                      </form>
-                     <!--form th:method = "post" th:action="@{/dateList/{dateId}(dateId=*{dateId})}"-->
+                     <form th:method = "post" th:action="@{/{dateId}(dateId=${listVariable.dateId})}">
                      <input type="submit"  class ="u_d_button delete" value="削除"/>
-                     <!--/form-->
+                     </form>
                     </div>
                 <td/>
             </tr>

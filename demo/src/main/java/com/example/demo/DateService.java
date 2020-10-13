@@ -39,6 +39,9 @@ public class DateService {
                 appM.create(dateList);
         }
 
+        public void delete(String dateId){
+                appM.delete(dateId);
+        }
 
 
 

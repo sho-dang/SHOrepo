@@ -19,6 +19,6 @@ public interface AppMapper {
        void create(DateList datelist);
 
     @Delete("DELETE FROM datelist WHERE dateId = #{dateId}")
-       boolean delete(String dateId);
+       void delete(String dateId);
     //@Select("select year month day from datelist")
 }
