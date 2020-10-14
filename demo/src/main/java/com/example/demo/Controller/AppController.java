@@ -1,6 +1,11 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
 import java.util.List;
+
+import com.example.demo.Service.DateService;
+import com.example.demo.domain.DateConvert;
+import com.example.demo.domain.DateFormula;
+import com.example.demo.domain.DateList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,15 +28,6 @@ public class AppController{
 
     @GetMapping
     public String indexView(Model model){
-       //int N =  appM.year("3Y");
-       //model.addAttribute("num", N);
-      //model.addAttribute("list", list);
-       List<DateList> list = service.dateLists();
-       DateConvert df = new DateConvert("20200101",list);
-       List<DateFormula> listDF = df.getDateFormula();
-       listDF.stream().forEach(e -> e.setYmdCalclation());
-       listDF.stream().forEach(e -> e.setDateResult(service.calced(df.getValueYMD(),e.getDateList())));
-       model.addAttribute("list", listDF);
         return "index";
     }
     @PostMapping

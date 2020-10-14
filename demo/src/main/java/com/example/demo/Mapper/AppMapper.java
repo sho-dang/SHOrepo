@@ -1,6 +1,8 @@
-package com.example.demo;
+package com.example.demo.Mapper;
 
 import java.util.List;
+
+import com.example.demo.domain.DateList;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

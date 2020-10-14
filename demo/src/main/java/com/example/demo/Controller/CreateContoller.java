@@ -1,4 +1,7 @@
-package com.example.demo;
+package com.example.demo.Controller;
+
+import com.example.demo.Service.DateService;
+import com.example.demo.domain.DateList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +30,6 @@ public class CreateContoller {
     public String createData(@ModelAttribute("dateList") DateList dateList){
         service.create(dateList);    //引数にDateList型を入れれば新規作成を行う
         //model.addAttribute("newList", new DateList());
-        DateList kk = dateList;
        return "index";
     }
     
