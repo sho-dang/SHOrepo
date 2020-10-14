@@ -35,6 +35,11 @@ public class DateService {
                 return selectDate;
         }
         @Transactional
+        public void update(DateList dateList){
+                appM.update(dateList);
+        }
+
+        @Transactional
         public void create(DateList dateList){
                 appM.create(dateList);
         }
