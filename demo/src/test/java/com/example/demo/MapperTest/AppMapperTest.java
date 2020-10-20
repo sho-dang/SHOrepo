@@ -1,22 +1,20 @@
 package com.example.demo.MapperTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.Assert.assertEquals;
 import java.util.List;
-
 import com.example.demo.Mapper.AppMapper;
 import com.example.demo.domain.DateList;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+@SpringBootApplication
 public class AppMapperTest{
 
-    @Autowired
-     private AppMapper appM;
+   
+     AppMapper appM;
 
 
 

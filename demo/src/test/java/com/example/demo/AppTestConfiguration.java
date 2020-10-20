@@ -5,7 +5,7 @@ import java.sql.*;
 public class AppTestConfiguration {
     public static void main(String[] args)throws Exception {
 Connection conn = DriverManager.
-    getConnection("jdbc:h2:~/test", "sa", "");
+    getConnection("jdbc:h2:mem", "sa", "");
 // add application code here
 conn.close();
 
