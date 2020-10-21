@@ -8,14 +8,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 
 //@RunWith(SpringRunner.class)
 @SpringBootApplication
 public class AppMapperTest{
 
    
-     AppMapper appM;
-
+     AppMapper appM ;
 
 
      @Test

@@ -1,28 +1,74 @@
 package com.example.demo.ServiceTest;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
+import com.example.demo.Service.DateService;
+import com.example.demo.domain.DateList;
+
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
-public class DateServiceTest implements CommandLineRunner {
-
-    public static void main(String[] args) {
-        SpringApplication.run(DateServiceTest.class, args);
-    }
-
+public class DateServiceTest {
+   
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    
-    @Override
-    public void run(String... strings) throws Exception {
-    
-        jdbcTemplate.execute("CREATE TABLE customers(" +
-                "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
-    
-        jdbcTemplate.update("INSERT INTO customers(first_name, last_name) VALUES ('John','Woo')");
+    DateService service = new DateService();
+    DateList datelist = new DateList();
+
+
+    public void set(){
+      datelist.setDateId("test");
+      datelist.setDateName("testName");
+      datelist.setYear(6);
+      datelist.setMonth(0);
+      datelist.setYear(0);
     }
+
+
+    @Test
+    public void データの取得ができる(){
+        set();
+        List<DateList> list = service.dateLists();
+
+        assertEquals(list.size(),1);
+    }
+
+
+
+    /*
+    public List<DateList> dateLists(){
+        List<DateList> serch =  appM.datelist();
+        return serch;
+        }
+
+     public String calced(String valueYMD,DateList dateList){
+        //LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate parsedDate = LocalDate.parse(valueYMD, formatter);
+        LocalDate dateCalced=parsedDate.plusYears(dateList.getYear()).plusMonths(dateList.getMonth()).plusDays(dateList.getDay());
+        return dateCalced.format(formatter);
+     }
+     //List<DateList> dateList = appM.datelist();
+    public DateList select(String dateId){
+            DateList selectDate = appM.selectData(dateId);
+            return selectDate;
+    }
+    @Transactional
+    public void update(DateList dateList){
+            appM.update(dateList);
+    }
+
+    @Transactional
+    public void create(DateList dateList){
+            appM.create(dateList);
+    }
+
+    public void delete(String dateId){
+            appM.delete(dateId);
+    }
+   */
 }
