@@ -6,18 +6,16 @@ import com.example.demo.Mapper.AppMapper;
 import com.example.demo.domain.DateList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
+import org.springframework.test.context.junit4.SpringRunner;
 
-//@RunWith(SpringRunner.class)
-@SpringBootApplication
+@RunWith(SpringRunner.class)
+@MybatisTest
 public class AppMapperTest{
 
-   
+   @Autowired
      AppMapper appM ;
-
 
      @Test
      public void DBのデータを全件取得する() throws Exception{

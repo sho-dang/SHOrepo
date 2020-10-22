@@ -11,15 +11,16 @@ import com.example.demo.domain.DateList;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootApplication
+@SpringBootTest
 public class DateServiceTest {
    
     @Autowired
     DateService service = new DateService();
-    DateList datelist = new DateList();
+   
 
-
+/*
     public void set(){
       datelist.setDateId("test");
       datelist.setDateName("testName");
@@ -27,11 +28,11 @@ public class DateServiceTest {
       datelist.setMonth(0);
       datelist.setYear(0);
     }
-
+*/
 
     @Test
     public void データの取得ができる(){
-        set();
+        //set();
         List<DateList> list = service.dateLists();
 
         assertEquals(list.size(),1);

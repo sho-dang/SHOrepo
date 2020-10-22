@@ -9,9 +9,10 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.context.annotation.Configuration;
 
 
-
+@Configuration
 @Mapper
 public interface AppMapper {
     @Select("SELECT * FROM datelist WHERE dateId = #{dateId}")
