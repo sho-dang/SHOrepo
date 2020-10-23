@@ -5,19 +5,24 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import javax.swing.Spring;
+
 import com.example.demo.Service.DateService;
 import com.example.demo.domain.DateList;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@SpringBootTest
+@MybatisTest
 public class DateServiceTest {
    
     @Autowired
-    DateService service = new DateService();
+    DateService service;
    
 
 /*
