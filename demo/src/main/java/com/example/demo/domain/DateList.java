@@ -1,5 +1,8 @@
 package com.example.demo.domain;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+
 public class DateList {
     private String dateId;
 
