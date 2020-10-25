@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.context.annotation.Configuration;
 
 
-@Configuration
 @Mapper
 public interface AppMapper {
     @Select("SELECT * FROM datelist WHERE dateId = #{dateId}")
