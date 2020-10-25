@@ -23,9 +23,9 @@ public class AppMapperTest{
      AppMapper appM ;
 
      @Test
-     public void DBのデータを全件取得する() throws Exception{
+     public void DBのデータを全件取得() throws Exception{
          List<DateList> allData = appM.datelist();
-         assertEquals(allData.size(), 4 );
+         assertEquals(allData.size(), 1 );
      }
 
 
