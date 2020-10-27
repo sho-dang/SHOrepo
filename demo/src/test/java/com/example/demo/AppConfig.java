@@ -1,14 +1,22 @@
 package com.example.demo;
 
-import javax.sql.DataSource;
+import java.util.List;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import com.example.demo.Mapper.AppMapper;
+import com.example.demo.domain.DateList;
 
-@Configuration
-@ComponentScan(basePackages = "Mapper")
+
+import org.springframework.stereotype.Component;
+
+
+@Component
 public class AppConfig {
-    
-   
+     private AppMapper appMapper;
+
+     public AppConfig(AppMapper appMapper){
+         this.appMapper = appMapper;
+     }
+     public List<DateList> select(){
+         return this.appMapper.datelist();
+     }
 }

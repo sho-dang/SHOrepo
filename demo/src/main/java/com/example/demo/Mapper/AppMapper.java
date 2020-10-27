@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository("mapper")
 @Mapper
 public interface AppMapper {
     @Select("SELECT * FROM datelist WHERE dateId = #{dateId}")

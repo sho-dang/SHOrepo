@@ -1,1 +1,5 @@
-<context:component-scan base-package="appMapper"/>
+<bean id="appMapper" class="com.example.demo.Mapper.AppMapper" abstract="true" lazy-init="true">
+     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+   </bean>
+
+ 
