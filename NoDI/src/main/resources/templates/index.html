@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset= "UTF-8">
+<title>入力画面</title>
+</head>
+<body>
+<h1>NoDIパターン</h1>
+<form th:method="post" action="output.html" th:action="@{output}">
+<p>社員Noを入れてください(3桁の半角数字)</p>
+<input type="text" name="number">
+<input type="submit" value="送信">
+</form>
+</body>
+</html>
