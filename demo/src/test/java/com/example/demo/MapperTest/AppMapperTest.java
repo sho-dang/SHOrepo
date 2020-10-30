@@ -1,6 +1,8 @@
 package com.example.demo.MapperTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.util.List;
 
@@ -22,12 +24,17 @@ public class AppMapperTest {
     @Test
     public void データを全件取得()throws Exception{
        List<DateList> li = appMapper.datelist();
-       assertEquals(li.size(), 4);
-
-
-
+       assertThat(li.size(),is(4));
     }
 
-
-
+    @Test
+    public void 選択したIDを元にレコードを取得(){
+        DateList dateList = appMapper.selectData("3Y");
+        assertThat(dateList.getDateId(),is("3Y"));
+        assertThat(dateList.getDateName(),is("3年後"));
+        assertThat(dateList.getYear(),is(3));
+        assertThat(dateList.getMonth(),is(0));
+        assertThat(dateList.getDay(),is(0));
+    }
+    
 }
