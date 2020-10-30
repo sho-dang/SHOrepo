@@ -1,5 +1,7 @@
 package com.example.demo.ServiceTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
 import com.example.demo.Mapper.AppMapper;
@@ -12,23 +14,21 @@ import org.junit.runner.RunWith;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-
-@MybatisTest
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DateServiceTest {
     @Autowired
     DateService ser;
 
-    @Before
-    public void setUp(){
-    ser = new DateService();
-    }
+    
 
     @Test
     public void 全件取得()throws Exception{
       // DateService ser = new DateService();
          List<DateList> li = ser.dateLists();
-         System.out.println(li);
+         assertEquals(li.size(),4);
     }
 
 }
