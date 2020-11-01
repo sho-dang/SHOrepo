@@ -36,5 +36,36 @@ public class AppMapperTest {
         assertThat(dateList.getMonth(),is(0));
         assertThat(dateList.getDay(),is(0));
     }
+
+    @Test
+    public void 選択したIDのレコードを変更(){
+        DateList dateList = createDateList("3Y","30年後",30,1,1);
+        appMapper.update(dateList);
+        
+        assertThat(dateList.getDateId(),is("3Y"));
+        assertThat(dateList.getDateName(),is("30年後"));
+        assertThat(dateList.getYear(),is(30));
+        assertThat(dateList.getMonth(),is(1));
+        assertThat(dateList.getDay(),is(1));
+
+        DateList returnDateList = createDateList("3Y","3年後",3,0,0);
+        appMapper.update(returnDateList);
+    }   
     
+    //コンストラクタを使用、DateListではコンストラクタ定義していないが
+    //特例によりデフォルトコンストラクタが存在している、オーバーロード
+    public DateList createDateList(
+                      String dateId,
+                      String dateName,
+                      int year,
+                      int month,
+                      int day){
+          DateList dateList = new DateList();
+          dateList.setDateId(dateId);
+          dateList.setDateName(dateName);
+          dateList.setYear(year);
+          dateList.setMonth(month);
+          dateList.setDay(day);
+          return dateList;
+    }
 }
