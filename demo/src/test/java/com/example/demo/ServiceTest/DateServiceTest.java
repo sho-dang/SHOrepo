@@ -36,10 +36,26 @@ public class DateServiceTest {
         assertThat(dateList.getDay(), is(0));
    }
    @Test
-   public void 入力した日付を計算して出力出来ているかの確認(){
+   public void 入力した日付を計算して出力出来ているかの確認テスト(){
        DateList dateList = createDateList("test","All+1",1,1,1);
        String calced = ser.calced("20000101", dateList);
        assertThat(calced,is("20010202"));
+   }
+
+   @Test
+   public void 選択したデータの更新テスト(){
+        DateList dateList = createDateList("3Y","20年後",20,0,0);
+        ser.update(dateList);
+
+        assertThat(dateList.getDateId(),is("3Y"));
+        assertThat(dateList.getDateName(),is("20年後"));
+        assertThat(dateList.getYear(),is(20));
+        assertThat(dateList.getMonth(),is(0));
+        assertThat(dateList.getDay(),is(0));
+
+        DateList returnDateList = createDateList("3Y","3年後",3,0,0);
+        ser.update(returnDateList);
+
    }
 
    //デフォルトコンストラクタ、オーバーロード
