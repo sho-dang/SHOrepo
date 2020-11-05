@@ -58,6 +58,25 @@ public class DateServiceTest {
 
    }
 
+   @Test 
+   public void 新規作成と削除メソッドのテスト(){
+        DateList dateList = createDateList("tester","All+3",3,3,3);
+        ser.create(dateList);
+        DateList select = ser.select("tester");
+        assertThat(select.getDateId(),is("tester"));
+        assertThat(select.getDateName(),is("All+3"));
+        assertThat(select.getYear(),is(3));
+        assertThat(select.getMonth(),is(3));
+        assertThat(select.getDay(),is(3));
+
+        List<DateList> dateLists = ser.dateLists();
+        assertThat(dateLists.size(),is(5));
+
+        ser.delete("tester");
+        List<DateList> returnDateLists = ser.dateLists();
+        assertThat(returnDateLists.size(),is(4));
+   }
+
    //デフォルトコンストラクタ、オーバーロード
    public DateList createDateList(String dateId,String dateName,int year,int month,int day){
         DateList dateList = new DateList();
