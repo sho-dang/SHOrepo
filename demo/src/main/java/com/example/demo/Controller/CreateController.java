@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/create")
 @Controller
-public class CreateContoller {
+public class CreateController {
 
 
     @Autowired 
