@@ -27,9 +27,16 @@ public class AppControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(target).build();
      }
      @Test
-     public void HTTPステータスコードが正しいかのテスト()throws Exception{
+     public void HTTPステータスコードとビューの指定が正しいかのテスト()throws Exception{
           mockMvc.perform(get("/"))
-          .andExpect(status().isOk());
+          .andExpect(status().isOk())                         //ステータスコードはOKか
+          .andExpect(view().name("index"))                    //指定のビューを返すか
+          .andExpect(forwardedUrlTemplate("index"));          //遷移先URLの検証
+     }
+     @Test
+     public void 属性が合っているかのテスト()throws Exception{
+          
+         mockMvc.perform(post("/"));
      }
 
 }
