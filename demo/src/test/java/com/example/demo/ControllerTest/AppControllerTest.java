@@ -35,8 +35,10 @@ public class AppControllerTest {
      }
      @Test
      public void 属性が合っているかのテスト()throws Exception{
+          //????
           
-         mockMvc.perform(post("/"));
+         mockMvc.perform(post("/").param("valueYMD","20200202"))
+         .andExpect(status().isOk());
      }
-
+     
 }
