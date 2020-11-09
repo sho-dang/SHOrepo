@@ -18,18 +18,20 @@
                             .header{  margin : 0px 30px ;
                                       width : 90% ;
                                    }
-                                       h3{  font-size : 20px ;
-                                            padding-top : 45px ;
-                                         }
-                                       .text-area{  margin : 10px 0px 10px 0px ; }
+                                       h3{   font-size : 20px ;
+                                             padding-top : 20px ;
+                                          }
+                                       .text-area{  margin : 10px 0px 0px 0px ; }
                                              .text-box{  width : 450px ;
                                                          height : 30px ;
                                                          font-size : 15px;
                                                       }
-                                       .bot{  display : flex ;
-                                              margin-bottom: 10px;       
-                                           }
-                                            .btn{  color : white ;
+                                       .error{  color:crimson;  }
+                                       .bot{ margin-top: 10px ; 
+                                             display : flex ;
+                                             margin-bottom: 10px;       
+                                          }
+                                          .btn{  color : white ;
                                                    width : 100px ;
                                                    margin-right: 20px;
                                                    background-color : blue ;
@@ -76,12 +78,13 @@
 <body>
  <header>
  <div class="form_head">
-<form th:method="post" action="/" >
+<form th:method="post" action="/" th:object="${dateConvert}">
     <div class = "header">
         <h3>計算の基準となる日付を入力してください。</h3>
         <div class ="text-area" >
-           <input class ="text-box" type = "text" name="textData">
+           <input class ="text-box" value="name" type = "text" th:field="${dateConvert.valueYMD}">
         </div>
+        <p th:errors="${dateConvert.valueYMD}" class="error" >日付を入力してください--</p>
         <div class = "bot">
            <button class ="btn" >計画実行</button>
            <a class ="btn" th:href="@{/create}"> 新規登録</a>

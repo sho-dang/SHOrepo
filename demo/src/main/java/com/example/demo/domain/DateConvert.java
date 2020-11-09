@@ -3,6 +3,8 @@ package com.example.demo.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+
 public class DateConvert {
 
        //入力された年月日をStringとして読み込みたい　⇒　valueYMD
@@ -18,10 +20,13 @@ public class DateConvert {
           インスタンス化して引数を渡されたとき、フィールドの値が代入される
           ListをListに格納？
        */
+      @NotEmpty(message = "日付を入力してください")
        private String valueYMD;
        private List<DateFormula> dateFormula;
 
 
+       public DateConvert (){
+       }
 
        public DateConvert(String valueYMD,List<DateList> dateList){
              this.valueYMD = valueYMD;
