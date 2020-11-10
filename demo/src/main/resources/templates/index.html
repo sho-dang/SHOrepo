@@ -11,10 +11,9 @@
               *{  margin : 0px ;
                   padding : 0px ;
                }
-                header{  background-color : #C2EEFF ;
-                              height : 185px ;
-                          }
-                      .form_head{  clear:both;  }
+                        .form_head{ background-color : #C2EEFF ;
+                                    height: 185px;
+                                 }
                             .header{  margin : 0px 30px ;
                                       width : 90% ;
                                    }
@@ -26,10 +25,11 @@
                                                          height : 30px ;
                                                          font-size : 15px;
                                                       }
-                                       .error{  color:crimson;  }
-                                       .bot{ margin-top: 10px ; 
-                                             display : flex ;
-                                             margin-bottom: 10px;       
+                                       .error{  color:crimson; 
+                                                font-size: 12px;
+                                             }
+                                       .bot{ margin-top: 7px ; 
+                                             display : flex ;      
                                           }
                                           .btn{  color : white ;
                                                    width : 100px ;
@@ -84,7 +84,7 @@
         <div class ="text-area" >
            <input class ="text-box" value="name" type = "text" th:field="${dateConvert.valueYMD}">
         </div>
-        <p th:errors="${dateConvert.valueYMD}" class="error" >日付を入力してください--</p>
+        <p th:errors="${dateConvert.valueYMD}" class="error" >--日付を入力してください--</p>
         <div class = "bot">
            <button class ="btn" >計画実行</button>
            <a class ="btn" th:href="@{/create}"> 新規登録</a>

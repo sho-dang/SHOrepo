@@ -3,7 +3,8 @@ package com.example.demo.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class DateConvert {
 
@@ -20,7 +21,8 @@ public class DateConvert {
           インスタンス化して引数を渡されたとき、フィールドの値が代入される
           ListをListに格納？
        */
-      @NotEmpty(message = "日付を入力してください")
+      @NotBlank(message = "日付を入力してください")
+      @Pattern(regexp = "\\d{8}",message = "日付を正しく入力してください　例：20201201")
        private String valueYMD;
        private List<DateFormula> dateFormula;
 
