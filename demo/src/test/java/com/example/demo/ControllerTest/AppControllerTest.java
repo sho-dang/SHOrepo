@@ -5,6 +5,8 @@ import com.example.demo.Controller.AppController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,6 +19,19 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @SpringBootTest
 public class AppControllerTest {
 
+    
+    
+    @InjectMocks
+    private AppController controller;
+
+
+
+
+
+
+
+    
+    /*
     private MockMvc mockMvc;
 
     @Autowired
@@ -36,9 +51,7 @@ public class AppControllerTest {
      @Test
      public void 属性が合っているかのテスト()throws Exception{
           //????
-          
-         mockMvc.perform(post("/").param("valueYMD","20200202"))
-         .andExpect(status().isOk());
+       
      }
-     
+     */
 }

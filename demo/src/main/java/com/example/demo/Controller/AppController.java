@@ -25,9 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AppController{
     @Autowired 
     DateService service;
-    DateList dateList;
-    DateConvert dateConvert;
-    DateFormula dateFormula;
+    
     
     //th:field使用時にエラーが発生するので、GETしたときに使う仮の入れ物的なもの
     @ModelAttribute
@@ -42,16 +40,16 @@ public class AppController{
     }
     @PostMapping
     public String Calculated(@Validated DateConvert dateConvert,BindingResult bindingResult,Model model){
-       if(bindingResult.hasErrors()){
-           return "index";
-       }
+        if(bindingResult.hasErrors()){
+            return "index";
+        }
 
-       List<DateList> list = service.dateLists();
-       DateConvert df = new DateConvert(dateConvert.getValueYMD(),list);
-       List<DateFormula> listDF = df.getDateFormula();
-       listDF.stream().forEach(e -> e.setYmdCalclation());
-       listDF.stream().forEach(e -> e.setDateResult(service.calced(df.getValueYMD(),e.getDateList())));
-       model.addAttribute("list", listDF);
+        List<DateList> list = service.dateLists();
+        DateConvert df = new DateConvert(dateConvert.getValueYMD(),list);
+        List<DateFormula> listDF = df.getDateFormula();
+        listDF.stream().forEach(e -> e.setYmdCalclation());
+        listDF.stream().forEach(e -> e.setDateResult(service.calced(df.getValueYMD(),e.getDateList())));
+        model.addAttribute("list", listDF);
         return "index";
     }
     @PostMapping("{dateId}")
