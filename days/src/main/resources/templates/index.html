@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出勤リスト</title>
+</head>
+<body>
+    <table border="1">
+        
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr th:each="list,each:${list}">
+            <td th:text="${list.nameList}"/>
+        </tr>
+    </table>
+</body>
+</html>
