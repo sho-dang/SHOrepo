@@ -19,5 +19,9 @@ public class AppService {
         List<NameList> list = am.list();
         return list;
     }
+    public List<NameList> listOne(String shift){
+        List<NameList> listOne = am.listOne(shift);
+        return listOne;
+    }
 
 }

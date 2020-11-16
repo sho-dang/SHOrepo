@@ -10,10 +10,22 @@
         
         <tr>
             <th>Name</th>
+            <th>シフト</th>
         </tr>
         <tr th:each="list,each:${list}">
             <td th:text="${list.nameList}"/>
+            <td th:text="${list.shiftName}"/>
         </tr>
     </table>
+    <table border="1">
+        <tr>
+            <th>シフト1</th>
+        </tr>
+        <tr th:each="list1,each:${list1}">
+            <td th:text="${list1.nameList}"/>
+        </tr>
+
+    </table>
+
 </body>
 </html>

@@ -20,7 +20,15 @@ public class DaysController {
     @GetMapping
     public String indexView(Model model){
         List<NameList> list = service.nameList();
+        List<NameList> listOne = service.listOne("シフト1");
+        List<NameList> listTwo = service.listOne("シフト2");
+        List<NameList> listThree = service.listOne("シフト3");
+        List<NameList> listFour = service.listOne("シフト4"); 
         model.addAttribute("list",list);
+        model.addAttribute("list1", listOne);
+        //model.addAttribute("list2", listTwo);
+       // model.addAttribute("list3", listThree);
+       // model.addAttribute("list4", listFour);
         return "index";
     }
 
