@@ -20,7 +20,7 @@ public class AppService {
         return list;
     }
     public List<NameList> listOne(String shift){
-        List<NameList> listOne = am.listOne(shift);
+         List<NameList> listOne = am.listOne(shift);
         return listOne;
     }
 

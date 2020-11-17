@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>出勤リスト</title>
+    <title>勤怠</title>
 </head>
 <body>
     <table border="1">
@@ -13,18 +13,9 @@
             <th>シフト</th>
         </tr>
         <tr th:each="list,each:${list}">
-            <!--td th:text="${list.nameList}"/-->
+            <td th:text="${list.nameList}"/>
             <td th:text="${list.shiftName}"/>
         </tr>
-    </table>
-    <table border="1">
-        <tr>
-            <th>シフト1</th>
-        </tr>
-        <tr th:each="list,each:${list}">
-            <td th:text="${list.nameList}"/>
-        </tr>
-
     </table>
 
 </body>

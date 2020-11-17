@@ -13,5 +13,7 @@ public interface AppMapper {
     List<NameList> list();
     
     @Select("SELECT * FROM shift where shiftName = #{shift} ORDER BY id ASC")
-    List<NameList> listOne(String shift);
+     List<NameList> listOne(String shift);
+
+    
 }
