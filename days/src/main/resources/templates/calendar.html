@@ -9,12 +9,15 @@
     <table border="1">
         
         <tr>
-            <th>Name</th>
-            <th>シフト</th>
+            <th>Day</th>
+            <th>シフト1</th>
+            <th>シフト2</th>
+            <th>シフト3</th>
+            <th>シフト4</th>
         </tr>
-        <tr th:each="list,each:${list}">
-            <td th:text="${list.nameList}"/>
-            <td th:text="${list.shiftName}"/>
+        <tr th:each="days,each:${days}">
+            <td th:text="${days.date}"/>
+            
         </tr>
     </table>
 

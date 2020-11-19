@@ -2,6 +2,8 @@ package com.example.days.Mapper;
 
 import java.util.List;
 
+import com.example.days.domain.DayList;
+import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -13,7 +15,12 @@ public interface AppMapper {
     List<NameList> list();
     
     @Select("SELECT * FROM shift where shiftName = #{shift} ORDER BY id ASC")
-     List<NameList> listOne(String shift);
+    List<NameList> listOne(String shift);
 
-    
+    @Select("SELECT date FROM schedule ORDER BY date ASC")
+    List<DayList> days();
+
+    @Select("SELECT workId FROM schedule where date = #{date} ORDER BY date ASC")
+    List<DaySplit> workCode(int date);
+
 }

@@ -3,6 +3,8 @@ package com.example.days.Service;
 import java.util.List;
 
 import com.example.days.Mapper.AppMapper;
+import com.example.days.domain.DayList;
+import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 import com.example.days.domain.ShiftList;
 
@@ -25,6 +27,15 @@ public class AppService {
     public List<NameList> listOne(String shift){
         List<NameList> listOne = am.listOne(shift);
         return listOne;
+    }
+    
+    public List<DayList> days(){
+        List<DayList> days = am.days();
+        return days;
+    }
+    public List<DaySplit> workCode(int date){
+        List<DaySplit> workCode = am.workCode(date);
+        return workCode;
     }
 
 }
