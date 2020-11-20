@@ -50,7 +50,6 @@ public class DaysController {
         List<DayList> days = service.days();
         for(int i = 1 ; i <= days.size() ; i++){
         List<DaySplit> workCode = service.workCode(i);
-        
         }
         model.addAttribute("days", days);
         return "calendar";

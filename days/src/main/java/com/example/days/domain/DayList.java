@@ -8,6 +8,7 @@ public class DayList {
     private String shiftThree;
     private String shiftFour;
 
+
     public int getDate(){
         return this.date;
     }
