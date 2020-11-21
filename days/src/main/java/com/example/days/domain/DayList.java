@@ -7,7 +7,18 @@ public class DayList {
     private String shiftTwo;
     private String shiftThree;
     private String shiftFour;
-
+    
+    public DayList(
+                String shiftOne,
+                String shiftTwo,
+                String shiftThree,
+                String shiftFour
+                ){
+        this.shiftOne = shiftOne;
+        this.shiftTwo = shiftTwo;
+        this.shiftThree = shiftThree;
+        this.shiftFour = shiftFour;
+                }
 
     public int getDate(){
         return this.date;

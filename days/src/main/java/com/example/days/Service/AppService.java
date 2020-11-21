@@ -37,6 +37,11 @@ public class AppService {
         List<DaySplit> workCode = am.workCode(date);
         return workCode;
     }
-    public List<DaySprit>
+    public List<DayList> WorkDay(List<DayList> dayList,List<DaySplit> daySplit){
+        List<DayList> day = dayList;
+        List<DaySplit> workId = daySplit;
+
+        
+    }
 
 }

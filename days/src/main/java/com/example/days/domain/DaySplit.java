@@ -11,19 +11,18 @@ public class DaySplit {
     public String getWorkId(){
         return this.workId;
     }
+    public DayList getDayList(){
+        return this.dayList;
+    }
+
     //セッター
-    public void setDate(String workId){
+    public void setWorkId(String workId){
         this.workId = workId;
     }
 
-    public List<DayList> splitCode(DayList dayList){
-        String[] splitCode = workId.split("");
+    public void splitCode(){
+        String[] splitCode = this.workId.split("");
         //{1,2,3,0}
-        dayList.setShiftOne(splitCode[0]);
-        dayList.setShiftTwo(splitCode[1]);
-        dayList.setShiftThree(splitCode[2]);
-        dayList.setShiftFour(splitCode[3]);
-        
-        return 
+         
     }
 }
