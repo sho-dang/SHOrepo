@@ -1,15 +1,23 @@
 package com.example.days.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DayMarge {
     
-    private DayList dayList;
+    private List<DayList> dayList;
     
-    public DayMarge(DaySplit daySplit){
-        this.dayList = daySplit.getDayList();
+    public DayMarge(DayList dayList,DaySplit daySplit){
+        this.dayList = new ArrayList<>();
+        this.dayList.stream().forEach(i -> this.dayList.add(marge(dayList, daySplit)));
+    }
+    public List<DayList> getDayList(){
+        return this.dayList;
     }
 
-    public void DayMarge(){
-        
+    public DayList marge(DayList dayList,DaySplit daySplit){
+        DaySplit dayIns = new DaySplit(dayList, daySplit);
+        return dayIns.getDayList();
         
 
     }

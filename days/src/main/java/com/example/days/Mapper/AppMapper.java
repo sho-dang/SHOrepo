@@ -18,9 +18,9 @@ public interface AppMapper {
     List<NameList> listOne(String shift);
 
     @Select("SELECT date FROM schedule ORDER BY date ASC")
-    List<DayList> days();
+    DayList days();
 
-    @Select("SELECT workId FROM schedule where date = #{date} ORDER BY date ASC")
-    List<DaySplit> workCode(int date);
+    @Select("SELECT workId FROM schedule ORDER BY date ASC")
+    DaySplit workCode();
 
 }

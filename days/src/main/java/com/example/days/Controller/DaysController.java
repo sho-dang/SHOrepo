@@ -46,12 +46,17 @@ public class DaysController {
     }
     @GetMapping("/list")
     public String createTable(Model model){
+        
 
-        List<DayList> days = service.days();
+        List<DayList> days = service.WorkDay(service.days(),service.workCode());
+        model.addAttribute("days", days);
+/*
+        
         for(int i = 1 ; i <= days.size() ; i++){
         List<DaySplit> workCode = service.workCode(i);
         }
-        model.addAttribute("days", days);
+       
+*/
         return "calendar";
     }
 

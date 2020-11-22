@@ -1,11 +1,19 @@
 package com.example.days.domain;
 
-import java.util.List;
-
 public class DaySplit {
     
     private DayList dayList;
     private String workId;
+    
+    //コンストラクタ
+    public DaySplit(DayList dayList,DaySplit daySplit){
+        this.dayList = dayList;
+        String[] splitCode = this.workId.split("");
+        this.dayList.setShiftOne(splitCode[0]);
+        this.dayList.setShiftOne(splitCode[1]);
+        this.dayList.setShiftOne(splitCode[2]);
+        this.dayList.setShiftOne(splitCode[3]);
+    }
 
     //ゲッター
     public String getWorkId(){
@@ -20,9 +28,6 @@ public class DaySplit {
         this.workId = workId;
     }
 
-    public void splitCode(){
-        String[] splitCode = this.workId.split("");
-        //{1,2,3,0}
-         
-    }
+   
+    
 }

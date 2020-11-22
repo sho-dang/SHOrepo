@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.days.Mapper.AppMapper;
 import com.example.days.domain.DayList;
+import com.example.days.domain.DayMarge;
 import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 import com.example.days.domain.ShiftList;
@@ -29,19 +30,17 @@ public class AppService {
         return listOne;
     }
     
-    public List<DayList> days(){
-        List<DayList> days = am.days();
+    public DayList days(){
+        DayList days = am.days();
         return days;
     }
-    public List<DaySplit> workCode(int date){
-        List<DaySplit> workCode = am.workCode(date);
+    public DaySplit workCode(){
+        DaySplit workCode = am.workCode();
         return workCode;
     }
-    public List<DayList> WorkDay(List<DayList> dayList,List<DaySplit> daySplit){
-        List<DayList> day = dayList;
-        List<DaySplit> workId = daySplit;
-
-        
+    public List<DayList> WorkDay(DayList dayList,DaySplit daySplit){
+        DayMarge marge = new DayMarge(dayList, daySplit);
+        return marge.getDayList();
     }
 
 }
