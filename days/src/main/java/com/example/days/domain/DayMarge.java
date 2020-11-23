@@ -7,9 +7,24 @@ public class DayMarge {
     
     private List<DayList> dayList;
     
-    public DayMarge(DayList dayList,DaySplit daySplit){
-        this.dayList = new ArrayList<>();
-        this.dayList.stream().forEach(i -> this.dayList.add(marge(dayList, daySplit)));
+    public DayMarge(List<DayList> dayLists){
+        this.dayList = dayLists;
+        
+        this.dayList.stream().forEach(e -> sp(e).getDayList());
+    }
+    public DaySplit sp(DayList dayList){
+        return new DaySplit(dayList);
+    }
+    public List<DayList> getDayList(){
+        return this.dayList;
+    }
+
+
+    /*
+    public DayMarge(List<DayList> dayList,DaySplit daySplit){
+        this.dayList = dayList.stream().forEach(d -> ;
+        //this.dayList = new ArrayList<>();
+        //this.dayList.stream().forEach(i -> this.dayList.add(marge(daySplit.getDayList(), daySplit)));
     }
     public List<DayList> getDayList(){
         return this.dayList;
@@ -21,6 +36,6 @@ public class DayMarge {
         
 
     }
-
+*/
 
 }

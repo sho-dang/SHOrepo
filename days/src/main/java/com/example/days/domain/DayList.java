@@ -3,25 +3,19 @@ package com.example.days.domain;
 public class DayList {
     
     private int date;
+    private String workId;
     private String shiftOne;
     private String shiftTwo;
     private String shiftThree;
     private String shiftFour;
     
-    public DayList(
-                String shiftOne,
-                String shiftTwo,
-                String shiftThree,
-                String shiftFour
-                ){
-        this.shiftOne = shiftOne;
-        this.shiftTwo = shiftTwo;
-        this.shiftThree = shiftThree;
-        this.shiftFour = shiftFour;
-                }
+    
 
     public int getDate(){
         return this.date;
+    }
+    public String getWorkId(){
+        return this.workId;
     }
     public String getShiftOne(){
         return this.shiftOne;
@@ -38,6 +32,9 @@ public class DayList {
 
     public void setDate(int date){
         this.date = date;
+    }
+    public void setWorkId(String workId){
+        this.workId = workId;
     }
     public void setShiftOne(String shiftOne){
         this.shiftOne = shiftOne;

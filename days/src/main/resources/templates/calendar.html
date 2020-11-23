@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠</title>
+    <style>
+        p.bg-green{
+            background-color: rgb(161, 235, 161);
+        }
+        p.bg-red{
+            background-color: rgb(255, 123, 123);
+        }
+        p.bg-blue{
+            background-color: rgb(136, 191, 253);
+        }
+        p.bg-gray{
+            background-color: rgb(151, 151, 151);
+        }
+    </style>
 </head>
 <body>
     <table border="1">
@@ -15,9 +29,38 @@
             <th>シフト3</th>
             <th>シフト4</th>
         </tr>
-        <tr th:each="days,each:${days}">
-            <td th:text="${days.date}"/>
-            
+        <tr  th:each="days,each:${days}" >
+            <td th:text="${days.date}" />
+            <td th:switch="${days.shiftOne}">
+                
+                <p class="bg-gray" th:case="0">休み</p>
+                <p class="bg-green" th:case="1">1直</p>
+                <p class="bg-red" th:case="2">2直</p>
+                <p class="bg-blue" th:case="3">3直</p>
+                <p th:case="*">エラー</p>
+            </td>
+            <!-- th:classappend="${days.shiftOne =='1'} ? 'bg-green'|${days.shiftOne == '0'}? 'bg-gray'"  -->
+            <td th:switch="${days.shiftTwo}">
+                <p class="bg-gray" th:case="0">休み</p>
+                <p class="bg-green" th:case="1">1直</p>
+                <p class="bg-red" th:case="2">2直</p>
+                <p class="bg-blue" th:case="3">3直</p>
+                <p th:case="*">エラー</p>
+            </td>
+            <td th:switch="${days.shiftThree}">
+                <p class="bg-gray" th:case="0">休み</p>
+                <p class="bg-green" th:case="1">1直</p>
+                <p class="bg-red" th:case="2">2直</p>
+                <p class="bg-blue" th:case="3">3直</p>
+                <p th:case="*">エラー</p>
+            </td>
+            <td th:switch="${days.shiftFour}">
+                <p class="bg-gray" th:case="0">休み</p>
+                <p class="bg-green" th:case="1">1直</p>
+                <p class="bg-red" th:case="2">2直</p>
+                <p class="bg-blue" th:case="3">3直</p>
+                <p th:case="*">エラー</p>
+            </td>
         </tr>
     </table>
 

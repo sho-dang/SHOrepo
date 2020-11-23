@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.days.Service.AppService;
 import com.example.days.domain.DayList;
+import com.example.days.domain.DayMarge;
 import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 import com.example.days.domain.ShiftList;
@@ -30,7 +31,7 @@ public class DaysController {
         
         //shiftList.setListOne(service.listOne("シフト1"));
         
-        List<NameList> list = service.nameList();
+        //List<NameList> list = service.nameList();
         List<NameList> listOne = service.listOne("シフト1");
         List<NameList> listTwo = service.listOne("シフト2");
         List<NameList> listThree = service.listOne("シフト3");
@@ -38,7 +39,7 @@ public class DaysController {
         
        
         
-        model.addAttribute("list", list);
+       // model.addAttribute("list", list);
         //model.addAttribute("list2", listTwo);
         //model.addAttribute("list3", listThree);
         //model.addAttribute("list4", listFour);
@@ -47,9 +48,10 @@ public class DaysController {
     @GetMapping("/list")
     public String createTable(Model model){
         
-
-        List<DayList> days = service.WorkDay(service.days(),service.workCode());
-        model.addAttribute("days", days);
+        
+        List<DayList> days = service.days();
+        DayMarge init = new DayMarge(days);
+        model.addAttribute("days", init.getDayList());
 /*
         
         for(int i = 1 ; i <= days.size() ; i++){

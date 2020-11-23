@@ -3,31 +3,21 @@ package com.example.days.domain;
 public class DaySplit {
     
     private DayList dayList;
-    private String workId;
     
     //コンストラクタ
-    public DaySplit(DayList dayList,DaySplit daySplit){
+    public DaySplit(DayList dayList){
         this.dayList = dayList;
-        String[] splitCode = this.workId.split("");
-        this.dayList.setShiftOne(splitCode[0]);
-        this.dayList.setShiftOne(splitCode[1]);
-        this.dayList.setShiftOne(splitCode[2]);
-        this.dayList.setShiftOne(splitCode[3]);
-    }
-
-    //ゲッター
-    public String getWorkId(){
-        return this.workId;
+        splitWorkId(this.dayList.getWorkId());
+    };
+    
+    public void splitWorkId(String workId){
+        String[] split = workId.split("");
+        this.dayList.setShiftOne(split[0]);
+        this.dayList.setShiftTwo(split[1]);
+        this.dayList.setShiftThree(split[2]);
+        this.dayList.setShiftFour(split[3]);
     }
     public DayList getDayList(){
         return this.dayList;
     }
-
-    //セッター
-    public void setWorkId(String workId){
-        this.workId = workId;
-    }
-
-   
-    
 }

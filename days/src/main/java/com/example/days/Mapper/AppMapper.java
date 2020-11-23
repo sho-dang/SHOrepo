@@ -17,10 +17,11 @@ public interface AppMapper {
     @Select("SELECT * FROM shift where shiftName = #{shift} ORDER BY id ASC")
     List<NameList> listOne(String shift);
 
-    @Select("SELECT date FROM schedule ORDER BY date ASC")
-    DayList days();
+    @Select("SELECT * FROM schedule ORDER BY date ASC")
+    List<DayList> days();
 
+    /*
     @Select("SELECT workId FROM schedule ORDER BY date ASC")
     DaySplit workCode();
-
+    */
 }
