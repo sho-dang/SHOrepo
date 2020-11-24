@@ -5,60 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠</title>
     <style>
-        p.bg-green{
+        header{
+            background-color:beige;
+            position: fixed;
+            top: 0;
+            margin-right:100px;
+        }
+        .adjust{
+          
+        }
+        body{
+            padding-top: 110px;
+            margin: 0px 100px;
+        }
+        .date-cell{
+            width: 50px;
+            text-align: center;
+        }
+        
+        table{
+            
+            border-spacing: 3px;
+            border: 2px solid #ddd;
+            table-layout: fixed;
+            width: 100%;
+        }
+        td{ 
+            border-collapse: collapse;
+            border: 2px solid #ddd;
+        }
+        tr{
+            border-collapse: collapse;
+        }
+        .bg-green{
+            margin: 0px;
             background-color: rgb(161, 235, 161);
         }
-        p.bg-red{
+        .bg-red{
+            margin: 0px;
             background-color: rgb(255, 123, 123);
         }
-        p.bg-blue{
+        .bg-blue{
+            margin: 0px;
             background-color: rgb(136, 191, 253);
         }
-        p.bg-gray{
+        .bg-gray{
+            margin: 0px;
             background-color: rgb(151, 151, 151);
+        }
+        .padding{
+            padding: 50px 0px;
+        }
+        input{
+            width: 97%;
         }
     </style>
 </head>
-<body>
-    <table border="1">
-        
+<header>
+    <h2>11月勤怠</h2>
+    <table>
         <tr>
-            <th>Day</th>
+            <th class="date-cell">Day</th>
             <th>シフト1</th>
             <th>シフト2</th>
             <th>シフト3</th>
             <th>シフト4</th>
         </tr>
-        <tr  th:each="days,each:${days}" >
-            <td th:text="${days.date}" />
+    </table>
+</header>
+<body>
+    <table>
+        <tr class="date-cell" th:each="days,each:${days}" >
+            <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">
                 
-                <p class="bg-gray" th:case="0">休み</p>
-                <p class="bg-green" th:case="1">1直</p>
-                <p class="bg-red" th:case="2">2直</p>
-                <p class="bg-blue" th:case="3">3直</p>
+                <div  th:case="0">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div th:case="1">
+                    <p class="bg-green">休み</p>
+                    <input type="text" class="bg-green">
+                </div>
+                <div  th:case="2">
+                    <p class="bg-red">2直</p>
+                    <input type="text" class="bg-red">
+                </div>
+                <div th:case="3">
+                    <p class="bg-blue">3直</p>
+                    <input type="text" class="bg-blue">
+                </div>
                 <p th:case="*">エラー</p>
             </td>
             <!-- th:classappend="${days.shiftOne =='1'} ? 'bg-green'|${days.shiftOne == '0'}? 'bg-gray'"  -->
             <td th:switch="${days.shiftTwo}">
-                <p class="bg-gray" th:case="0">休み</p>
-                <p class="bg-green" th:case="1">1直</p>
-                <p class="bg-red" th:case="2">2直</p>
-                <p class="bg-blue" th:case="3">3直</p>
+                <div  th:case="0">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div th:case="1">
+                    <p class="bg-green">休み</p>
+                    <input type="text" class="bg-green">
+                </div>
+                <div  th:case="2">
+                    <p class="bg-red">2直</p>
+                    <input type="text" class="bg-red">
+                </div>
+                <div th:case="3">
+                    <p class="bg-blue">3直</p>
+                    <input type="text" class="bg-blue">
+                </div>
                 <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftThree}">
-                <p class="bg-gray" th:case="0">休み</p>
-                <p class="bg-green" th:case="1">1直</p>
-                <p class="bg-red" th:case="2">2直</p>
-                <p class="bg-blue" th:case="3">3直</p>
+                <div  th:case="0">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div th:case="1">
+                    <p class="bg-green">休み</p>
+                    <input type="text" class="bg-green">
+                </div>
+                <div  th:case="2">
+                    <p class="bg-red">2直</p>
+                    <input type="text" class="bg-red">
+                </div>
+                <div th:case="3">
+                    <p class="bg-blue">3直</p>
+                    <input type="text" class="bg-blue">
+                </div>
                 <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftFour}">
-                <p class="bg-gray" th:case="0">休み</p>
-                <p class="bg-green" th:case="1">1直</p>
-                <p class="bg-red" th:case="2">2直</p>
-                <p class="bg-blue" th:case="3">3直</p>
+                <div  th:case="0">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div th:case="1">
+                    <p class="bg-green">休み</p>
+                    <input type="text" class="bg-green">
+                </div>
+                <div  th:case="2">
+                    <p class="bg-red">2直</p>
+                    <input type="text" class="bg-red">
+                </div>
+                <div th:case="3">
+                    <p class="bg-blue">3直</p>
+                    <input type="text" class="bg-blue">
+                </div>
                 <p th:case="*">エラー</p>
             </td>
         </tr>

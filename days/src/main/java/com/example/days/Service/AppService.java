@@ -34,14 +34,5 @@ public class AppService {
         List<DayList> days = am.days();
         return days;
     }
-    /*
-    public  workCode(){
-        List<String> workCode = am.workCode();
-        return workCode;
-    }
-    public List<DayList> WorkDay(List<DayList> dayList,DaySplit daySplit){
-        DayMarge marge = new DayMarge(dayList, daySplit);
-        return marge.getDayList();
-    }
-    */
+    
 }
