@@ -9,10 +9,9 @@ public class DayMarge {
     
     public DayMarge(List<DayList> dayLists){
         this.dayList = dayLists;
-        
-        this.dayList.stream().forEach(e -> sp(e).getDayList());
+        this.dayList.stream().forEach(e -> newDaySplit(e).getDayList());
     }
-    public DaySplit sp(DayList dayList){
+    public DaySplit newDaySplit(DayList dayList){
         return new DaySplit(dayList);
     }
     public List<DayList> getDayList(){

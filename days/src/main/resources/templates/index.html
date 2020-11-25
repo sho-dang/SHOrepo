@@ -6,6 +6,9 @@
     <title>出勤リスト</title>
 </head>
 <body>
+    <form method="GET" action="#" th:action="@{/}">
+        <button type="submit" >戻る</button>
+    </form>
     <table border="1">
         
         <tr>
@@ -17,15 +20,5 @@
             <td th:text="${list.shiftName}"/>
         </tr>
     </table>
-    <table border="1">
-        <tr>
-            <th>シフト1</th>
-        </tr>
-        <tr th:each="list,each:${list}">
-            <td th:field="${list.nameList}"/>
-        </tr>
-
-    </table>
-
 </body>
 </html>

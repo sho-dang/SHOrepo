@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠管理アプリ</title>
+    <style>
+        body{
+            background-color: bisque;
+            width : 50% ;
+            height : 50px ;
+            margin : 0px 50px ;
+        }
+        h2{
+            margin : 50px ;
+        }
+    </style>    
+</head>
+<body>
+    <h2>こちらは勤怠管理アプリです</h2>
+    <form method="post" action="#" th:action="@{/shift}">
+        <button type="submit" >シフト表</button>
+    </form>
+    <form method="post" action="#" th:action="@{/list}">
+        <button type="submit" >勤怠カレンダー</button>
+    </form>
+</body>
+</html>

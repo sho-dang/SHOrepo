@@ -1,13 +1,14 @@
 package com.example.days.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.days.Mapper.AppMapper;
 import com.example.days.domain.DayList;
 import com.example.days.domain.DayMarge;
-import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 import com.example.days.domain.ShiftList;
+import com.example.days.domain.ShiftMarge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ public class AppService {
 
     
 
-    public List<NameList> nameList(){
-        List<NameList> list = am.list();
+    public List<NameList> nameListAll(){
+        List<NameList> list = am.listAll();
         return list;
     }
-    public List<NameList> listOne(String shift){
-        List<NameList> listOne = am.listOne(shift);
+    public NameList listOne(String shift){
+        NameList listOne = am.listOne(shift);
         return listOne;
     }
     
@@ -34,5 +35,9 @@ public class AppService {
         List<DayList> days = am.days();
         return days;
     }
-    
+    public List<NameList> shiftList(List<NameList> list){
+        ShiftList nameList = new ShiftList(list);
+        List<NameList> shiftList = nameList.getNameList();
+        return shiftList;
+    }
 }

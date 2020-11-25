@@ -1,41 +1,62 @@
 package com.example.days.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShiftList {
-
-    private List<NameList> listOne ;
-    private List<NameList> listTwo ;
-    private List<NameList> listThree ;
-    private List<NameList> listFour ;
-
     
-    public List<NameList> getListOne(){
+    private List<NameList> nameList;
+    private List<String> listOne = new ArrayList<>();
+    private List<String> listTwo = new ArrayList<>();
+    private List<String> listThree = new ArrayList<>();
+    private List<String> listFour = new ArrayList<>();
+
+    public ShiftList(List<NameList> nameList){
+        this.nameList = nameList;
+        this.nameList.stream().forEach(s -> addList(s));
+        }
+    
+    public List<NameList> getNameList(){
+        return this.nameList;
+    }
+    public List<String> getListOne(){
         return this.listOne;
     }
-    public List<NameList> getListTwo(){
+    public List<String> getListTwo(){
         return this.listTwo;
     }
-    public List<NameList> getListThree(){
+    public List<String> getListThree(){
         return this.listThree;
     }
-    public List<NameList> getListFour(){
+    public List<String> getListFour(){
         return this.listFour;
     }
-
-    public void setListOne(List<NameList> listOne){
-        this.listOne = listOne;
+    public void setListOne(String listOne){
+        this.listOne.add(listOne);
     }
-    public void setListTwo(List<NameList> listTwo){
-        this.listTwo = listTwo;
+    public void setListTwo(String listTwo){
+        this.listTwo.add(listTwo);
     }
-    public void setListThree(List<NameList> listThree){
-        this.listThree = listThree;
+    public void setListThree(String listThree){
+        this.listThree.add(listThree);
     }
-    public void setListFour(List<NameList> listFour){
-        this.listFour = listFour ;
+    public void setListFour(String listFour){
+        this.listFour.add(listFour);
     }
-
-
-
+    public void addList(NameList nameList){
+        switch(nameList.getShiftName()){
+            case "シフト1":
+                this.listOne.add(nameList.getNameList());
+            break;
+            case "シフト2":
+                this.listTwo.add(nameList.getNameList());
+            break;
+            case "シフト3":
+                this.listThree.add(nameList.getNameList());
+            break;
+            case "シフト4":
+                this.listFour.add(nameList.getNameList());
+            break;
+    }
+}
 }

@@ -26,39 +26,26 @@ public class DaysController {
     AppService service;
     
     @GetMapping
-    public String indexView(@ModelAttribute ShiftList shiftList,Model model){
-
-        
-        //shiftList.setListOne(service.listOne("シフト1"));
+    public String startView(){
+        return "start";
+    }
+    @PostMapping("/shift")
+    public String shiftList(Model model){
+        List<NameList> nameList = service.nameListAll();
+        List<NameList> shiftList = service.shiftList(nameList);
         
         //List<NameList> list = service.nameList();
-        List<NameList> listOne = service.listOne("シフト1");
-        List<NameList> listTwo = service.listOne("シフト2");
-        List<NameList> listThree = service.listOne("シフト3");
-        List<NameList> listFour = service.listOne("シフト4"); 
-        
-       
-        
-       // model.addAttribute("list", list);
-        //model.addAttribute("list2", listTwo);
-        //model.addAttribute("list3", listThree);
-        //model.addAttribute("list4", listFour);
+        model.addAttribute("list", shiftList);
         return "index";
     }
-    @GetMapping("/list")
+    @PostMapping("/list")
     public String createTable(Model model){
         
         
         List<DayList> days = service.days();
         DayMarge init = new DayMarge(days);
         model.addAttribute("days", init.getDayList());
-/*
-        
-        for(int i = 1 ; i <= days.size() ; i++){
-        List<DaySplit> workCode = service.workCode(i);
-        }
-       
-*/
+
         return "calendar";
     }
 

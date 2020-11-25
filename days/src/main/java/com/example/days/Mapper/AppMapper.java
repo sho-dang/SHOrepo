@@ -8,20 +8,20 @@ import com.example.days.domain.NameList;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface AppMapper {
     @Select("SELECT * FROM shift ORDER BY id ASC")
-    List<NameList> list();
+    List<NameList> listAll();
     
-    @Select("SELECT * FROM shift where shiftName = #{shift} ORDER BY id ASC")
-    List<NameList> listOne(String shift);
+    @Select("SELECT * FROM shift WHERE shiftName = #{shift} ORDER BY id ASC")
+    NameList listOne(String shift);
 
     @Select("SELECT * FROM schedule ORDER BY date ASC")
     List<DayList> days();
-
-    /*
-    @Select("SELECT workId FROM schedule ORDER BY date ASC")
-    DaySplit workCode();
-    */
+    
+    @Update("UPDATE schedule SET workId=#{workId} WHERE date = #{date}")
+    void updateWorkId();
+    
 }

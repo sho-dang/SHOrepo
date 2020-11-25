@@ -11,11 +11,8 @@
             top: 0;
             margin-right:100px;
         }
-        .adjust{
-          
-        }
         body{
-            padding-top: 110px;
+            padding-top: 135px;
             margin: 0px 100px;
         }
         .date-cell{
@@ -63,6 +60,9 @@
 </head>
 <header>
     <h2>11月勤怠</h2>
+    <form method="GET" action="#" th:action="@{/}">
+        <button type="submit" >戻る</button>
+    </form>
     <table>
         <tr>
             <th class="date-cell">Day</th>
