@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出</title>
+</head>
+<body>
+    <form method="GET" action="#" th:action="@{/}">
+        <button type="submit" >戻る</button>
+    </form>
+    <form method="POST" action="#" th:object="${updateCode}">
+        <input type="text" th:field="${updateCode.shiftOneCode}">
+        <p th:text=${updateCode.shiftOneCode}></p>
+    </form>
+</body>
+</html>

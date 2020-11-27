@@ -38,15 +38,4 @@ public class DaysController {
         model.addAttribute("list", shiftList);
         return "index";
     }
-    @PostMapping("/list")
-    public String createTable(Model model){
-        
-        
-        List<DayList> days = service.days();
-        DayMarge init = new DayMarge(days);
-        model.addAttribute("days", init.getDayList());
-
-        return "calendar";
-    }
-
 }

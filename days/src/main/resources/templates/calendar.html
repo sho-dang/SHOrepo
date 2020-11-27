@@ -11,9 +11,15 @@
             top: 0;
             margin-right:100px;
         }
+        .flex{
+            display: flex ;
+        }
         body{
-            padding-top: 135px;
+            padding-top: 110px;
             margin: 0px 100px;
+        }
+        button{
+            
         }
         .date-cell{
             width: 50px;
@@ -59,10 +65,16 @@
     </style>
 </head>
 <header>
+   <div class="flex">
     <h2>11月勤怠</h2>
+    <form method="GET" action="#" th:action="@{/calcrate}">
+        <button type="submit" >自動計算</button>
+    </form>
     <form method="GET" action="#" th:action="@{/}">
         <button type="submit" >戻る</button>
     </form>
+   </div>
+    
     <table>
         <tr>
             <th class="date-cell">Day</th>
