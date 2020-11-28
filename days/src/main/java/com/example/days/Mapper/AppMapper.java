@@ -7,6 +7,7 @@ import com.example.days.domain.DaySplit;
 import com.example.days.domain.NameList;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -20,8 +21,18 @@ public interface AppMapper {
 
     @Select("SELECT * FROM schedule ORDER BY date ASC")
     List<DayList> days();
+
+    @Select("SELECT workId FROM schedule WHERE date = #{date}")
+    String matchWorkId(int date);
+
+    @Select("SELECT number FROM shiftpattern WHERE patternId = #{patternId}")
+    int number(String patternId);
+
+    @Select("SELECT shiftPattern FROM shiftpattern WHERE number = #{number}")
+    String shiftPattern(int number);
     
-    @Update("UPDATE schedule SET workId=#{workId} WHERE date = #{date}")
-    void updateWorkId();
+    //@Update("UPDATE schedule SET workId = #{workId} WHERE date = #{date}")
+    @Update("update schedule set workId=#{workId} where date = #{date}")
+    void updateWorkId(@Param("workId") String workId,@Param("date")int date);
     
 }

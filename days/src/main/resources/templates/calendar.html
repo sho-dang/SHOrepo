@@ -56,6 +56,11 @@
             margin: 0px;
             background-color: rgb(151, 151, 151);
         }
+        .bg-pink{
+            margin: 0px;
+            padding: 13px 0px;
+            background-color: lightpink;
+        }
         .padding{
             padding: 50px 0px;
         }
@@ -89,14 +94,9 @@
     <table>
         <tr class="date-cell" th:each="days,each:${days}" >
             <td class="date-cell" th:text="${days.date}">1</td>
-            <td th:switch="${days.shiftOne}">
-                
-                <div  th:case="0">
-                    <p class="bg-gray">休み</p>
-                    <input type="text" class="bg-gray">
-                </div>
+            <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
-                    <p class="bg-green">休み</p>
+                    <p class="bg-green">1直</p>
                     <input type="text" class="bg-green">
                 </div>
                 <div  th:case="2">
@@ -106,17 +106,20 @@
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
                     <input type="text" class="bg-blue">
+                </div>
+                <div  th:case="4">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div  th:case="9">
+                    <p class="bg-pink">一斉休暇</p>
                 </div>
                 <p th:case="*">エラー</p>
             </td>
             <!-- th:classappend="${days.shiftOne =='1'} ? 'bg-green'|${days.shiftOne == '0'}? 'bg-gray'"  -->
             <td th:switch="${days.shiftTwo}">
-                <div  th:case="0">
-                    <p class="bg-gray">休み</p>
-                    <input type="text" class="bg-gray">
-                </div>
                 <div th:case="1">
-                    <p class="bg-green">休み</p>
+                    <p class="bg-green">1直</p>
                     <input type="text" class="bg-green">
                 </div>
                 <div  th:case="2">
@@ -126,16 +129,19 @@
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
                     <input type="text" class="bg-blue">
+                </div>
+                <div  th:case="4">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div  th:case="9">
+                    <p class="bg-pink">一斉休暇</p>
                 </div>
                 <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftThree}">
-                <div  th:case="0">
-                    <p class="bg-gray">休み</p>
-                    <input type="text" class="bg-gray">
-                </div>
                 <div th:case="1">
-                    <p class="bg-green">休み</p>
+                    <p class="bg-green">1直</p>
                     <input type="text" class="bg-green">
                 </div>
                 <div  th:case="2">
@@ -145,16 +151,19 @@
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
                     <input type="text" class="bg-blue">
+                </div>
+                <div  th:case="4">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div  th:case="9">
+                    <p class="bg-pink">一斉休暇</p>
                 </div>
                 <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftFour}">
-                <div  th:case="0">
-                    <p class="bg-gray">休み</p>
-                    <input type="text" class="bg-gray">
-                </div>
                 <div th:case="1">
-                    <p class="bg-green">休み</p>
+                    <p class="bg-green">1直</p>
                     <input type="text" class="bg-green">
                 </div>
                 <div  th:case="2">
@@ -164,6 +173,13 @@
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
                     <input type="text" class="bg-blue">
+                </div>
+                <div  th:case="4">
+                    <p class="bg-gray">休み</p>
+                    <input type="text" class="bg-gray">
+                </div>
+                <div  th:case="9">
+                    <p class="bg-pink">一斉休暇</p>
                 </div>
                 <p th:case="*">エラー</p>
             </td>
