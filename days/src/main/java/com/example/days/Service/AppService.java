@@ -26,8 +26,8 @@ public class AppService {
         List<NameList> list = am.listAll();
         return list;
     }
-    public NameList listOne(String shift){
-        NameList listOne = am.listOne(shift);
+    public List<NameList> listOne(String shift){
+        List<NameList> listOne = am.listOne(shift);
         return listOne;
     }
     
