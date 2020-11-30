@@ -26,12 +26,10 @@ public class CalclateController {
 
     @PostMapping
     public String calcReturn(@ModelAttribute UpdateCode updateCode){
-        int num = 1;
-        String st = "34422";
-        service.updateMethod(num, st);
-
-
-        return "calclate";
+        int inputDate = updateCode.getInputDate();
+        String inputCode = updateCode.getInputCode();
+        service.updateMethod(inputDate, inputCode);
+        return "calendar";
     }
 
 }

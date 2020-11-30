@@ -33,6 +33,9 @@
             table-layout: fixed;
             width: 100%;
         }
+        .table-body{
+            margin-bottom: 30px;
+        }
         td{ 
             border-collapse: collapse;
             border: 2px solid #ddd;
@@ -72,7 +75,7 @@
 <header>
    <div class="flex">
     <h2>11月勤怠</h2>
-    <form method="GET" action="#" th:action="@{/calcrate}">
+    <form method="GET" action="#" th:action="@{/calclate}">
         <button type="submit" >自動計算</button>
     </form>
     <form method="GET" action="#" th:action="@{/}">
@@ -80,7 +83,7 @@
     </form>
    </div>
     
-    <table>
+    <table class="table-head">
         <tr>
             <th class="date-cell">Day</th>
             <th>シフト1</th>
@@ -91,13 +94,16 @@
     </table>
 </header>
 <body>
-    <table>
+    <table class="table-body">
         <tr class="date-cell" th:each="days,each:${days}" >
             <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green">
+                    <select class="bg-green" >
+                        <option></option>
+                        <option th:each="one:${one}">[[${one.nameList}]]</option>
+                    </select>
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>

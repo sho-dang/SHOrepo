@@ -1,14 +1,25 @@
 package com.example.days.domain.UpdateCode;
 
+import javax.validation.constraints.NotBlank;
+
 public class UpdateCode {
     
-    private String shiftOneCode;
-
-    public String getShiftOneCode(){
-        return this.shiftOneCode;
+    @NotBlank(message = "入力してください")
+    private int inputDate;
+    @NotBlank(message = "入力してください")
+    private String inputCode;
+    
+    public int getInputDate(){
+        return this.inputDate;
     }
-    public void setShiftOneCode(String shiftOneCode){
-        this.shiftOneCode = shiftOneCode;
+    public String getInputCode(){
+        return this.inputCode;
+    }
+    public void setInputDate(int inputDate){
+        this.inputDate = inputDate;
+    }
+    public void setInputCode(String inputCode){
+        this.inputCode = inputCode;
     }
 
 }

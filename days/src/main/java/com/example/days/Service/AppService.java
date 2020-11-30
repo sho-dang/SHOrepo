@@ -43,9 +43,9 @@ public class AppService {
     public String shiftPattern(int number){
         return am.shiftPattern(number);
     }
-    public void updateMethod(int date,String shiftCode){
+    public void updateMethod(int date,String inputCode){
         //シフトパターンNoが決定
-        int countNumber = am.number(shiftCode);
+        int countNumber = am.number(inputCode);
         //intが４の場合,
         //スケジュールの日数だけくり返す
         for(int i = date ; i <= 30 ; i++){
