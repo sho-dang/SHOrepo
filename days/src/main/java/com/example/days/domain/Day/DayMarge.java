@@ -1,6 +1,5 @@
-package com.example.days.domain;
+package com.example.days.domain.Day;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DayMarge {

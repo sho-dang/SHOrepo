@@ -1,8 +1,8 @@
 package com.example.days.MapperTest;
 
 import com.example.days.Mapper.AppMapper;
-import com.example.days.domain.DayList;
-import com.example.days.domain.NameList;
+import com.example.days.domain.Day.DayList;
+import com.example.days.domain.NameList.NameList;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
@@ -13,8 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.TestPropertySources;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)

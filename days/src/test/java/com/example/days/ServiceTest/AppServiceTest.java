@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.*;
 import java.util.List;
 
 import com.example.days.Service.AppService;
-import com.example.days.domain.DayList;
+import com.example.days.domain.Day.DayList;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

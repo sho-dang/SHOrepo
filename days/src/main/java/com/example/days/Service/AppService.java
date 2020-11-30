@@ -1,14 +1,11 @@
 package com.example.days.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.days.Mapper.AppMapper;
-import com.example.days.domain.DayList;
-import com.example.days.domain.DayMarge;
-import com.example.days.domain.NameList;
-import com.example.days.domain.ShiftList;
-import com.example.days.domain.ShiftMarge;
+import com.example.days.domain.Day.DayList;
+import com.example.days.domain.NameList.NameList;
+import com.example.days.domain.NameList.ShiftList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,13 +62,5 @@ public class AppService {
             }
         }
         
-        
-        
-        
-        //最終処理
-        
-    }
-    public void ppa(){
-        am.updateWorkId("4321",1);
     }
 }

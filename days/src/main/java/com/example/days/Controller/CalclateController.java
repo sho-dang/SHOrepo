@@ -1,7 +1,7 @@
 package com.example.days.Controller;
 
 import com.example.days.Service.AppService;
-import com.example.days.domain.UpdateCode;
+import com.example.days.domain.UpdateCode.UpdateCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RequestMapping("/calcrate")
+@RequestMapping("/calclate")
 @Controller
-public class CalcrateController {
+public class CalclateController {
     @Autowired
     AppService service;
 
     @GetMapping
     public String calcShift(Model model){
         model.addAttribute("updateCode",new UpdateCode());
-        return "calcrate";
+        return "calclate";
     }
 
     @PostMapping
@@ -31,7 +31,7 @@ public class CalcrateController {
         service.updateMethod(num, st);
 
 
-        return "calcrate";
+        return "calclate";
     }
 
 }

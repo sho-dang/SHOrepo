@@ -1,4 +1,4 @@
-package com.example.days.domain;
+package com.example.days.domain.NameList;
 
 import java.util.List;
 
