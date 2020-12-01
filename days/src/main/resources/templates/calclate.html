@@ -18,7 +18,10 @@
     <form method="POST" action="#" th:object="${updateCode}">
        
         <p>一斉休暇日を入力してください</p>
-        <input type="text">
+         <select multiple="multiple" size="8">
+                        <option value="">---</option>
+                        <option th:each="days : ${date}" th:value="${days.value}" th:text="${days.value}" th:selected="${days.value} == *{selectedItem}">multiSelect</option>
+                    </select>
         <p>月始めの出勤開始日を入力してください<br>
         <span>※一斉休暇は除く</span></p>
         <input type="number" max="31" min="1" value="1" th:field="${updateCode.inputDate}">

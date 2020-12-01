@@ -1,5 +1,6 @@
 package com.example.days.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.days.Service.AppService;
@@ -23,6 +24,10 @@ public class CalendarController {
     public String createTable(Model model){
         List<DayList> days = service.days();
         DayMarge init = new DayMarge(days);
+        List<DayList>  li = new ArrayList<>();
+
+        init.getDayList().stream().filter(d -> d.getWorkId().equals("9999"))
+                    .forEach(d -> li.add(d));
 
         String[] shiftNameList = {"シフト1","シフト2","シフト3","シフト4"};
         List<NameList> shiftListOne = service.listOne(shiftNameList[0]);
@@ -31,6 +36,7 @@ public class CalendarController {
         List<NameList> shiftListFour = service.listOne(shiftNameList[3]);
 
         model.addAttribute("days", init.getDayList());
+        model.addAttribute("holiday",li);
         model.addAttribute("one", shiftListOne);
         model.addAttribute("two", shiftListTwo);
         model.addAttribute("three", shiftListThree);

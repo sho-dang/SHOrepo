@@ -1,5 +1,11 @@
 package com.example.days.Controller;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.days.Service.AppService;
 import com.example.days.domain.UpdateCode.UpdateCode;
 
@@ -20,6 +26,15 @@ public class CalclateController {
 
     @GetMapping
     public String calcShift(Model model){
+        /* 休暇日指定
+        LocalDate date = LocalDate.of(2020,11,01);
+        LocalDate l = date.with(TemporalAdjusters.lastDayOfMonth());
+        List<Integer> dateList = new ArrayList<Integer>();
+        for(int i = 1 ; i <= l.getDayOfMonth() ; i++){
+            dateList.add(i);
+        }
+        model.addAttribute("date",dateList);
+        */
         model.addAttribute("updateCode",new UpdateCode());
         return "calclate";
     }

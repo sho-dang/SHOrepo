@@ -33,6 +33,14 @@
             table-layout: fixed;
             width: 100%;
         }
+        .table-hol{
+            height: 50px;
+            width : 100px;
+            border: 1px;
+            padding: 0px;
+            margin : 0px ;
+            font-size: 3px;
+        }
         .table-body{
             margin-bottom: 30px;
         }
@@ -73,7 +81,7 @@
     </style>
 </head>
 <header>
-   <div class="flex">
+    <div class="flex">
     <h2>11月勤怠</h2>
     <form method="GET" action="#" th:action="@{/calclate}">
         <button type="submit" >自動計算</button>
@@ -81,7 +89,17 @@
     <form method="GET" action="#" th:action="@{/}">
         <button type="submit" >戻る</button>
     </form>
-   </div>
+    <table class="table-hol"  >
+        <th>
+            <tr>
+                <td>一斉休暇日</td>
+            </tr>
+        </th>
+        <tr th:each = "holiday:${holiday}">
+            <td th:text= "${holiday.date}"></td>
+        </tr>
+    </table>
+    </div>
     
     <table class="table-head">
         <tr>
@@ -107,7 +125,10 @@
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <input type="text" class="bg-red">
+                    <select id="multiSelect" name="selectedItems" multiple="multiple">
+                        <option value="">---</option>
+                        <!--option th:each="days : ${updateCode.inputHoliday}" th:value="${days.value}" th:text="${days.value}" th:field="*{inputHoliday}">multiSelect</!--option-->
+                    </select>
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
