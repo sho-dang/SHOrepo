@@ -13,12 +13,25 @@
         }
         .flex{
             display: flex ;
+            align-items: center;
         }
         body{
             padding-top: 110px;
             margin: 0px 100px;
         }
-        button{
+        .holiday{
+            display: flex;
+            background-color:burlywood;
+            border: solid black 2px ;
+            height : 22px ;
+            align-items: center;
+        }
+        .hol-p{
+            
+            font-size: 8px;
+            padding: 3px;
+            margin : auto;
+            height: 10px ;
             
         }
         .date-cell{
@@ -32,14 +45,6 @@
             border: 2px solid #ddd;
             table-layout: fixed;
             width: 100%;
-        }
-        .table-hol{
-            height: 50px;
-            width : 100px;
-            border: 1px;
-            padding: 0px;
-            margin : 0px ;
-            font-size: 3px;
         }
         .table-body{
             margin-bottom: 30px;
@@ -79,6 +84,9 @@
             width: 97%;
         }
     </style>
+
+
+
 </head>
 <header>
     <div class="flex">
@@ -89,16 +97,12 @@
     <form method="GET" action="#" th:action="@{/}">
         <button type="submit" >戻る</button>
     </form>
-    <table class="table-hol"  >
-        <th>
-            <tr>
-                <td>一斉休暇日</td>
-            </tr>
-        </th>
-        <tr th:each = "holiday:${holiday}">
-            <td th:text= "${holiday.date}"></td>
-        </tr>
-    </table>
+    <div class="holiday">
+        一斉休暇日
+    </div>
+    <div class="holiday"  th:each = "holiday:${holiday}">
+        <p class="hol-p" th:text= "${holiday.date}"></p>
+    </div>
     </div>
     
     <table class="table-head">
@@ -111,6 +115,9 @@
         </tr>
     </table>
 </header>
+
+
+
 <body>
     <table class="table-body">
         <tr class="date-cell" th:each="days,each:${days}" >
@@ -118,17 +125,11 @@
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <select class="bg-green" >
-                        <option></option>
-                        <option th:each="one:${one}">[[${one.nameList}]]</option>
-                    </select>
+                    <input type="text" class="bg-green" >
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <select id="multiSelect" name="selectedItems" multiple="multiple">
-                        <option value="">---</option>
-                        <!--option th:each="days : ${updateCode.inputHoliday}" th:value="${days.value}" th:text="${days.value}" th:field="*{inputHoliday}">multiSelect</!--option-->
-                    </select>
+                    <input type="text" class="bg-red">
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
@@ -143,7 +144,6 @@
                 </div>
                 <p th:case="*">エラー</p>
             </td>
-            <!-- th:classappend="${days.shiftOne =='1'} ? 'bg-green'|${days.shiftOne == '0'}? 'bg-gray'"  -->
             <td th:switch="${days.shiftTwo}">
                 <div th:case="1">
                     <p class="bg-green">1直</p>
