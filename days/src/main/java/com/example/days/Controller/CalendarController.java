@@ -2,11 +2,14 @@ package com.example.days.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMarge;
 import com.example.days.domain.NameList.NameList;
+import com.example.days.domain.Vacation.VacationList;
+import com.example.days.domain.Vacation.VacationMarge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +40,12 @@ public class CalendarController {
                 .forEach(d -> li.add(d));
         model.addAttribute("holiday",li);
 
+        List<VacationList> vacationList = service.vacationList();
+        VacationMarge vacation = new VacationMarge(vacationList);
+        //List<DayList> marge = Stream.concat(init.getDayList(),vacation.getVacationList() );
+        //List<DayList> array = init.getDayList();
+        //array.stream().forEach(d -> array.add(vacationList.));
+        model.addAttribute("vacation",vacation.getVacationList());
 /*
         //
         String[] shiftNameList = {"シフト1","シフト2","シフト3","シフト4"};

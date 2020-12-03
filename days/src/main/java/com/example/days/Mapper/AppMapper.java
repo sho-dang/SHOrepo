@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.NameList.NameList;
+import com.example.days.domain.Vacation.VacationList;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -30,6 +31,9 @@ public interface AppMapper {
     @Select("SELECT shiftPattern FROM shiftpattern WHERE number = #{number}")
     String shiftPattern(int number);
     
+    @Select("SELECT * FROM vacation")
+    List<VacationList> vacationList();
+
     //@Update("UPDATE schedule SET workId = #{workId} WHERE date = #{date}")
     @Update("update schedule set workId=#{workId} where date = #{date}")
     void updateWorkId(@Param("workId") String workId,@Param("date")int date);

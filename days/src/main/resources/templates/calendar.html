@@ -120,12 +120,13 @@
 
 <body>
     <table class="table-body">
-        <tr class="date-cell" th:each="days,each:${days}" >
+        <tr class="date-cell" th:each="days,each:${days}" th:object="${vacation}" >
             <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green" >
+                    <p th:text="${vacation.vacationNameOne}">1</p>
+                    <input type="text" class="bg-green"  >
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
