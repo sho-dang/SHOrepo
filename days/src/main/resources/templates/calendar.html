@@ -125,16 +125,21 @@
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <p th:text="${vacation.vacationNameOne}">1</p>
-                    <input type="text" class="bg-green"  >
+                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <input type="text" class="bg-red">
+                    <input type="text" class="bg-red" th:value="${days.vacationNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.overNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.earlyNameTwo}">
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
-                    <input type="text" class="bg-blue">
+                    <input type="text" class="bg-blue" th:value="${days.vacationNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.overNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.earlyNameThree}">
                 </div>
                 <div  th:case="4">
                     <p class="bg-gray">休み</p>
@@ -148,15 +153,21 @@
             <td th:switch="${days.shiftTwo}">
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green">
+                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <input type="text" class="bg-red">
+                    <input type="text" class="bg-red" th:value="${days.vacationNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.overNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.earlyNameTwo}">
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
-                    <input type="text" class="bg-blue">
+                    <input type="text" class="bg-blue" th:value="${days.vacationNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.overNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.earlyNameThree}">
                 </div>
                 <div  th:case="4">
                     <p class="bg-gray">休み</p>
@@ -170,15 +181,21 @@
             <td th:switch="${days.shiftThree}">
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green">
+                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <input type="text" class="bg-red">
+                    <input type="text" class="bg-red" th:value="${days.vacationNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.overNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.earlyNameTwo}">
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
-                    <input type="text" class="bg-blue">
+                    <input type="text" class="bg-blue" th:value="${days.vacationNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.overNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.earlyNameThree}">
                 </div>
                 <div  th:case="4">
                     <p class="bg-gray">休み</p>
@@ -192,15 +209,21 @@
             <td th:switch="${days.shiftFour}">
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green">
+                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
-                    <input type="text" class="bg-red">
+                    <input type="text" class="bg-red" th:value="${days.vacationNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.overNameTwo}">
+                    <input type="text" class="bg-red" th:value="${days.earlyNameTwo}">
                 </div>
                 <div th:case="3">
                     <p class="bg-blue">3直</p>
-                    <input type="text" class="bg-blue">
+                    <input type="text" class="bg-blue" th:value="${days.vacationNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.overNameThree}">
+                    <input type="text" class="bg-blue" th:value="${days.earlyNameThree}">
                 </div>
                 <div  th:case="4">
                     <p class="bg-gray">休み</p>
