@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,7 @@ public class CalendarController {
     AppService service;
 
     @GetMapping
-    public String createTable(Model model){
-
+    public String createTable(Model model,@ModelAttribute DayList dayList){
 
         List<DayList> days = service.days();
         DayMarge init = new DayMarge(days);
@@ -62,10 +62,12 @@ public class CalendarController {
 
         return "calendar";
     }
-    @PostMapping("/list/{vacation}")
-    public String nameSet(@PathVariable("vacation") String vacation){
-        
-        return "redirect:/calendar";
+    @GetMapping("/list/update/{day}/{code}")
+    public String nameSet(@PathVariable("day")int day,@PathVariable("code") String code){
+        int d = day;
+        String c = code;
+        //@PathVariable("day")int day,@PathVariable("code") String code
+        return "calendar";
     }
 
 }

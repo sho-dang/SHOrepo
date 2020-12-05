@@ -120,7 +120,7 @@
 
 <body>
     <table class="table-body">
-        <tr class="date-cell" th:each="days,each:${days}" th:object="${vacation}" >
+        <tr class="date-cell" th:each="days,each:${days}" >
             <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
@@ -209,9 +209,12 @@
             <td th:switch="${days.shiftFour}">
                 <div th:case="1">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
-                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
-                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
+                    <form method="GET" action="#" th:action="@{/list/update}">
+                    <input type="text" class="bg-green" th:text="${days.vacationNameOne}" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:text="${days.overNameOne}" th:value="${days.overNameOne}">
+                    <input type="text" class="bg-green" th:text="${days.earlyNameOne}" th:value="${days.earlyNameOne}">
+                    <a href="/list/update" th:href="@{/list/update(day=${days.date},code=${days.vacationNameOne})}">更新</a>
+                    </form>
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
