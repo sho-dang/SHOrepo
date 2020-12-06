@@ -6,7 +6,6 @@ import com.example.days.Mapper.AppMapper;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.NameList.NameList;
 import com.example.days.domain.NameList.ShiftList;
-import com.example.days.domain.Vacation.VacationList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,25 +17,22 @@ public class AppService {
     @Autowired
     AppMapper am;
 
-    
-
     public List<NameList> nameListAll(){
         List<NameList> list = am.listAll();
         return list;
     }
-    public List<NameList> listOne(String shift){
-        List<NameList> listOne = am.listOne(shift);
+    public List<NameList> listOne(String shiftName){
+        List<NameList> listOne = am.listOne(shiftName);
         return listOne;
-    }
-    
-    public List<DayList> days(){
-        List<DayList> days = am.days();
-        return days;
     }
     public List<NameList> shiftList(List<NameList> list){
         ShiftList nameList = new ShiftList(list);
         List<NameList> shiftList = nameList.getNameList();
         return shiftList;
+    }
+    public List<DayList> days(){
+        List<DayList> days = am.days();
+        return days;
     }
     public String matchWorkId(int date){
         return am.matchWorkId(date);
@@ -44,9 +40,6 @@ public class AppService {
     public String shiftPattern(int number){
         return am.shiftPattern(number);
     }
-    public List<VacationList> vacationList(){
-        return am.vacationList();
-    } 
     public void updateMethod(int date,String inputCode){
         //シフトパターンNoが決定
         int countNumber = am.number(inputCode);

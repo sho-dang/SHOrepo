@@ -9,18 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-@RequestMapping
 @Controller
-public class DaysController {
+@RequestMapping("/shift")
+public class ShiftListController {
     @Autowired
     AppService service;
     
     @GetMapping
-    public String startView(){
-        return "start";
+    public String startView(Model model){
+        List<NameList> nameList = service.nameListAll();
+        List<NameList> shiftList = service.shiftList(nameList);
+        model.addAttribute("list", shiftList);
+        return "index";
     }
+    /*
+    @PostMapping
+    public String shiftList(){
+        return "index";
+    }
+    */
 }
