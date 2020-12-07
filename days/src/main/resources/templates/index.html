@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>出勤リスト</title>
-</head>
-<body>
-    <form method="GET" action="#" th:action="@{/}">
-        <button type="submit" >戻る</button>
-    </form>
-    <table border="1">
-        
-        <tr>
-            <th>Name</th>
-            <th>シフト</th>
-        </tr>
-        <tr th:each="list,each:${list}">
-            <td th:text="${list.nameList}"/>
-            <td th:text="${list.shiftName}"/>
-        </tr>
-    </table>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>出勤リスト</title>
+    </head>
+    <body>
+        <form method="GET" action="#" th:action="@{/}">
+            <button type="submit" >戻る</button>
+        </form>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>シフト</th>
+            </tr>
+            <tr th:each="list,each:${list}">
+                <td th:text="${list.nameList}"/>
+                <td th:text="${list.shiftName}"/>
+            </tr>
+        </table>
+    </body>
+    </html>

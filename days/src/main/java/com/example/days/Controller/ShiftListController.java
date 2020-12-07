@@ -21,7 +21,7 @@ public class ShiftListController {
     public String startView(Model model){
         List<NameList> nameList = service.nameListAll();
         List<NameList> shiftList = service.shiftList(nameList);
-        model.addAttribute("list", shiftList);
+        model.addAttribute("list", nameList);
         return "index";
     }
     /*

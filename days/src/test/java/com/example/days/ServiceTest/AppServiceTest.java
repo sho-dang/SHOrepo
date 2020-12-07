@@ -3,7 +3,6 @@ package com.example.days.ServiceTest;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.days.Service.AppService;
@@ -46,19 +45,12 @@ public class AppServiceTest {
         int matcher = 10;
         assertThat( listOne.size(), not(matcher));
     }
-    @Test //現在はシフト
+    @Test //シフト振り分け用メソッド未完成
     public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{
         List<NameList> listTest = service.nameListAll();
         List<NameList> resultList = service.shiftList(listTest);
         int matcher = 16 ;
         assertThat(resultList.size(), is(matcher));
-    }
-    @Test
-    public void ーshiftListメソッドー選したdateと一致するworkIdを取得できていること()throws Exception{
-        int selectDay = 1 ;
-        String workId = service.matchWorkId(selectDay);
-        String matcher = "";
-        assertThat(workId, is(matcher));
     }
     @Test
     public void ーdaysメソッドー取得したDayListの日付件数が一致すること()throws Exception{
@@ -72,31 +64,39 @@ public class AppServiceTest {
         int monthDays = 100;
         assertThat(dayTest.size(),not(monthDays));
     }
-    
     @Test
     public void ーmatchWorkIdメソッドー選択したdateと一致するworkIdを取得できていること()throws Exception{
         int selectDay = 1 ;
         String workId = service.matchWorkId(selectDay);
-        String matcher = "";
+        String matcher = "3142";
         assertThat(workId, is(matcher));
     }
     @Test
-    public void ーmatchWorkIdメソッドー取得したworkIdが一致していない場合にエラーとなること()throws Exception{
-
+    public void ーmatchWorkIdメソッドー存在しない日付を入力した場合にworkIDはNULLになりエラーとなること()throws Exception{
+        int selectDay = 31 ;
+        String workId = service.matchWorkId(selectDay);
+        String matcher = null;
+        assertThat(workId, is(matcher));
     }
     @Test
-    public void ーshiftPatternメソッドー()throws Exception{
-
+    public void ーshiftPatternメソッドー指定したnumberと一致するshiftPatternを取得できること()throws Exception{
+        int number = 1 ;
+        String shiftPattern = service.shiftPattern(number);
+        String matcher = "4321";
+        assertThat(shiftPattern, is(matcher)); 
     }
     @Test
-    public void shiftPatternメソッドー()throws Exception{
-
+    public void ーshiftPatternメソッドー存在しないnumberを入力した場合にshiftpatternはNULLになりエラーとなること()throws Exception{
+        int number = 21 ;
+        String shiftPattern = service.shiftPattern(number);
+        String matcher = null;
+        assertThat(shiftPattern, is(matcher)); 
     }
-    @Test
+    @Test //未実装
     public void updateMethodメソッドー()throws Exception{
 
     }
-    @Test
+    @Test //未実装
     public void ーupdateMethodメソッドー()throws Exception{
 
     }
