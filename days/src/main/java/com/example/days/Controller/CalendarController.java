@@ -21,19 +21,24 @@ public class CalendarController {
     @Autowired
     AppService service;
 
+    @ModelAttribute
+    public DayList setUp(){
+        return new DayList();
+    }
+
     @GetMapping
-    public String createTable(Model model,@ModelAttribute DayList dayList){
+    public String createTable(Model model){
 
         List<DayList> days = service.days();
         DayMarge init = new DayMarge(days);
         model.addAttribute("days", init.getDayList());
 
 
-        List<DayList>  li = new ArrayList<>();
+        List<DayList>  holiday = new ArrayList<>();
         init.getDayList().stream()
                 .filter(d -> d.getWorkId().equals("9999"))
-                .forEach(d -> li.add(d));
-        model.addAttribute("holiday",li);
+                .forEach(d -> holiday.add(d));
+        model.addAttribute("holiday",holiday);
 
 /*
         //

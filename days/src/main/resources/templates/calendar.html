@@ -151,11 +151,12 @@
                 <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftTwo}">
-                <div th:case="1">
+                <div th:case="1" th:object="${dayList}">
                     <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}">
+                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}" >
                     <input type="text" class="bg-green" th:value="${days.overNameOne}">
                     <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
+
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>
