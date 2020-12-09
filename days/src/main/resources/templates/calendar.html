@@ -120,7 +120,7 @@
 
 <body>
     <table class="table-body">
-        <tr class="date-cell" th:each="days,each:${days}" >
+        <tr class="date-cell" th:each="days,each:${days}" th:object = "${at}">
             <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">            
                 <div th:case="1">
@@ -152,11 +152,15 @@
             </td>
             <td th:switch="${days.shiftTwo}">
                 <div th:case="1" th:object="${dayList}">
-                    <p class="bg-green">1直</p>
-                    <input type="text" class="bg-green" th:value="${days.vacationNameOne}" >
-                    <input type="text" class="bg-green" th:value="${days.overNameOne}">
-                    <input type="text" class="bg-green" th:value="${days.earlyNameOne}">
-
+                    <form method="POST" action="#" th:action="@{/list}">
+                        <p class="bg-green">1直</p>
+                        <input type="hidden" name="date" th:value="${days.date}">
+                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
+                        <input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" >
+                        <input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}">
+                        <input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}">
+                        <input type="submit">
+                    </form>
                 </div>
                 <div  th:case="2">
                     <p class="bg-red">2直</p>

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
-import com.example.days.domain.Day.DayMarge;
+import com.example.days.domain.Day.DayMerge;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/list")
@@ -27,10 +28,10 @@ public class CalendarController {
     }
 
     @GetMapping
-    public String createTable(Model model){
+    public String createTable(Model model,@ModelAttribute DayList dayList){
 
         List<DayList> days = service.days();
-        DayMarge init = new DayMarge(days);
+        DayMerge init = new DayMerge(days);
         model.addAttribute("days", init.getDayList());
 
 
@@ -53,13 +54,13 @@ public class CalendarController {
         model.addAttribute("three", shiftListThree);
         model.addAttribute("four", shiftListFour);
 */
-
+        model.addAttribute("at", dayList );
         return "calendar";
     }
-    @GetMapping("/list/update/{day}/{code}")
-    public String nameSet(@PathVariable("day")int day,@PathVariable("code") String code){
-        int d = day;
-        String c = code;
+    @PostMapping
+    public String nameSet(@ModelAttribute DayList dayList){
+        int d = dayList.getDate();
+        String c = dayList.getShiftTwo();
         //@PathVariable("day")int day,@PathVariable("code") String code
         return "calendar";
     }

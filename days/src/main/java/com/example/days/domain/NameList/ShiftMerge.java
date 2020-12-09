@@ -2,11 +2,11 @@ package com.example.days.domain.NameList;
 
 import java.util.List;
 
-public class ShiftMarge {
+public class ShiftMerge {
     
     private List<ShiftList> shiftList;
 
-    public ShiftMarge(List<NameList> nameList){
+    public ShiftMerge(List<NameList> nameList){
        // nameList.stream().forEach(s -> addList(s));
     }
     public List<ShiftList> getShiftList(){

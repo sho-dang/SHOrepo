@@ -2,11 +2,11 @@ package com.example.days.domain.Day;
 
 import java.util.List;
 
-public class DayMarge {
+public class DayMerge {
     
     private List<DayList> dayList;
     
-    public DayMarge(List<DayList> dayLists){
+    public DayMerge(List<DayList> dayLists){
         this.dayList = dayLists;
         this.dayList.stream().forEach(e -> newDaySplit(e).getDayList());
     }
