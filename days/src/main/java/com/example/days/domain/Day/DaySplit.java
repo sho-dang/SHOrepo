@@ -1,6 +1,13 @@
 package com.example.days.domain.Day;
 
+import com.example.days.Mapper.AppMapper;
+import com.example.days.Service.AppService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class DaySplit {
+    @Autowired
+    AppService appService;
     
     private DayList dayList;
     
@@ -47,7 +54,7 @@ public class DaySplit {
                 if(string[1].equals("XX")){
                     this.dayList.setVacationNameOne("");
                 }else{
-                this.dayList.setVacationNameOne(string[1]);
+                    this.dayList.setVacationNameOne(string[1]);
                 };
                 if(string[2].equals("XX")){
                     this.dayList.setOverNameOne("");
@@ -59,7 +66,7 @@ public class DaySplit {
                 }else{
                     this.dayList.setEarlyNameOne(string[3]);
                 };
-            break;
+                break;
             case "2":
                 if(string[1].equals("XX")){
                     this.dayList.setVacationNameTwo("");
@@ -76,7 +83,7 @@ public class DaySplit {
                 }else{
                     this.dayList.setEarlyNameTwo(string[3]);
                 };
-            break;
+                break;
             case "3":
                 if(string[1].equals("XX")){
                     this.dayList.setVacationNameThree("");
@@ -84,15 +91,16 @@ public class DaySplit {
                     this.dayList.setVacationNameThree(string[1]);
                 };
                 if(string[2].equals("XX")){
-                this.dayList.setOverNameThree("");
+                    this.dayList.setOverNameThree("");
                 }else{
                     this.dayList.setOverNameThree(string[2]);
                 };
                 if(string[3].equals("XX")){
-                this.dayList.setEarlyNameThree("");
+                    this.dayList.setEarlyNameThree("");
                 }else{
                     this.dayList.setEarlyNameThree(string[3]);
                 };
+                break;
             }
         }
 }

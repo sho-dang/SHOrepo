@@ -18,6 +18,9 @@ public interface AppMapper {
     @Select("SELECT * FROM shift WHERE shiftName = #{shift} ORDER BY id ASC")
     List<NameList> listOne(String shift);
 
+    @Select("SELECT nameList FROM shift WHERE id = #{id}")
+    String convertName(String id);
+
     @Select("SELECT * FROM schedule ORDER BY date ASC")
     List<DayList> days();
 
@@ -29,8 +32,7 @@ public interface AppMapper {
 
     @Select("SELECT shiftPattern FROM shiftpattern WHERE number = #{number}")
     String shiftPattern(int number);
-    
-    //@Update("UPDATE schedule SET workId = #{workId} WHERE date = #{date}")
+
     @Update("update schedule set workId=#{workId} where date = #{date}")
     void updateWorkId(@Param("workId") String workId,@Param("date")int date);
     

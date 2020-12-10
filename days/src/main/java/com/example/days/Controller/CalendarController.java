@@ -30,9 +30,12 @@ public class CalendarController {
     @GetMapping
     public String createTable(Model model,@ModelAttribute DayList dayList){
 
-        List<DayList> days = service.days();
-        DayMerge init = new DayMerge(days);
-        model.addAttribute("days", init.getDayList());
+        
+        DayMerge init = new DayMerge(service.days());
+        List<DayList> days = init.getDayList();
+        days.stream().forEach(d -> service.convertList(d));
+        //.filter(d -> d.getVacationNameOne())
+        model.addAttribute("days", days);
 
 
         List<DayList>  holiday = new ArrayList<>();
@@ -61,8 +64,10 @@ public class CalendarController {
     public String nameSet(@ModelAttribute DayList dayList){
         int d = dayList.getDate();
         String c = dayList.getShiftTwo();
+
+        
         //@PathVariable("day")int day,@PathVariable("code") String code
-        return "calendar";
+        return "redirect:/list";
     }
 
 }

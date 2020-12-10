@@ -15,15 +15,19 @@ import org.springframework.stereotype.Service;
 public class AppService {
     
     @Autowired
-    AppMapper am;
+    AppMapper appMapper;
 
     public List<NameList> nameListAll(){
-        List<NameList> list = am.listAll();
+        List<NameList> list = appMapper.listAll();
         return list;
     }
     public List<NameList> listOne(String shiftName){
-        List<NameList> listOne = am.listOne(shiftName);
+        List<NameList> listOne = appMapper.listOne(shiftName);
         return listOne;
+    }
+    public String convertName(String id){
+        String convertName = appMapper.convertName(id);
+        return convertName;
     }
     public List<NameList> shiftList(List<NameList> list){
         ShiftList nameList = new ShiftList(list);
@@ -31,33 +35,51 @@ public class AppService {
         return shiftList;
     }
     public List<DayList> days(){
-        List<DayList> days = am.days();
+        List<DayList> days = appMapper.days();
         return days;
     }
     public String matchWorkId(int date){
-        return am.matchWorkId(date);
+        return appMapper.matchWorkId(date);
     }
     public String shiftPattern(int number){
-        return am.shiftPattern(number);
+        return appMapper.shiftPattern(number);
     }
     public void updateMethod(int date,String inputCode){
         //シフトパターンNoが決定
-        int countNumber = am.number(inputCode);
+        int countNumber = appMapper.number(inputCode);
         //intが４の場合,
         //スケジュールの日数だけくり返す
         for(int i = date ; i <= 30 ; i++){
             //一斉休暇日"9999"の場合はスキップする
-            if(am.matchWorkId(i).equals("9999")){
+            if(appMapper.matchWorkId(i).equals("9999")){
                 continue;
             }
             //シフトパターンが入る"3214"etc ナンバーで指定
             String shiftPattern = shiftPattern(countNumber);
-            am.updateWorkId(shiftPattern,i);
+            appMapper.updateWorkId(shiftPattern,i);
             countNumber++;
             if(countNumber == 21){
                 countNumber = 1;
             }
         }
         
+    }
+    public DayList convertList(DayList dayList){
+        dayList.setVacationNameOne(convertMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertMethod(dayList.getEarlyNameThree()));
+        return dayList;
+    }
+    public String convertMethod(String id){
+        if(id != null){
+            id = convertName(id);
+        }
+        return id;
     }
 }
