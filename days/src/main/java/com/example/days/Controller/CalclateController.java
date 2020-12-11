@@ -43,7 +43,7 @@ public class CalclateController {
     public String calcReturn(@ModelAttribute UpdateCode updateCode){
         int inputDate = updateCode.getInputDate();
         String inputCode = updateCode.getInputCode();
-        service.updateMethod(inputDate, inputCode);
+        service.updateWorkId(inputDate, inputCode);
         return "calendar";
     }
 

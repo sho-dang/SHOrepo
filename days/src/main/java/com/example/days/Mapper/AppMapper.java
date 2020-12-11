@@ -21,8 +21,14 @@ public interface AppMapper {
     @Select("SELECT nameList FROM shift WHERE id = #{id}")
     String convertName(String id);
 
+    @Select("SELECT id FROM shift WHERE nameList = #{nameList}")
+    String convertId(String nameList);
+
     @Select("SELECT * FROM schedule ORDER BY date ASC")
     List<DayList> days();
+
+    @Select("SELECT * FROM schedule WHERE date = #{date}")
+    DayList selectDayList(int date); 
 
     @Select("SELECT workId FROM schedule WHERE date = #{date}")
     String matchWorkId(int date);
@@ -35,5 +41,8 @@ public interface AppMapper {
 
     @Update("update schedule set workId=#{workId} where date = #{date}")
     void updateWorkId(@Param("workId") String workId,@Param("date")int date);
+
+    @Update("update schedule set vacationCode=#{vacationCode} where date = #{date}")
+    void updateVacationCode(@Param("vacationCode") String vacationCode,@Param("date")int date);
     
 }

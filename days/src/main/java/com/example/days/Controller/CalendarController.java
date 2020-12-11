@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMerge;
+import com.example.days.domain.Day.DaySplit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,8 +34,7 @@ public class CalendarController {
         
         DayMerge init = new DayMerge(service.days());
         List<DayList> days = init.getDayList();
-        days.stream().forEach(d -> service.convertList(d));
-        //.filter(d -> d.getVacationNameOne())
+        days.stream().forEach(d -> service.convertNameList(d));
         model.addAttribute("days", days);
 
 
@@ -44,7 +44,7 @@ public class CalendarController {
                 .forEach(d -> holiday.add(d));
         model.addAttribute("holiday",holiday);
 
-/*
+/*未使用
         //
         String[] shiftNameList = {"シフト1","シフト2","シフト3","シフト4"};
         List<NameList> shiftListOne = service.listOne(shiftNameList[0]);
@@ -62,9 +62,37 @@ public class CalendarController {
     }
     @PostMapping
     public String nameSet(@ModelAttribute DayList dayList){
-        int d = dayList.getDate();
-        String c = dayList.getShiftTwo();
+        //名前をIDに変換
+        DayList convertDayList = service.convertIdList(dayList);
 
+        //元のDayListを取得
+        DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));
+        DayList newDayList = selectDayList.getDayList();
+
+        //データが入っているシフトの書き換え
+        switch(service.shiftInData(dayList)){
+            case "1":
+            convertDayList.setVacationNameOne(convertDayList.getVacationNameOne());
+            convertDayList.setOverNameOne(convertDayList.getOverNameOne());
+            convertDayList.setEarlyNameOne(convertDayList.getEarlyNameOne());
+            break;
+            case "2":
+            convertDayList.setVacationNameTwo(convertDayList.getVacationNameTwo());
+            convertDayList.setOverNameTwo(convertDayList.getOverNameTwo());
+            convertDayList.setEarlyNameTwo(convertDayList.getEarlyNameTwo());
+            break;
+            case "3":
+            convertDayList.setVacationNameThree(convertDayList.getVacationNameThree());
+            convertDayList.setOverNameThree(convertDayList.getOverNameThree());
+            convertDayList.setEarlyNameThree(convertDayList.getEarlyNameThree());
+            break;
+        }
+        newDayList.setVacationCode(
+            "1" + newDayList.getVacationNameOne() + newDayList.getOverNameOne() + newDayList.getEarlyNameOne() +
+            "2" + newDayList.getVacationNameTwo() + newDayList.getOverNameTwo() + newDayList.getEarlyNameTwo() +
+            "3" + newDayList.getVacationNameThree() + newDayList.getOverNameThree() + newDayList.getEarlyNameThree()
+            );
+        service.updateVacationCode(newDayList.getVacationCode(),newDayList.getDate());
         
         //@PathVariable("day")int day,@PathVariable("code") String code
         return "redirect:/list";

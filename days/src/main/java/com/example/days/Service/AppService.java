@@ -29,6 +29,10 @@ public class AppService {
         String convertName = appMapper.convertName(id);
         return convertName;
     }
+    public String convertId(String nameList){
+        String convertId = appMapper.convertId(nameList);
+        return convertId;
+    }
     public List<NameList> shiftList(List<NameList> list){
         ShiftList nameList = new ShiftList(list);
         List<NameList> shiftList = nameList.getNameList();
@@ -38,13 +42,17 @@ public class AppService {
         List<DayList> days = appMapper.days();
         return days;
     }
+    public DayList selectDayList(int date){
+        DayList selectDayList = appMapper.selectDayList(date);
+        return selectDayList;
+    }
     public String matchWorkId(int date){
         return appMapper.matchWorkId(date);
     }
     public String shiftPattern(int number){
         return appMapper.shiftPattern(number);
     }
-    public void updateMethod(int date,String inputCode){
+    public void updateWorkId(int date,String inputCode){
         //シフトパターンNoが決定
         int countNumber = appMapper.number(inputCode);
         //intが４の場合,
@@ -64,22 +72,58 @@ public class AppService {
         }
         
     }
-    public DayList convertList(DayList dayList){
-        dayList.setVacationNameOne(convertMethod(dayList.getVacationNameOne()));
-        dayList.setVacationNameTwo(convertMethod(dayList.getVacationNameTwo()));
-        dayList.setVacationNameThree(convertMethod(dayList.getVacationNameThree()));
-        dayList.setOverNameOne(convertMethod(dayList.getOverNameOne()));
-        dayList.setOverNameTwo(convertMethod(dayList.getOverNameTwo()));
-        dayList.setOverNameThree(convertMethod(dayList.getOverNameThree()));
-        dayList.setEarlyNameOne(convertMethod(dayList.getEarlyNameOne()));
-        dayList.setEarlyNameTwo(convertMethod(dayList.getEarlyNameTwo()));
-        dayList.setEarlyNameThree(convertMethod(dayList.getEarlyNameThree()));
+    public void updateVacationCode(String vacationId , int date){
+        appMapper.updateVacationCode(vacationId, date);
+    }
+    public DayList convertNameList(DayList dayList){
+        dayList.setVacationNameOne(convertNameMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertNameMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertNameMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertNameMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertNameMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertNameMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertNameMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertNameMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertNameMethod(dayList.getEarlyNameThree()));
         return dayList;
     }
-    public String convertMethod(String id){
+    public String convertNameMethod(String id){
         if(id != null){
             id = convertName(id);
         }
         return id;
+    }
+    public DayList convertIdList(DayList dayList){
+        dayList.setVacationNameOne(convertIdMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertIdMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertIdMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertIdMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertIdMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertIdMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertIdMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertIdMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertIdMethod(dayList.getEarlyNameThree()));
+        return dayList;
+    }
+    public String convertIdMethod(String nameList){
+        if(nameList != null){
+            nameList = "XX";
+        }else{
+            nameList = convertId(nameList);
+        }
+        return nameList;
+    }
+    public String shiftInData(DayList dayList){
+        String shiftInData = "";
+        if(dayList.getShiftOne() != null){
+            shiftInData = dayList.getShiftOne();
+        }else if(dayList.getShiftTwo() != null){
+            shiftInData = dayList.getShiftTwo();
+        }else if(dayList.getShiftThree() != null){
+            shiftInData = dayList.getShiftThree();
+        }else if(dayList.getShiftFour() != null){
+            shiftInData = dayList.getShiftFour();
+        }
+        return shiftInData;
     }
 }
