@@ -67,24 +67,25 @@ public class CalendarController {
 
         //元のDayListを取得
         DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));
-        DayList newDayList = selectDayList.getDayList();
+        DayList newDayList =service.convertNullEmpty(selectDayList.getDayList());
+       
 
         //データが入っているシフトの書き換え
-        switch(service.shiftInData(dayList)){
+        switch(service.shiftInData(convertDayList)){
             case "1":
-            convertDayList.setVacationNameOne(convertDayList.getVacationNameOne());
-            convertDayList.setOverNameOne(convertDayList.getOverNameOne());
-            convertDayList.setEarlyNameOne(convertDayList.getEarlyNameOne());
+            newDayList.setVacationNameOne(convertDayList.getVacationNameOne());
+            newDayList.setOverNameOne(convertDayList.getOverNameOne());
+            newDayList.setEarlyNameOne(convertDayList.getEarlyNameOne());
             break;
             case "2":
-            convertDayList.setVacationNameTwo(convertDayList.getVacationNameTwo());
-            convertDayList.setOverNameTwo(convertDayList.getOverNameTwo());
-            convertDayList.setEarlyNameTwo(convertDayList.getEarlyNameTwo());
+            newDayList.setVacationNameTwo(convertDayList.getVacationNameTwo());
+            newDayList.setOverNameTwo(convertDayList.getOverNameTwo());
+            newDayList.setEarlyNameTwo(convertDayList.getEarlyNameTwo());
             break;
             case "3":
-            convertDayList.setVacationNameThree(convertDayList.getVacationNameThree());
-            convertDayList.setOverNameThree(convertDayList.getOverNameThree());
-            convertDayList.setEarlyNameThree(convertDayList.getEarlyNameThree());
+            newDayList.setVacationNameThree(convertDayList.getVacationNameThree());
+            newDayList.setOverNameThree(convertDayList.getOverNameThree());
+            newDayList.setEarlyNameThree(convertDayList.getEarlyNameThree());
             break;
         }
         newDayList.setVacationCode(

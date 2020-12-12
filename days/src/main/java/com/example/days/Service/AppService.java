@@ -9,6 +9,7 @@ import com.example.days.domain.NameList.ShiftList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -93,6 +94,7 @@ public class AppService {
         }
         return id;
     }
+    @Transactional
     public DayList convertIdList(DayList dayList){
         dayList.setVacationNameOne(convertIdMethod(dayList.getVacationNameOne()));
         dayList.setVacationNameTwo(convertIdMethod(dayList.getVacationNameTwo()));
@@ -106,11 +108,19 @@ public class AppService {
         return dayList;
     }
     public String convertIdMethod(String nameList){
-        if(nameList != null){
+        if(nameList == null){
+            nameList = "";
+        }
+        if(nameList.isEmpty()){
             nameList = "XX";
         }else{
             nameList = convertId(nameList);
-        }
+        };
+        
+
+
+
+
         return nameList;
     }
     public String shiftInData(DayList dayList){
@@ -126,4 +136,27 @@ public class AppService {
         }
         return shiftInData;
     }
+    @Transactional
+    public DayList convertNullEmpty(DayList dayList){
+        dayList.setVacationNameOne(convertNullEmptyMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertNullEmptyMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertNullEmptyMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertNullEmptyMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertNullEmptyMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertNullEmptyMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertNullEmptyMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertNullEmptyMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertNullEmptyMethod(dayList.getEarlyNameThree()));
+        return dayList;
+    }
+    public String convertNullEmptyMethod(String string){
+        if(string == null){
+            string = "";
+        }
+        if(string.isEmpty()){
+            string = "XX";
+        }else{};
+        return string;
+    }
+    
 }

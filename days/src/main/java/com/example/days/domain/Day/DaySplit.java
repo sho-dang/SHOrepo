@@ -1,14 +1,7 @@
 package com.example.days.domain.Day;
 
-import com.example.days.Mapper.AppMapper;
-import com.example.days.Service.AppService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class DaySplit {
-    @Autowired
-    AppService appService;
-    
     private DayList dayList;
     
     //コンストラクタ

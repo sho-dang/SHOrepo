@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.transaction.annotation.Transactional;
 
 @Mapper
 public interface AppMapper {
@@ -42,6 +43,7 @@ public interface AppMapper {
     @Update("update schedule set workId=#{workId} where date = #{date}")
     void updateWorkId(@Param("workId") String workId,@Param("date")int date);
 
+    @Transactional
     @Update("update schedule set vacationCode=#{vacationCode} where date = #{date}")
     void updateVacationCode(@Param("vacationCode") String vacationCode,@Param("date")int date);
     
