@@ -36,10 +36,35 @@ public class AppMapperTest {
         assertThat(listOne.size(), is(matcher));
     }
     @Test
+    public void 指定したIDを元にshiftテーブルから名前を取得する()throws Exception{
+        String inputId = "SA";
+        String matcher = "伊藤A子";
+        String converted = appMapper.convertName(inputId);
+        assertThat(converted, is(matcher));
+    }
+    @Test
+    public void 指定した名前を元にshiftテーブルからIDを取得する()throws Exception{
+        String inputName = "伊藤A子";
+        String matcher = "SA";
+        String converted = appMapper.convertId(inputName);
+        assertThat(converted, is(matcher));
+    }
+    @Test
     public void scheduleテーブルのデータを全て取得できる()throws Exception{
         List<DayList> days = appMapper.days();
         int matcher = 30 ;
         assertThat(days.size(), is(matcher));
+    }
+    @Test
+    public void scheduleテーブルから指定した日付のデータを全て取得できる()throws Exception{
+        int date = 30 ;
+        String matcherWorkId = "2341";
+        String matcherVacationId = "1XXXXXX2XXXXXX3XXXXXX";
+        DayList dayList = appMapper.selectDayList(date);
+
+        assertThat(dayList.getDate(), is(date));
+        assertThat(dayList.getWorkId(), is(matcherWorkId));
+        assertThat(dayList.getVacationCode(), is(matcherVacationId));
     }
     @Test
     public void scheduleテーブルで指定したdateのworkIdデータを取得()throws Exception{
@@ -47,6 +72,13 @@ public class AppMapperTest {
         int date = 1 ;
         String workId = appMapper.matchWorkId(date);
         assertThat(workId, is(matchWorkId));
+    }
+    @Test
+    public void scheduleテーブルで指定したdateのvacationCodeデータを取得()throws Exception{
+        String matchVacationCode = "1XXXXXX2XXXXXX3XXXXXX" ;
+        int date = 30 ;
+        String vacationCode = appMapper.matchVacationCode(date);
+        assertThat(vacationCode, is(matchVacationCode));
     }
     @Test
     public void shiftpatternテーブルで指定したpatternIdのnumberを取得()throws Exception{
@@ -74,5 +106,16 @@ public class AppMapperTest {
         //Return WorkId
         appMapper.updateWorkId(beforeWorkId, date);
     }
+    @Test
+    public void scheduleテーブルで指定したdateのvacationCodeカラムを更新する()throws Exception{
+        int date = 30 ;
+        String beforeVacationCode = appMapper.matchVacationCode(date);
+        String vacationCode = "1SAXXXX2SEXXXX3SIXXXX";
+        appMapper.updateVacationCode(vacationCode, date);
+        String updatedVacationCode = appMapper.matchVacationCode(date);
+        assertThat(updatedVacationCode, is(vacationCode));
 
+        //Return WorkId
+        appMapper.updateVacationCode(beforeVacationCode,date);
+    }
 }
