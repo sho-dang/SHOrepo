@@ -18,28 +18,28 @@ public class AppService {
     @Autowired
     AppMapper appMapper;
 
-    public List<NameList> nameListAll(){
+    public List<NameList> nameListAll(){ //test済み
         List<NameList> list = appMapper.listAll();
         return list;
     }
-    public List<NameList> listOne(String shiftName){
+    public List<NameList> listOne(String shiftName){ //test済み
         List<NameList> listOne = appMapper.listOne(shiftName);
         return listOne;
     }
-    public String convertName(String id){
+    public String convertName(String id){ //test済み
         String convertName = appMapper.convertName(id);
         return convertName;
     }
-    public String convertId(String nameList){
+    public String convertId(String nameList){ //test済み
         String convertId = appMapper.convertId(nameList);
         return convertId;
     }
-    public List<NameList> shiftList(List<NameList> list){
+    public List<NameList> shiftList(List<NameList> list){ //test済み
         ShiftList nameList = new ShiftList(list);
         List<NameList> shiftList = nameList.getNameList();
         return shiftList;
     }
-    public List<DayList> days(){
+    public List<DayList> days(){ //test済み
         List<DayList> days = appMapper.days();
         return days;
     }
@@ -47,10 +47,10 @@ public class AppService {
         DayList selectDayList = appMapper.selectDayList(date);
         return selectDayList;
     }
-    public String matchWorkId(int date){
+    public String matchWorkId(int date){ //test済み
         return appMapper.matchWorkId(date);
     }
-    public String shiftPattern(int number){
+    public String shiftPattern(int number){ //test済み
         return appMapper.shiftPattern(number);
     }
     public void updateWorkId(int date,String inputCode){

@@ -45,6 +45,32 @@ public class AppServiceTest {
         int matcher = 10;
         assertThat( listOne.size(), not(matcher));
     }
+    @Test
+    public void ーconvertNameメソッドー指定したIDの名前を取得できていること(){
+        String nameId = "SA";
+        String matcherName = "伊藤A子";
+        String convertName = service.convertName(nameId);
+        assertThat(convertName, is(matcherName));
+    }
+    @Test(expected = NullPointerException.class)
+    public void ーconvertNameメソッドー指定したIDが存在しない場合にエラーとなること(){
+        String nameId = "AA";
+        String convertName = service.convertName(nameId);
+        assertThat(convertName, is(null));
+    }
+    @Test
+    public void ーconvertIdメソッドー指定した名前のIDを取得できていること(){
+        String name = "伊藤A子";
+        String matcherId = "SA";
+        String convertId = service.convertId(name);
+        assertThat(convertId, is(matcherId));
+    }
+    @Test(expected = NullPointerException.class)
+    public void ーconvertIdメソッドー指定した名前が存在しない場合にエラーとなること(){
+        String name = "飯田Z子";
+        String convertId = service.convertId(name);
+        assertThat(convertId, is(null));
+    }
     @Test //シフト振り分け用メソッド未完成
     public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{
         List<NameList> listTest = service.nameListAll();
