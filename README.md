@@ -14,6 +14,8 @@
   　1直(朝～夕方 勤務)
   　2直(夕方～夜中 勤務)
   　3直(夜中～朝 勤務)
+   
+   交代勤務カレンダーサンプル　https://github.com/sho-dang/SHOrepo/issues/1
 
 # 目的
 
