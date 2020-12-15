@@ -158,5 +158,12 @@ public class AppService {
         }else{};
         return string;
     }
-    
+    public void updateAllVacation(int date){
+        String vacationWorkId = "9999";
+        appMapper.updateWorkId(vacationWorkId, date);
+    }
+    public void deleteAllVacation(int date){
+        String resetWorkId = "0000";
+        appMapper.updateWorkId(resetWorkId, date);
+    }
 }

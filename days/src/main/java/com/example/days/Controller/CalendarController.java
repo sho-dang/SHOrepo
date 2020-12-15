@@ -13,9 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/list")
 @Controller
@@ -96,6 +97,18 @@ public class CalendarController {
         service.updateVacationCode(newDayList.getVacationCode(),newDayList.getDate());
         
         //@PathVariable("day")int day,@PathVariable("code") String code
+        return "redirect:/list";
+    }
+    @PostMapping(params = "update")
+    public String holidayUpdate(@RequestParam(name = "date")int date){
+        int updateDate = date; 
+        service.updateAllVacation(date);
+        return "redirect:/list";
+    }
+    @PostMapping(params = "delete")
+    public String holidayReset(@RequestParam(name = "date")int date){
+        int deleteDate = date;
+        service.deleteAllVacation(date);
         return "redirect:/list";
     }
 

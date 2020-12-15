@@ -1,10 +1,5 @@
 package com.example.days.Controller;
 
-import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
-import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.example.days.Service.AppService;
 import com.example.days.domain.UpdateCode.UpdateCode;
@@ -44,7 +39,7 @@ public class CalclateController {
         int inputDate = updateCode.getInputDate();
         String inputCode = updateCode.getInputCode();
         service.updateWorkId(inputDate, inputCode);
-        return "calendar";
+        return "redirect:/list";
     }
 
 }

@@ -19,12 +19,26 @@
             padding-top: 110px;
             margin: 0px 100px;
         }
+        .holiday-block{
+            display: flex;
+            margin: 3px;
+        }
         .holiday{
             display: flex;
             background-color:burlywood;
             border: solid black 2px ;
+            margin: 0px 1px;
             height : 22px ;
             align-items: center;
+        }
+        .holiday-update{
+            align-items: center;
+        }
+        .holiday-i{
+            width:40px;
+        }
+        .holiday-b{
+            width: 45px;
         }
         .hol-p{
             
@@ -38,11 +52,13 @@
             width: 50px;
             text-align: center;
         }
-        
+        .date-cell .date-cell{
+            font-weight: bold ;
+        }
         table{
             
             border-spacing: 3px;
-            border: 2px solid #ddd;
+            border: 2px solid black;
             table-layout: fixed;
             width: 100%;
         }
@@ -91,19 +107,32 @@
 </head>
 <header>
     <div class="flex">
-    <h2>11月勤怠</h2>
-    <form method="GET" action="#" th:action="@{/calclate}">
-        <button type="submit" >自動計算</button>
-    </form>
-    <form method="GET" action="#" th:action="@{/}">
-        <button type="submit" >戻る</button>
-    </form>
-    <div class="holiday">
-        一斉休暇日
-    </div>
-    <div class="holiday"  th:each = "holiday:${holiday}">
-        <p class="hol-p" th:text= "${holiday.date}"></p>
-    </div>
+        <h2>11月勤怠</h2>
+        <form method="GET" action="#" th:action="@{/calclate}">
+            <button type="submit" >自動計算</button>
+        </form>
+        <form method="GET" action="#" th:action="@{/}">
+            <button type="submit" >戻る</button>
+        </form>
+        <div >
+           <div class="holiday-block">
+            <div class="holiday">
+                一斉休暇日
+            </div>
+            <div class="holiday" th:each = "holiday:${holiday}">
+                <p class="hol-p" th:text= "${holiday.date}"></p>
+            </div>
+           </div>
+            <div class="holiday-block">
+              <div class="holiday-update">
+                    <form style="display:inline" method="POST" action="#" th:action="@{/list}">
+                        <label>休暇日編集<input class="holiday-i" type="text" name="date" value=""></label>
+                        <input class="holiday-b" name="update" type="submit" value="登録">
+                        <input class="holiday-b" name="delete" type="submit" value="削除">
+                    </form>
+               </div> 
+            </div>
+        </div>
     </div>
     
     <table class="table-head">

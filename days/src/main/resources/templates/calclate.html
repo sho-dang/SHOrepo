@@ -8,7 +8,15 @@
         span{
             color: red ;
         }
-    
+        .picture-box{
+            margin-top: 50px ;
+            display: flex;
+        }
+        .picture{
+            border: solid 1px black;
+            margin-left: 30px;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body>
@@ -17,11 +25,11 @@
     </form>
     <form method="POST" action="#" th:object="${updateCode}">
        
-        <p>一斉休暇日を入力してください</p>
-         <select multiple="multiple" size="8">
+        <!--p>一斉休暇日を入力してください</!--p>
+         <select-- multiple="multiple" size="8">
                         <option value="">---</option>
                         <option th:each="days : ${date}" th:value="${days.value}" th:text="${days.value}" th:selected="${days.value} == *{selectedItem}">multiSelect</option>
-                    </select>
+                    </select-->
         <p>月始めの出勤開始日を入力してください<br>
         <span>※一斉休暇は除く</span></p>
         <input type="number" max="31" min="1" value="1" th:field="${updateCode.inputDate}">
@@ -31,5 +39,15 @@
         <input type="text" th:field="${updateCode.inputCode}">
         <input type="submit" value="計算">
     </form>
+    <div class="picture-box">
+        <div class="picture">
+            <p>入力値例</p>
+            <img src="https://user-images.githubusercontent.com/70437690/102171665-71ebbf00-3eda-11eb-8166-8a59a38f12f3.jpg" width="400" height="150">
+        </div>
+        <div class="picture">
+            <p>一斉休暇日開始の場合</p>
+            <img src="https://user-images.githubusercontent.com/70437690/102171694-83cd6200-3eda-11eb-88c2-786e6dbb0be5.jpg" width="400" height="175">
+        </div>
+    </div>
 </body>
 </html>
