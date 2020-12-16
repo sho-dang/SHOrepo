@@ -22,12 +22,12 @@ public class ShiftListController {
         List<NameList> nameList = service.nameListAll();
         List<NameList> shiftList = service.shiftList(nameList);
         model.addAttribute("list", nameList);
-        return "index";
+        return "shift";
     }
     /*
     @PostMapping
     public String shiftList(){
-        return "index";
+        return "shift";
     }
     */
 }

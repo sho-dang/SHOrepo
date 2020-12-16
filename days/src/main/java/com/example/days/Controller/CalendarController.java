@@ -101,13 +101,11 @@ public class CalendarController {
     }
     @PostMapping(params = "update")
     public String holidayUpdate(@RequestParam(name = "date")int date){
-        int updateDate = date; 
         service.updateAllVacation(date);
         return "redirect:/list";
     }
     @PostMapping(params = "delete")
     public String holidayReset(@RequestParam(name = "date")int date){
-        int deleteDate = date;
         service.deleteAllVacation(date);
         return "redirect:/list";
     }

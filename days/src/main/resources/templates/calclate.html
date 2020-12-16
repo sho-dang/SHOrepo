@@ -21,7 +21,10 @@
 </head>
 <body>
     <form method="GET" action="#" th:action="@{/}">
-        <button type="submit" >戻る</button>
+        <button type="submit" >ホームに戻る</button>
+    </form>
+    <form method="GET" action="#" th:action="@{/list}">
+        <button type="submit" >カレンダーに戻る</button>
     </form>
     <form method="POST" action="#" th:object="${updateCode}">
        
