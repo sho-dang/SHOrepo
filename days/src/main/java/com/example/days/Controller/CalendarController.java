@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/list")
@@ -69,32 +68,12 @@ public class CalendarController {
         //元のDayListを取得
         DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));
         DayList newDayList =service.convertNullEmpty(selectDayList.getDayList());
-       
 
         //データが入っているシフトの書き換え
-        switch(service.shiftInData(convertDayList)){
-            case "1":
-            newDayList.setVacationNameOne(convertDayList.getVacationNameOne());
-            newDayList.setOverNameOne(convertDayList.getOverNameOne());
-            newDayList.setEarlyNameOne(convertDayList.getEarlyNameOne());
-            break;
-            case "2":
-            newDayList.setVacationNameTwo(convertDayList.getVacationNameTwo());
-            newDayList.setOverNameTwo(convertDayList.getOverNameTwo());
-            newDayList.setEarlyNameTwo(convertDayList.getEarlyNameTwo());
-            break;
-            case "3":
-            newDayList.setVacationNameThree(convertDayList.getVacationNameThree());
-            newDayList.setOverNameThree(convertDayList.getOverNameThree());
-            newDayList.setEarlyNameThree(convertDayList.getEarlyNameThree());
-            break;
-        }
-        newDayList.setVacationCode(
-            "1" + newDayList.getVacationNameOne() + newDayList.getOverNameOne() + newDayList.getEarlyNameOne() +
-            "2" + newDayList.getVacationNameTwo() + newDayList.getOverNameTwo() + newDayList.getEarlyNameTwo() +
-            "3" + newDayList.getVacationNameThree() + newDayList.getOverNameThree() + newDayList.getEarlyNameThree()
-            );
-        service.updateVacationCode(newDayList.getVacationCode(),newDayList.getDate());
+        DayList resultDayList = service.convertDayList(newDayList, convertDayList);
+        int date = resultDayList.getDate();
+        String newVacationCode = service.linkNewVacationCode(resultDayList);
+        service.updateVacationCode(newVacationCode,date);
         
         //@PathVariable("day")int day,@PathVariable("code") String code
         return "redirect:/list";

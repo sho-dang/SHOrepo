@@ -166,4 +166,32 @@ public class AppService {
         String resetWorkId = "0000";
         appMapper.updateWorkId(resetWorkId, date);
     }
+    public DayList convertDayList(DayList newDayList,DayList sourceDayList){
+        switch(shiftInData(sourceDayList)){
+            case "1":
+            newDayList.setVacationNameOne(sourceDayList.getVacationNameOne());
+            newDayList.setOverNameOne(sourceDayList.getOverNameOne());
+            newDayList.setEarlyNameOne(sourceDayList.getEarlyNameOne());
+            break;
+            case "2":
+            newDayList.setVacationNameTwo(sourceDayList.getVacationNameTwo());
+            newDayList.setOverNameTwo(sourceDayList.getOverNameTwo());
+            newDayList.setEarlyNameTwo(sourceDayList.getEarlyNameTwo());
+            break;
+            case "3":
+            newDayList.setVacationNameThree(sourceDayList.getVacationNameThree());
+            newDayList.setOverNameThree(sourceDayList.getOverNameThree());
+            newDayList.setEarlyNameThree(sourceDayList.getEarlyNameThree());
+            break;
+        }
+        return newDayList;
+    }
+    public String linkNewVacationCode(DayList sourceDayList){
+        sourceDayList.setVacationCode(
+            "1" + sourceDayList.getVacationNameOne() + sourceDayList.getOverNameOne() + sourceDayList.getEarlyNameOne() +
+            "2" + sourceDayList.getVacationNameTwo() + sourceDayList.getOverNameTwo() + sourceDayList.getEarlyNameTwo() +
+            "3" + sourceDayList.getVacationNameThree() + sourceDayList.getOverNameThree() + sourceDayList.getEarlyNameThree()
+            );
+        return sourceDayList.getVacationCode();
+    }
 }

@@ -1,12 +1,16 @@
 package com.example.days.Controller;
 
 
+import javax.validation.Valid;
+
 import com.example.days.Service.AppService;
 import com.example.days.domain.UpdateCode.UpdateCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +39,10 @@ public class CalclateController {
     }
 
     @PostMapping
-    public String calcReturn(@ModelAttribute UpdateCode updateCode){
+    public String calcReturn(@Validated @ModelAttribute UpdateCode updateCode,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "calclate";
+        }
         int inputDate = updateCode.getInputDate();
         String inputCode = updateCode.getInputCode();
         service.updateWorkId(inputDate, inputCode);
