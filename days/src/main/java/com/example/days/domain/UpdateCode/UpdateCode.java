@@ -5,15 +5,16 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.lang.NonNull;
 
 public class UpdateCode {
     
-    
-    @Range(min = 1,max = 30,message = "日付が存在しません")
+    @NonNull
+    @Range(min = 1,max = 30)
     private int inputDate;
 
-    @NotBlank(message = "入力してください")
-    @Pattern(regexp = "^[1-4]{5}",message = "5桁の数字をを正しく入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[1-4]{5}")
     private String inputCode;
     
     public int getInputDate(){

@@ -37,8 +37,8 @@ public class CalendarControllerTest {
     @Test
     public void カレンダー画面の休暇日登録後にリダイレクトされること()throws Exception{
         mockMvc.perform(post("/list").param("date","1"))
-        .andExpect(redirectedUrl("/list"))
-        ;
+        .andExpect(redirectedUrl("/list"));
     }
+
 
 }
