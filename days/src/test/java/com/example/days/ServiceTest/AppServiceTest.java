@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AppServiceTest {
@@ -25,70 +26,55 @@ public class AppServiceTest {
     public void ーnameListAllメソッドーnameListを全件取得できていること()throws Exception{
         List<NameList> nameList = service.nameListAll();
         int matcher = 16 ;
-        assertThat(nameList.size(), is(matcher));
-    }
-    @Test
-    public void ーnameListAllメソッドーnameListの取得件数が違う場合にエラーになること()throws Exception{
-        List<NameList> nameList = service.nameListAll();
-        int matcher = 50 ;
-        assertThat(nameList.size(), not(matcher));
+        assertThat(nameList, hasSize(matcher));
     }
     @Test
     public void ーlistOneメソッドー選択したshiftNameのレコード件数が一致すること()throws Exception{
         List<NameList> listOne = service.listOne("シフト1");
         int matcher = 4;
-        assertThat( listOne.size(), is(matcher));
+        assertThat( listOne, hasSize(matcher));
     }
+
     @Test
-    public void ーlistOneメソッドー選択したshiftNameのレコード件数が違う場合にエラーになること()throws Exception{
-        List<NameList> listOne = service.listOne("シフト1");
-        int matcher = 10;
-        assertThat( listOne.size(), not(matcher));
-    }
-    @Test
-    public void ーconvertNameメソッドー指定したIDの名前を取得できていること(){
+    public void ーconvertNameメソッドー指定したIDの名前を取得できていること()throws Exception{
         String nameId = "SA";
         String matcherName = "伊藤A子";
         String convertName = service.convertName(nameId);
         assertThat(convertName, is(matcherName));
     }
     @Test(expected = NullPointerException.class)
-    public void ーconvertNameメソッドー指定したIDが存在しない場合にエラーとなること(){
+    public void ーconvertNameメソッドー指定したIDが存在しない場合にエラーとなること()throws Exception{
         String nameId = "AA";
         String convertName = service.convertName(nameId);
         assertThat(convertName, is(null));
     }
+
     @Test
-    public void ーconvertIdメソッドー指定した名前のIDを取得できていること(){
+    public void ーconvertIdメソッドー指定した名前のIDを取得できていること()throws Exception{
         String name = "伊藤A子";
         String matcherId = "SA";
         String convertId = service.convertId(name);
         assertThat(convertId, is(matcherId));
     }
     @Test(expected = NullPointerException.class)
-    public void ーconvertIdメソッドー指定した名前が存在しない場合にエラーとなること(){
+    public void ーconvertIdメソッドー指定した名前が存在しない場合にエラーとなること()throws Exception{
         String name = "飯田Z子";
         String convertId = service.convertId(name);
         assertThat(convertId, is(null));
     }
+    
     @Test //シフト振り分け用メソッド未完成
     public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{
         List<NameList> listTest = service.nameListAll();
         List<NameList> resultList = service.shiftList(listTest);
         int matcher = 16 ;
-        assertThat(resultList.size(), is(matcher));
+        assertThat(resultList, hasSize(matcher));
     }
     @Test
     public void ーdaysメソッドー取得したDayListの日付件数が一致すること()throws Exception{
         List<DayList> dayTest = service.days();
         int monthDays = 30;
-        assertThat(dayTest.size(),is(monthDays));
-    }
-    @Test
-    public void ーdaysメソッドー取得したDayListの日付件数が違う場合にエラーとなること()throws Exception{
-        List<DayList> dayTest = service.days();
-        int monthDays = 100;
-        assertThat(dayTest.size(),not(monthDays));
+        assertThat(dayTest,hasSize(monthDays));
     }
     @Test
     public void ーmatchWorkIdメソッドー選択したdateと一致するworkIdを取得できていること()throws Exception{

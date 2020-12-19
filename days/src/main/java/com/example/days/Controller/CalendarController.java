@@ -3,14 +3,20 @@ package com.example.days.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMerge;
 import com.example.days.domain.Day.DaySplit;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +35,7 @@ public class CalendarController {
     }
 
     @GetMapping
-    public String createTable(Model model,@ModelAttribute DayList dayList){
+    public String viewCalendar(Model model,@ModelAttribute DayList dayList){
 
         
         DayMerge init = new DayMerge(service.days());
@@ -79,13 +85,19 @@ public class CalendarController {
         return "redirect:/list";
     }
     @PostMapping(params = "update")
-    public String holidayUpdate(@RequestParam(name = "date")int date){
-        service.updateAllVacation(date);
+    public String holidayUpdate(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "calendar";
+        }
+        service.updateAllVacation(dayList.getDate());
         return "redirect:/list";
     }
     @PostMapping(params = "delete")
-    public String holidayReset(@RequestParam(name = "date")int date){
-        service.deleteAllVacation(date);
+    public String holidayReset(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "calendar";
+        }
+        service.deleteAllVacation(dayList.getDate());
         return "redirect:/list";
     }
 

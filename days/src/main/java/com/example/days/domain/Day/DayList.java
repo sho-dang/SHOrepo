@@ -1,7 +1,12 @@
 package com.example.days.domain.Day;
 
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Range;
+
 public class DayList {
     
+    @Range(min = 1,max = 30)
     private int date;
     private String workId;
     private String vacationCode;

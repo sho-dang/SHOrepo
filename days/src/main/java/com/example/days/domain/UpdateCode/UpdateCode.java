@@ -1,15 +1,12 @@
 package com.example.days.domain.UpdateCode;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.lang.NonNull;
 
 public class UpdateCode {
     
-    @NonNull
     @Range(min = 1,max = 30)
     private int inputDate;
 

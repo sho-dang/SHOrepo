@@ -140,13 +140,16 @@
             </div>
             <div class="holiday-block">
                 <div class="holiday-update">
-                    <form style="display:inline" method="POST" action="#" th:action="@{/list}">
-                        <label>休暇日編集<input class="holiday-i" type="text" name="date" value=""></label>
+                    <form style="display:inline" method="POST" action="#" th:action="@{/list}" > 
+                        <label>休暇日編集<input class="holiday-i" type="text" name="date" th:field=${dayList.date}></label>
                         <input class="holiday-b" name="update" type="submit" value="登録">
                         <input class="holiday-b" name="delete" type="submit" value="削除">
                     </form>
                 </div> 
             </div>
+        </div>
+        <div>
+            <p th:errors="${dayList.date}" th:errorclass="err"></p>
         </div>
     </div>
     
