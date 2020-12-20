@@ -54,7 +54,7 @@
         <form method="GET" action="#" th:action="@{/}">
             <button type="submit" >ホームに戻る</button>
         </form>
-        <form method="GET" action="#" th:action="@{/list}">
+        <form method="GET" action="#" th:action="@{/calendar}">
             <button type="submit" >カレンダーに戻る</button>
         </form>
     </div>
@@ -69,14 +69,14 @@
                 <div class="text-box">
                         <p>月始めの出勤開始日を入力してください<br>
                         <span>※一斉休暇は除く</span></p>
-                        <input type="text" value="" name="inputDate" th:field="${updateCode.inputDate}">
+                        <input type="text" name="inputDate">
                         <p th:errors="${updateCode.inputDate}" class="error" >--日付が存在しません--</p>
                 </div>
                 <div class="text-box">
                             <p>「シフト1」出勤開始日から5日間の数字を入力してください<br>
                             例：[1,1,ヤ,3,3]の場合、「11433」<br>
                             <span>※一斉休暇は除き、「ヤ」(休み)の場合は「4」を入力してください</span></p>
-                            <input type="text" th:field="${updateCode.inputCode}">
+                            <input type="text" name="inputCode">
                             <p th:errors="${updateCode.inputCode}" class="error" >--5桁の数字をを正しく入力してください--</p>
                 </div>
                         

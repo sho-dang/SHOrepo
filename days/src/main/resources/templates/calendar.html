@@ -130,7 +130,7 @@
             </form>
         </div>
         <div >
-           <div class="holiday-block">
+            <div class="holiday-block">
                 <div class="holiday">
                     一斉休暇日
                 </div>
@@ -140,8 +140,8 @@
             </div>
             <div class="holiday-block">
                 <div class="holiday-update">
-                    <form style="display:inline" method="POST" action="#" th:action="@{/list}" > 
-                        <label>休暇日編集<input class="holiday-i" type="text" name="date" th:field=${dayList.date}></label>
+                    <form style="display:inline" method="POST" action="#" th:action="@{/calendar}" > 
+                        <label>休暇日編集<input class="holiday-i" type="text" name="date" ></label>
                         <input class="holiday-b" name="update" type="submit" value="登録">
                         <input class="holiday-b" name="delete" type="submit" value="削除">
                     </form>
@@ -171,172 +171,172 @@
         <tr class="date-cell" th:each="days,each:${days}" th:object="${dayList}">
             <td class="date-cell" th:text="${days.date}">1</td>
             <td th:switch="${days.shiftOne}">            
-                <div class="bg-green" th:case="1">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-green">1直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
-                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
-                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-red" th:case="2">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p  class="bg-red">2直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
-                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-blue" th:case="3">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-blue">3直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
-                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div  th:case="4">
-                    <p class="bg-gray">休み</p>
-                </div>
-                <div  th:case="9">
-                    <p class="bg-pink">一斉休暇</p>
-                </div>
-                <p th:case="*">エラー</p>
+                                <div class="bg-green" th:case="1">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-green">1直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
+                                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
+                                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-red" th:case="2">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p  class="bg-red">2直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
+                                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-blue" th:case="3">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-blue">3直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftOne" th:value="${days.shiftOne}">
+                                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div  th:case="4">
+                                    <p class="bg-gray">休み</p>
+                                </div>
+                                <div  th:case="9">
+                                    <p class="bg-pink">一斉休暇</p>
+                                </div>
+                                <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftTwo}">
-                <div class="bg-green" th:case="1">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-green">1直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
-                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
-                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-red" th:case="2">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-red">2直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
-                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-blue" th:case="3">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-blue">3直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
-                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div  th:case="4">
-                    <p class="bg-gray">休み</p>
-                </div>
-                <div  th:case="9">
-                    <p class="bg-pink">一斉休暇</p>
-                </div>
-                <p th:case="*">エラー</p>
+                                <div class="bg-green" th:case="1">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-green">1直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
+                                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
+                                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-red" th:case="2">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-red">2直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
+                                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-blue" th:case="3">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-blue">3直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftTwo" th:value="${days.shiftTwo}">
+                                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div  th:case="4">
+                                    <p class="bg-gray">休み</p>
+                                </div>
+                                <div  th:case="9">
+                                    <p class="bg-pink">一斉休暇</p>
+                                </div>
+                                <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftThree}">
-                <div class="bg-green" th:case="1">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-green">1直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
-                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
-                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-red" th:case="2">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-red">2直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
-                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-blue" th:case="3">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-blue">3直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
-                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div  th:case="4">
-                    <p class="bg-gray">休み</p>
-                </div>
-                <div  th:case="9">
-                    <p class="bg-pink">一斉休暇</p>
-                </div>
-                <p th:case="*">エラー</p>
+                                <div class="bg-green" th:case="1">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-green">1直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
+                                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
+                                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-red" th:case="2">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-red">2直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
+                                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-blue" th:case="3">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-blue">3直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftThree" th:value="${days.shiftThree}">
+                                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div  th:case="4">
+                                    <p class="bg-gray">休み</p>
+                                </div>
+                                <div  th:case="9">
+                                    <p class="bg-pink">一斉休暇</p>
+                                </div>
+                                <p th:case="*">エラー</p>
             </td>
             <td th:switch="${days.shiftFour}">
-                <div class="bg-green" th:case="1">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-green">1直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
-                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
-                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-red" th:case="2">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-red">2直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
-                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div class="bg-blue" th:case="3">
-                    <form method="POST" action="#" th:action="@{/list}">
-                        <p class="bg-blue">3直</p>
-                        <input type="hidden" name="date" th:value="${days.date}">
-                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
-                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
-                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
-                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
-                        <input type="submit" value="登録">
-                    </form>
-                </div>
-                <div  th:case="4">
-                    <p class="bg-gray">休み</p>
-                </div>
-                <div  th:case="9">
-                    <p class="bg-pink">一斉休暇</p>
-                </div>
-                <p th:case="*">エラー</p>
+                                <div class="bg-green" th:case="1">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-green">1直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
+                                        <lavel>休暇者<input type="text" class="bg-green" name="vacationNameOne" th:value="${days.vacationNameOne}" ></lavel>
+                                        <lavel>残業者<input type="text" class="bg-green" name="overNameOne" th:value="${days.overNameOne}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-green" name="earlyNameOne" th:value="${days.earlyNameOne}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-red" th:case="2">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-red">2直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
+                                        <lavel>休暇者<input type="text" class="bg-red" name="vacationNameTwo" th:value="${days.vacationNameTwo}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-red" name="overNameTwo" th:value="${days.overNameTwo}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-red" name="earlyNameTwo" th:value="${days.earlyNameTwo}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div class="bg-blue" th:case="3">
+                                    <form method="POST" action="#" th:action="@{/calendar}">
+                                        <p class="bg-blue">3直</p>
+                                        <input type="hidden" name="date" th:value="${days.date}">
+                                        <input type="hidden" name="shiftFour" th:value="${days.shiftFour}">
+                                        <lavel>休暇者<input type="text" class="bg-blue" name="vacationNameThree" th:value="${days.vacationNameThree}"></lavel>
+                                        <lavel>残業者<input type="text" class="bg-blue" name="overNameThree" th:value="${days.overNameThree}"></lavel>
+                                        <lavel>早出者<input type="text" class="bg-blue" name="earlyNameThree" th:value="${days.earlyNameThree}"></lavel>
+                                        <input type="submit" value="登録">
+                                    </form>
+                                </div>
+                                <div  th:case="4">
+                                    <p class="bg-gray">休み</p>
+                                </div>
+                                <div  th:case="9">
+                                    <p class="bg-pink">一斉休暇</p>
+                                </div>
+                                <p th:case="*">エラー</p>
             </td>
         </tr>
     </table>

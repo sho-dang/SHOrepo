@@ -46,7 +46,7 @@ public class CalclateController {
         int inputDate = updateCode.getInputDate();
         String inputCode = updateCode.getInputCode();
         service.updateWorkId(inputDate, inputCode);
-        return "redirect:/list";
+        return "redirect:/calendar";
     }
 
 }
