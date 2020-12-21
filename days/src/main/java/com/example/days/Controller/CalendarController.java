@@ -62,18 +62,18 @@ public class CalendarController {
     }
 
     @PostMapping(params = "update")
-    public String holidayUpdate(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult){
+    public String holidayUpdate(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult,Model model){
         if(bindingResult.hasErrors()){
-            return "/calendar";
+            return viewCalendar(model, dayList);
         }
         service.updateAllVacation(dayList.getDate());
         return "redirect:/calendar";
     }
 
     @PostMapping(params = "delete")
-    public String holidayReset(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult){
+    public String holidayReset(@Validated @ModelAttribute DayList dayList,BindingResult bindingResult,Model model){
         if(bindingResult.hasErrors()){
-            return "/calendar";
+            return viewCalendar(model, dayList);
         }
         service.deleteAllVacation(dayList.getDate());
         return "redirect:/calendar";

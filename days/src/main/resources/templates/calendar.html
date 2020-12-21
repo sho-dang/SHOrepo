@@ -58,6 +58,25 @@
             height: 10px ;
             
         }
+        .error-message{
+            border: solid 1px black;
+            margin: auto;
+            height: 70px;
+            width: 30%;
+        }
+        .error-message h6 {
+            margin: -1px;
+            padding: 0px;
+            border: solid black 1px;
+        }
+        .error-message div{
+            overflow:scroll;
+            height: 50px;
+        }
+        .error-message p{
+            margin: 0px;
+            color: red;
+        }
         .date-cell{
             width: 50px;
             text-align: center;
@@ -148,8 +167,11 @@
                 </div> 
             </div>
         </div>
-        <div>
-            <p th:errors="${dayList.date}" th:errorclass="err"></p>
+        <div class="error-message">
+            <h6>エラーメッセージ</h6>
+            <div>
+                <p th:errors="${dayList.date}" >validation</p>
+            </div>
         </div>
     </div>
     
