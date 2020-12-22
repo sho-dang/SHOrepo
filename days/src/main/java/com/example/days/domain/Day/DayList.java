@@ -1,7 +1,5 @@
 package com.example.days.domain.Day;
 
-import javax.validation.constraints.NotBlank;
-
 import org.hibernate.validator.constraints.Range;
 
 public class DayList {

@@ -3,11 +3,11 @@ package com.example.days.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMerge;
 import com.example.days.domain.Day.DaySplit;
+import com.example.days.domain.NameList.NameList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +38,15 @@ public class CalendarController {
                 .filter(d -> d.getWorkId().equals("9999"))
                 .forEach(d -> holiday.add(d));
         model.addAttribute("holiday",holiday);
+
+        List<NameList> shiftOneList = service.listOne("シフト1");
+        List<NameList> shiftTwoList = service.listOne("シフト2");
+        List<NameList> shiftThreeList = service.listOne("シフト3");
+        List<NameList> shiftFourList = service.listOne("シフト4");
+        model.addAttribute("shiftOneList",shiftOneList);
+        model.addAttribute("shiftTwoList",shiftTwoList );
+        model.addAttribute("shiftThreeList",shiftThreeList );
+        model.addAttribute("shiftFourList",shiftFourList );
 
         return "calendar";
     }
