@@ -39,15 +39,6 @@ public class CalendarController {
                 .forEach(d -> holiday.add(d));
         model.addAttribute("holiday",holiday);
 
-        List<NameList> shiftOneList = service.listOne("シフト1");
-        List<NameList> shiftTwoList = service.listOne("シフト2");
-        List<NameList> shiftThreeList = service.listOne("シフト3");
-        List<NameList> shiftFourList = service.listOne("シフト4");
-        model.addAttribute("shiftOneList",shiftOneList);
-        model.addAttribute("shiftTwoList",shiftTwoList );
-        model.addAttribute("shiftThreeList",shiftThreeList );
-        model.addAttribute("shiftFourList",shiftFourList );
-
         return "calendar";
     }
 
@@ -60,6 +51,7 @@ public class CalendarController {
         DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));
         DayList newDayList =service.convertNullEmpty(selectDayList.getDayList());
 
+        
         //データが入っているシフトの書き換え
         DayList resultDayList = service.convertDayList(newDayList, convertDayList);
         int date = resultDayList.getDate();

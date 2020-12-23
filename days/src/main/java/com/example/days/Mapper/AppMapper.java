@@ -5,6 +5,8 @@ import java.util.List;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.NameList.NameList;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -50,4 +52,9 @@ public interface AppMapper {
     @Update("update schedule set vacationCode=#{vacationCode} where date = #{date}")
     void updateVacationCode(@Param("vacationCode") String vacationCode,@Param("date")int date); //test済み
     
+    @Insert("INSERT INTO shift (id, nameList,shiftName) VALUES (#{id}, #{nameList},#{shiftName})")
+    void insertName(@Param("id")String id,@Param("nameList")String nameList,@Param("shiftName")String shiftName);
+
+    @Delete("DELETE FROM shift WHERE id = #{id}")
+    void deleteName(String id);
 }

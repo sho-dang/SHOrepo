@@ -194,4 +194,10 @@ public class AppService {
             );
         return sourceDayList.getVacationCode();
     }
+    public void insertName(NameList nameList){
+        appMapper.insertName(nameList.getId(), nameList.getNameList(), nameList.getShiftName());
+    }
+    public void deleteName(String id){
+        appMapper.deleteName(id);
+    }
 }
