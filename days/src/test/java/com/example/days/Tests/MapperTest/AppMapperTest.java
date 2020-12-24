@@ -1,4 +1,4 @@
-package com.example.days.MapperTest;
+package com.example.days.Tests.MapperTest;
 
 import com.example.days.Mapper.AppMapper;
 import com.example.days.domain.Day.DayList;
@@ -12,13 +12,16 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-//@PropertySource("classpath:/src/test/test.properties")
+//@MybatisTest
+//@TestPropertySource(properties = "classpath:test.properties")
 public class AppMapperTest {
     @Autowired
     AppMapper appMapper;

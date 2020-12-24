@@ -1,4 +1,4 @@
-package com.example.days.ControllerTest;
+package com.example.days.Tests.ControllerTest;
 
 import com.example.days.Controller.CalendarController;
 

@@ -1,4 +1,4 @@
-package com.example.days.ServiceTest;
+package com.example.days.Tests.ServiceTest;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AppServiceTest {
     @Autowired
-    AppService service;
+    public AppService service;
 
     @Test
     public void ーnameListAllメソッドーnameListを全件取得できていること()throws Exception{
