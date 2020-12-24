@@ -12,10 +12,10 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+//import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+//import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -121,5 +121,17 @@ public class AppMapperTest {
 
         //Return WorkId
         appMapper.updateVacationCode(beforeVacationCode,date);
+    }
+    @Test
+    public void shiftテーブルに登録されている名前を削除できる(){
+        String id = "TT";
+        String name = "test";
+        String shift = "シフト4";
+        appMapper.insertName(id, name, shift);
+        assertThat(appMapper.listAll().size(),is(17));
+
+        appMapper.deleteName(id);
+        assertThat(appMapper.listAll().size(),is(16));
+
     }
 }

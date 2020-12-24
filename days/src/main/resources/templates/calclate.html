@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自動計算</title>
     <style>
+        *{
+            margin: 0px;
+        }
+        header{
+            background-color: beige;
+            padding: 30px;
+        }
         .transition-flex{
             display: flex ;
+            align-items: center;
         }
         .transition-flex button{
             height : 50px ;
-            margin-right: 10px; 
+            margin-left: 20px; 
+        }
+        body{
+            margin: 0px 100px;
         }
         .text-picture-flex{
             display: flex ;
             justify-content:flex-start;
+            padding: 0px 50px;
         }
         .picture-all{
             margin-left: 100px;
@@ -56,9 +68,9 @@
         }
     </style>
 </head>
-<body>
-
+<header>
     <div class="transition-flex">
+        <h1>自動計算</h1>
         <form method="GET" action="#" th:action="@{/}">
             <button type="submit" >ホームに戻る</button>
         </form>
@@ -66,6 +78,10 @@
             <button type="submit" >カレンダーに戻る</button>
         </form>
     </div>
+</header>
+<body>
+
+    
     <form method="POST" action="#" th:object="${updateCode}">
         <div class="text-picture-flex">
             <div class="text-all">
