@@ -80,7 +80,7 @@ public class AppServiceTest {
     public void ーmatchWorkIdメソッドー選択したdateと一致するworkIdを取得できていること()throws Exception{
         int selectDay = 1 ;
         String workId = service.matchWorkId(selectDay);
-        String matcher = "3142";
+        String matcher = "0000";
         assertThat(workId, is(matcher));
     }
     @Test
@@ -104,10 +104,26 @@ public class AppServiceTest {
         String matcher = null;
         assertThat(shiftPattern, is(matcher)); 
     }
-    @Test //未実装
+    @Test 
     public void updateMethodメソッドー()throws Exception{
+        int startDate = 1 ;
+        String code = "33334";
 
+        service.updateWorkId(startDate, code);
+
+        String dayOne =service.matchWorkId(1);
+        String dayTwo = service.matchWorkId(2);
+        String dayThree = service.matchWorkId(3);
+        String dayFour = service.matchWorkId(4);
+        String dayFive = service.matchWorkId(5);
+        String changedCode = dayOne.substring(0,1) + 
+                        dayTwo.substring(0,1) +
+                        dayThree.substring(0,1) +
+                        dayFour.substring(0,1) +
+                        dayFive.substring(0,1);
+        assertThat(code, is(changedCode));
     }
+    
     @Test //未実装
     public void ーupdateMethodメソッドー()throws Exception{
 

@@ -62,7 +62,7 @@ public class AppMapperTest {
     @Test
     public void scheduleテーブルから指定した日付のデータを全て取得できる()throws Exception{
         int date = 30 ;
-        String matcherWorkId = "2341";
+        String matcherWorkId = "0000";
         String matcherVacationId = "1XXXXXX2XXXXXX3XXXXXX";
         DayList dayList = appMapper.selectDayList(date);
 
@@ -72,7 +72,7 @@ public class AppMapperTest {
     }
     @Test
     public void scheduleテーブルで指定したdateのworkIdデータを取得()throws Exception{
-        String matchWorkId = "3142" ;
+        String matchWorkId = "0000" ;
         int date = 1 ;
         String workId = appMapper.matchWorkId(date);
         assertThat(workId, is(matchWorkId));
