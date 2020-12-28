@@ -53,7 +53,7 @@ public class AppService {
     public String shiftPattern(int number){ //test済み
         return appMapper.shiftPattern(number);
     }
-    public void updateWorkId(int date,String inputCode){
+    public void updateWorkId(int date,String inputCode){ //test済み
         //シフトパターンNoが決定
         int countNumber = appMapper.number(inputCode);
         //intが４の場合,

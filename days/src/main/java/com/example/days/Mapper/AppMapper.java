@@ -57,4 +57,12 @@ public interface AppMapper {
 
     @Delete("DELETE FROM shift WHERE id = #{id}")
     void deleteName(String id);
+
+    //テーブル作成メソッド
+    @Update("CREATE TABLE table_${tableName} (date int(2),workId varchar(4),vacationCode varchar(28),primary key (date))")
+    void createTable(String tableName);
+
+    //テーブル削除メソッド
+    @Delete("DROP TABLE table_${tableName}")
+    void deleteTable(String tableName);
 }
