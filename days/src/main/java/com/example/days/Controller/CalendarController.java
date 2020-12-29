@@ -7,7 +7,6 @@ import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMerge;
 import com.example.days.domain.Day.DaySplit;
-import com.example.days.domain.NameList.NameList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

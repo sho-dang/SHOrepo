@@ -26,12 +26,15 @@ public class AppMapperTest {
     @Autowired
     AppMapper appMapper;
 
+
+
     @Test
     public void shiftテーブルのデータを全て取得できる()throws Exception{
         List<NameList> listAll = appMapper.listAll();
         int matcher = 16;
         assertThat(listAll.size(),is(matcher));
     }
+    
     @Test
     public void shiftテーブルで指定したshiftNameのmemberリストを全て取得できる()throws Exception{
         String shiftName = "シフト1";

@@ -1,7 +1,6 @@
 package com.example.days.Controller;
 
 
-import javax.validation.Valid;
 
 import com.example.days.Service.AppService;
 import com.example.days.domain.UpdateCode.UpdateCode;

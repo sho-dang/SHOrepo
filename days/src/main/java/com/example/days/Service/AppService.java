@@ -18,6 +18,12 @@ public class AppService {
     @Autowired
     AppMapper appMapper;
 
+
+    /**
+     * 
+     * @param shiftテーブル
+     */
+
     public List<NameList> nameListAll(){ //test済み
         List<NameList> list = appMapper.listAll();
         return list;
@@ -39,43 +45,13 @@ public class AppService {
         List<NameList> shiftList = nameList.getNameList();
         return shiftList;
     }
-    public List<DayList> days(){ //test済み
-        List<DayList> days = appMapper.days();
-        return days;
+    public void insertName(NameList nameList){
+        appMapper.insertName(nameList.getId(), nameList.getNameList(), nameList.getShiftName());
     }
-    public DayList selectDayList(int date){
-        DayList selectDayList = appMapper.selectDayList(date);
-        return selectDayList;
+    public void deleteName(String id){
+        appMapper.deleteName(id);
     }
-    public String matchWorkId(int date){ //test済み
-        return appMapper.matchWorkId(date);
-    }
-    public String shiftPattern(int number){ //test済み
-        return appMapper.shiftPattern(number);
-    }
-    public void updateWorkId(int date,String inputCode){ //test済み
-        //シフトパターンNoが決定
-        int countNumber = appMapper.number(inputCode);
-        //intが４の場合,
-        //スケジュールの日数だけくり返す
-        for(int i = date ; i <= 30 ; i++){
-            //一斉休暇日"9999"の場合はスキップする
-            if(appMapper.matchWorkId(i).equals("9999")){
-                continue;
-            }
-            //シフトパターンが入る"3214"etc ナンバーで指定
-            String shiftPattern = shiftPattern(countNumber);
-            appMapper.updateWorkId(shiftPattern,i);
-            countNumber++;
-            if(countNumber == 21){
-                countNumber = 1;
-            }
-        }
-        
-    }
-    public void updateVacationCode(String vacationId , int date){
-        appMapper.updateVacationCode(vacationId, date);
-    }
+
     public DayList convertNameList(DayList dayList){
         dayList.setVacationNameOne(convertNameMethod(dayList.getVacationNameOne()));
         dayList.setVacationNameTwo(convertNameMethod(dayList.getVacationNameTwo()));
@@ -116,13 +92,69 @@ public class AppService {
         }else{
             nameList = convertId(nameList);
         };
-        
-
-
-
-
         return nameList;
     }
+
+    /**
+     * @param scheduleテーブル
+     */
+
+    public List<DayList> days(){ //test済み
+        List<DayList> days = appMapper.days();
+        return days;
+    }
+    public DayList selectDayList(int date){
+        DayList selectDayList = appMapper.selectDayList(date);
+        return selectDayList;
+    }
+    public String matchWorkId(int date){ //test済み
+        return appMapper.matchWorkId(date);
+    }
+    
+    public void updateWorkId(int date,String inputCode){ //test済み
+        //シフトパターンNoが決定
+        int countNumber = appMapper.number(inputCode);
+        //intが４の場合,
+        //スケジュールの日数だけくり返す
+        for(int i = date ; i <= 30 ; i++){
+            //一斉休暇日"9999"の場合はスキップする
+            if(appMapper.matchWorkId(i).equals("9999")){
+                continue;
+            }
+            //シフトパターンが入る"3214"etc ナンバーで指定
+            String shiftPattern = shiftPattern(countNumber);
+            appMapper.updateWorkId(shiftPattern,i);
+            countNumber++;
+            if(countNumber == 21){
+                countNumber = 1;
+            }
+        }
+        
+    }
+    public void updateVacationCode(String vacationId , int date){
+        appMapper.updateVacationCode(vacationId, date);
+    }
+    public void updateAllVacation(int date){
+        String vacationWorkId = "9999";
+        appMapper.updateWorkId(vacationWorkId, date);
+    }
+    public void deleteAllVacation(int date){
+        String resetWorkId = "0000";
+        appMapper.updateWorkId(resetWorkId, date);
+    }
+
+
+    /**
+     * @param shiftpatternテーブル
+     */
+
+    public String shiftPattern(int number){ //test済み
+        return appMapper.shiftPattern(number);
+    }
+
+    
+    
+    //入力値判定メソッド
     public String shiftInData(DayList dayList){
         String shiftInData = "";
         if(dayList.getShiftOne() != null){
@@ -136,7 +168,8 @@ public class AppService {
         }
         return shiftInData;
     }
-    @Transactional
+
+    @Transactional //NULLを空文字に変換
     public DayList convertNullEmpty(DayList dayList){
         dayList.setVacationNameOne(convertNullEmptyMethod(dayList.getVacationNameOne()));
         dayList.setVacationNameTwo(convertNullEmptyMethod(dayList.getVacationNameTwo()));
@@ -148,7 +181,7 @@ public class AppService {
         dayList.setEarlyNameTwo(convertNullEmptyMethod(dayList.getEarlyNameTwo()));
         dayList.setEarlyNameThree(convertNullEmptyMethod(dayList.getEarlyNameThree()));
         return dayList;
-    }
+    }   //NULLを空文字に変換
     public String convertNullEmptyMethod(String string){
         if(string == null){
             string = "";
@@ -158,14 +191,8 @@ public class AppService {
         }else{};
         return string;
     }
-    public void updateAllVacation(int date){
-        String vacationWorkId = "9999";
-        appMapper.updateWorkId(vacationWorkId, date);
-    }
-    public void deleteAllVacation(int date){
-        String resetWorkId = "0000";
-        appMapper.updateWorkId(resetWorkId, date);
-    }
+    
+    //既存のscheduleデータを更新するメソッド
     public DayList convertDayList(DayList newDayList,DayList sourceDayList){
         switch(shiftInData(sourceDayList)){
             case "1":
@@ -186,6 +213,7 @@ public class AppService {
         }
         return newDayList;
     }
+    //変更後のvacationCodeを連結
     public String linkNewVacationCode(DayList sourceDayList){
         sourceDayList.setVacationCode(
             "1" + sourceDayList.getVacationNameOne() + sourceDayList.getOverNameOne() + sourceDayList.getEarlyNameOne() +
@@ -194,10 +222,5 @@ public class AppService {
             );
         return sourceDayList.getVacationCode();
     }
-    public void insertName(NameList nameList){
-        appMapper.insertName(nameList.getId(), nameList.getNameList(), nameList.getShiftName());
-    }
-    public void deleteName(String id){
-        appMapper.deleteName(id);
-    }
+    
 }
