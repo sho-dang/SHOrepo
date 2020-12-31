@@ -62,7 +62,27 @@
                 width:80px;
                 margin: 2px;
             }
-            
+            .error-message{
+                width:250px;
+                margin: 10px;
+                border: solid black 1px;
+            }
+            .error-message h6 {
+                margin: -1px;
+                width : auto;
+                padding: 0px;
+                font-size:13px;
+                border: solid black 1px;
+            }
+            .error-message .message-box{
+                overflow:scroll;
+                height: 110px;
+            }
+            .error-message p{
+                margin: 0px;
+                color: red;
+            }
+
             body{
                 margin: 0px 100px;
             }
@@ -140,7 +160,7 @@
                 
                 <div class="insert">
                     <form method="post"  action=# th:action="@{/shift}">
-                        <div >
+                        <div>
                             <p class="title">新規作成</p>
                         </div>
                         <div>
@@ -165,6 +185,16 @@
                             <button name="delete">削除</button>
                         </div>
                     </form>
+                </div>
+                <div class="error-message" th:object="${nameList}">
+                    <div>
+                        <h6>エラーメッセージ</h6>
+                        <div class="message-box">
+                            <p th:errors="${nameList.id}">エラー</p>
+                            <p th:errors="${nameList.nameList}">エラー</p>
+                            <p th:errors="${nameList.shiftName}">エラー</p>
+                        </div>
+                    </div>    
                 </div>
             </div>
     </header>

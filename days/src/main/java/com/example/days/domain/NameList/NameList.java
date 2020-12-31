@@ -1,9 +1,14 @@
 package com.example.days.domain.NameList;
 
+import javax.validation.constraints.NotBlank;
+
 public class NameList {
 
+    @NotBlank
     private String id;
+    @NotBlank
     private String nameList;
+    @NotBlank
     private String shiftName;
 
     public String getId() {
