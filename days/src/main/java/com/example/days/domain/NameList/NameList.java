@@ -1,14 +1,19 @@
 package com.example.days.domain.NameList;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class NameList {
 
-    @NotBlank
+    @NotBlank(message = "※IDを入力してください")
+    @Pattern(regexp = "^$|[A-Z]{2}",message = "※IDは「大文字のアルファベット２文字」で入力してください")
     private String id;
-    @NotBlank
+
+    @NotBlank(message = "※名前を入力してください")
     private String nameList;
-    @NotBlank
+
+    @NotBlank(message = "※シフト名を入力してください")
+    @Pattern(regexp = "^$|シフト(1|2|3|4)",message = "※シフト名は「シフト1」「シフト2」「シフト3」「シフト4」のいずれかを入力してください")
     private String shiftName;
 
     public String getId() {

@@ -182,6 +182,8 @@
                         <div>
                             <label class="insert-p">ID</label>
                             <input type="text" name="id"><br>
+                            <input type="hidden" name="nameList" value="NONE">
+                            <input type="hidden" name="shiftName" value="シフト1">
                             <button name="delete">削除</button>
                         </div>
                     </form>
@@ -190,9 +192,9 @@
                     <div>
                         <h6>エラーメッセージ</h6>
                         <div class="message-box">
-                            <p th:errors="${nameList.id}">エラー</p>
-                            <p th:errors="${nameList.nameList}">エラー</p>
-                            <p th:errors="${nameList.shiftName}">エラー</p>
+                            <p th:if="${#fields.hasErrors('id')}" th:errors="${nameList.id}">エラー</p>
+                            <p th:if="${#fields.hasErrors('nameList')}" th:errors="${nameList.nameList}">エラー</p>
+                            <p th:if="${#fields.hasErrors('shiftName')}" th:errors="${nameList.shiftName}">エラー</p>
                         </div>
                     </div>    
                 </div>
