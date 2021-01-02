@@ -32,7 +32,7 @@ public class ShiftListController {
         model.addAttribute("shiftTwoList",shiftTwoList );
         model.addAttribute("shiftThreeList",shiftThreeList );
         model.addAttribute("shiftFourList",shiftFourList );
-        return "shift";
+        return "shift.html";
     }
     
     @PostMapping(params = "insert")

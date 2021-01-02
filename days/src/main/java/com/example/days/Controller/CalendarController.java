@@ -38,7 +38,7 @@ public class CalendarController {
                 .forEach(d -> holiday.add(d));
         model.addAttribute("holiday",holiday);
 
-        return "calendar";
+        return "calendar.html";
     }
 
     @PostMapping
