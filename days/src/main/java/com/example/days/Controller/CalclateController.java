@@ -34,13 +34,13 @@ public class CalclateController {
         model.addAttribute("date",dateList);
         */
         model.addAttribute("updateCode",new UpdateCode());
-        return "calclate";
+        return "calclate.html";
     }
 
     @PostMapping
     public String calcReturn(@Validated @ModelAttribute UpdateCode updateCode,BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "calclate";
+            return "calclate.html";
         }
         int inputDate = updateCode.getInputDate();
         String inputCode = updateCode.getInputCode();
