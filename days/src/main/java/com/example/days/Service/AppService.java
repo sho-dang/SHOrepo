@@ -40,11 +40,13 @@ public class AppService {
         String convertId = appMapper.convertId(nameList);
         return convertId;
     }
+    /*
     public List<NameList> shiftList(List<NameList> list){ //test済み
         ShiftList nameList = new ShiftList(list);
         List<NameList> shiftList = nameList.getNameList();
         return shiftList;
     }
+    */
     public void insertName(NameList nameList){
         appMapper.insertName(nameList.getId(), nameList.getNameList(), nameList.getShiftName());
     }

@@ -33,6 +33,8 @@ public class AppServiceTest{
     @Rule
     public final SpringMethodRule springMethodRule = new SpringMethodRule();
 
+    /** @param shiftテーブル
+     */
             @Test
             public void ーnameListAllメソッドーnameListを全件取得できていること()throws Exception{
                 List<NameList> nameList = service.nameListAll();
@@ -71,13 +73,49 @@ public class AppServiceTest{
                 String convertId = service.convertId(name);
                 assertThat(convertId, is(null));
             }
-            @Test //シフト振り分け用メソッド未完成
+            @Test
+            public void ーinsertNameメソッドーシフトメンバーを新規登録できること()throws Exception{
+                NameList newNameList = new NameList();
+                newNameList.setId("ZZ");
+                newNameList.setNameList("テスト");
+                newNameList.setShiftName("シフト2");
+
+                service.insertName(newNameList);
+
+                assertThat(service.listOne("シフト2").size(),is(5));
+
+                service.deleteName(newNameList.getId());
+            }
+            @Test
+            public void ーdeleteNameメソッドー指定したシフトメンバーを削除できること()throws Exception{
+                service.deleteName("SA");
+
+                assertThat(service.listOne("シフト1").size(),is(3));
+                
+                NameList newNameList = new NameList();
+                newNameList.setId("SA");
+                newNameList.setNameList("伊藤A子");
+                newNameList.setShiftName("シフト1");
+
+                service.insertName(newNameList);
+
+                assertThat(service.listOne("シフト1").size(),is(4));
+
+                
+            }
+
+            /*
+            @Test //シフト振り分け用メソッド未使用
             public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{
                 List<NameList> listTest = service.nameListAll();
                 List<NameList> resultList = service.shiftList(listTest);
                 int matcher = 16 ;
                 assertThat(resultList, hasSize(matcher));
             }
+            */
+
+    /** @param scheduleテーブル
+     */
             @Test
             public void ーdaysメソッドー取得したDayListの日付件数が一致すること()throws Exception{
                 List<DayList> dayTest = service.days();
@@ -91,6 +129,9 @@ public class AppServiceTest{
                 String matcher = null;
                 assertThat(workId, is(matcher));
             }
+
+    /** @param shiftpatternテーブル
+     */
             @Test
             public void ーshiftPatternメソッドー指定したnumberと一致するshiftPatternを取得できること()throws Exception{
                 int number = 1 ;
