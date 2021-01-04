@@ -2,6 +2,8 @@ package com.example.days.domain.NameList;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 
 public class NameList {
 
@@ -10,6 +12,7 @@ public class NameList {
     private String id;
 
     @NotBlank(message = "※名前を入力してください")
+    @Size(max = 10,message = "※名前は10文字以下で入力してください")
     private String nameList;
 
     @NotBlank(message = "※シフト名を入力してください")

@@ -5,7 +5,6 @@ import java.util.List;
 import com.example.days.Mapper.AppMapper;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.NameList.NameList;
-import com.example.days.domain.NameList.ShiftList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
