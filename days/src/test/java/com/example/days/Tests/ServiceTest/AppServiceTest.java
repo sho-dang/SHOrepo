@@ -2,6 +2,7 @@ package com.example.days.Tests.ServiceTest;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.isNull;
 
 import java.util.List;
 
@@ -103,7 +104,65 @@ public class AppServiceTest{
 
                 
             }
+            @Test(expected = NullPointerException.class)
+            public void ーconvertToNameListメソッドー()throws Exception{
+                DayList dayList = new DayList();//1直のみ
+                dayList.setVacationNameOne("SA");
+                dayList.setVacationNameTwo(null);
+                dayList.setVacationNameThree(null);
+                dayList.setEarlyNameOne("SB");
+                dayList.setEarlyNameTwo(null);
+                dayList.setEarlyNameThree(null);
+                dayList.setOverNameOne("SC");
+                dayList.setOverNameTwo(null);
+                dayList.setOverNameThree(null);
 
+                DayList result = service.convertToNameList(dayList);
+
+                assertThat(result.getVacationNameOne(),is("伊藤A子"));
+                assertThat(result.getEarlyNameOne(),is("佐藤B男"));
+                assertThat(result.getOverNameOne(),is("後藤C男"));
+                assertThat(result.getVacationNameTwo(),isNull());
+            }
+            @Test (expected = NullPointerException.class)
+            public void ーconvertToNameMethodメソッドー()throws Exception{
+                String convertedString = service.convertToNameMethod("SA");
+                String nullString = service.convertName("ZZ");
+
+                assertThat(convertedString,is("伊藤A子"));
+                assertThat(nullString,isNull());
+            }
+            @Test(expected = NullPointerException.class)
+            public void ーconvertToIdListメソッドー()throws Exception{
+                    DayList dayList = new DayList();//1直のみ
+                    dayList.setVacationNameOne(null);
+                    dayList.setVacationNameTwo("鈴木E子");
+                    dayList.setVacationNameThree(null);
+                    dayList.setEarlyNameOne(null);
+                    dayList.setEarlyNameTwo("佐々木F子");
+                    dayList.setEarlyNameThree(null);
+                    dayList.setOverNameOne(null);
+                    dayList.setOverNameTwo("木村G男");
+                    dayList.setOverNameThree(null);
+    
+                    DayList result = service.convertToIdList(dayList);
+    
+                    assertThat(result.getVacationNameTwo(),is("SE"));
+                    assertThat(result.getEarlyNameTwo(),is("SF"));
+                    assertThat(result.getOverNameTwo(),is("SG"));
+                    assertThat(result.getVacationNameOne(),isNull());
+                }
+            
+            @Test //(expected = NullPointerException.class)
+            public void ーconvertToIdMethodメソッドー()throws Exception{
+                String convertedString = service.convertToIdMethod("鈴木E子");
+                String nullString = service.convertToIdMethod(null);
+                String emptyString = service.convertToIdMethod("");
+
+                assertThat(convertedString,is("SE"));
+                assertThat(nullString,is("XX"));
+                assertThat(emptyString,is("XX"));
+            }
             /*
             @Test //シフト振り分け用メソッド未使用
             public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{

@@ -46,45 +46,45 @@ public class AppService {
         return shiftList;
     }
     */
-    public void insertName(NameList nameList){
+    public void insertName(NameList nameList){ //test済み
         appMapper.insertName(nameList.getId(), nameList.getNameList(), nameList.getShiftName());
     }
-    public void deleteName(String id){
+    public void deleteName(String id){ //test済み
         appMapper.deleteName(id);
     }
 
-    public DayList convertNameList(DayList dayList){
-        dayList.setVacationNameOne(convertNameMethod(dayList.getVacationNameOne()));
-        dayList.setVacationNameTwo(convertNameMethod(dayList.getVacationNameTwo()));
-        dayList.setVacationNameThree(convertNameMethod(dayList.getVacationNameThree()));
-        dayList.setOverNameOne(convertNameMethod(dayList.getOverNameOne()));
-        dayList.setOverNameTwo(convertNameMethod(dayList.getOverNameTwo()));
-        dayList.setOverNameThree(convertNameMethod(dayList.getOverNameThree()));
-        dayList.setEarlyNameOne(convertNameMethod(dayList.getEarlyNameOne()));
-        dayList.setEarlyNameTwo(convertNameMethod(dayList.getEarlyNameTwo()));
-        dayList.setEarlyNameThree(convertNameMethod(dayList.getEarlyNameThree()));
+    public DayList convertToNameList(DayList dayList){ //test済み
+        dayList.setVacationNameOne(convertToNameMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertToNameMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertToNameMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertToNameMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertToNameMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertToNameMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertToNameMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertToNameMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertToNameMethod(dayList.getEarlyNameThree()));
         return dayList;
     }
-    public String convertNameMethod(String id){
+    public String convertToNameMethod(String id){ //test済み
         if(id != null){
             id = convertName(id);
         }
         return id;
     }
     @Transactional
-    public DayList convertIdList(DayList dayList){
-        dayList.setVacationNameOne(convertIdMethod(dayList.getVacationNameOne()));
-        dayList.setVacationNameTwo(convertIdMethod(dayList.getVacationNameTwo()));
-        dayList.setVacationNameThree(convertIdMethod(dayList.getVacationNameThree()));
-        dayList.setOverNameOne(convertIdMethod(dayList.getOverNameOne()));
-        dayList.setOverNameTwo(convertIdMethod(dayList.getOverNameTwo()));
-        dayList.setOverNameThree(convertIdMethod(dayList.getOverNameThree()));
-        dayList.setEarlyNameOne(convertIdMethod(dayList.getEarlyNameOne()));
-        dayList.setEarlyNameTwo(convertIdMethod(dayList.getEarlyNameTwo()));
-        dayList.setEarlyNameThree(convertIdMethod(dayList.getEarlyNameThree()));
+    public DayList convertToIdList(DayList dayList){ //test済み
+        dayList.setVacationNameOne(convertToIdMethod(dayList.getVacationNameOne()));
+        dayList.setVacationNameTwo(convertToIdMethod(dayList.getVacationNameTwo()));
+        dayList.setVacationNameThree(convertToIdMethod(dayList.getVacationNameThree()));
+        dayList.setOverNameOne(convertToIdMethod(dayList.getOverNameOne()));
+        dayList.setOverNameTwo(convertToIdMethod(dayList.getOverNameTwo()));
+        dayList.setOverNameThree(convertToIdMethod(dayList.getOverNameThree()));
+        dayList.setEarlyNameOne(convertToIdMethod(dayList.getEarlyNameOne()));
+        dayList.setEarlyNameTwo(convertToIdMethod(dayList.getEarlyNameTwo()));
+        dayList.setEarlyNameThree(convertToIdMethod(dayList.getEarlyNameThree()));
         return dayList;
     }
-    public String convertIdMethod(String nameList){
+    public String convertToIdMethod(String nameList){ //test済み
         if(nameList == null){
             nameList = "";
         }

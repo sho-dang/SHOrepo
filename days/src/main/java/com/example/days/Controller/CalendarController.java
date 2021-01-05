@@ -29,7 +29,7 @@ public class CalendarController {
 
         DayMerge init = new DayMerge(service.days());
         List<DayList> days = init.getDayList();
-        days.stream().forEach(d -> service.convertNameList(d));
+        days.stream().forEach(d -> service.convertToNameList(d));
         model.addAttribute("days", days);
 
         List<DayList>  holiday = new ArrayList<>();
@@ -44,7 +44,7 @@ public class CalendarController {
     @PostMapping
     public String nameSet(@ModelAttribute DayList dayList){
         //名前をIDに変換
-        DayList convertDayList = service.convertIdList(dayList);
+        DayList convertDayList = service.convertToIdList(dayList);
 
         //元のDayListを取得
         DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));
