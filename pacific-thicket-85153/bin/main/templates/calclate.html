@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動計算</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        header{
+            background-color: beige;
+            padding: 30px;
+        }
+        .transition-flex{
+            display: flex ;
+            align-items: center;
+        }
+        .transition-flex button{
+            height : 50px ;
+            margin-left: 20px; 
+        }
+        body{
+            margin: 0px 100px;
+        }
+        .text-picture-flex{
+            display: flex ;
+            justify-content:flex-start;
+            padding: 0px 50px;
+        }
+        .picture-all{
+            margin-left: 100px;
+        }
+        .picture{
+            border: solid 4px darkblue ; 
+            margin: 5px;
+        }
+        .text-all{
+            width: 40%;
+        }
+        .text-box{
+            margin-top: 20px;
+            border: solid black 1px;
+            height : auto ;
+        }
+        .text-box input{
+            margin: 10px 0px 10px 10px;
+        }
+        .text-box h4{
+            margin: 5px;
+        }
+        .text-box h5{
+            margin: 5px;
+        }
+        .text-box p{
+            color: darkblue;
+            margin: 0px;
+            font-size: 14px;
+        }
+        .error{
+            color: red;
+        }
+        .calc-button{
+            margin: 0px 230px;
+            height : 70px ;
+            width: 120px ;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<header>
+    <div class="transition-flex">
+        <h1>自動計算</h1>
+        <form method="GET" action="#" th:action="@{/}">
+            <button type="submit" >ホームに戻る</button>
+        </form>
+        <form method="GET" action="#" th:action="@{/calendar}">
+            <button type="submit" >カレンダーに戻る</button>
+        </form>
+    </div>
+</header>
+<body>
+
+    
+    <form method="POST" action="#" th:object="${updateCode}">
+        <div class="text-picture-flex">
+            <div class="text-all">
+                                        <!--p>一斉休暇日を入力してください</!--p>
+                                        <select-- multiple="multiple" size="8">
+                                            <option value="">---</option>
+                                            <option th:each="days : ${date}" th:value="${days.value}" th:text="${days.value}" th:selected="${days.value} == *{selectedItem}">multiSelect</option>
+                                        </select-->
+                <div class="text-box">
+                    <h4>月始めの出勤開始日を入力してください</h4>
+                        <p>※一斉休暇は除く</p>
+                        <input type="text" name="inputDate">
+                        <h5 th:errors="${updateCode.inputDate}" class="error" >--日付が存在しません--</h5>
+                </div>
+                <div class="text-box">
+                            <h4>「シフト1」出勤開始日から5日間の数字を入力してください</h4>
+                            <p>※一斉休暇は除き、「ヤ」(休み)の場合は「4」を入力してください</p>
+                            <p>例：[1,1,ヤ,3,3]の場合、「11433」</p>
+                            <input type="text" name="inputCode">
+                            <h5 th:errors="${updateCode.inputCode}" class="error" >--5桁の数字をを正しく入力してください--</h5>
+                </div>
+                        
+            </div>
+            <div class="picture-all">
+                <div class="picture-box">
+                    <div class="picture">
+                                <p>入力値例</p>
+                                <img src="https://user-images.githubusercontent.com/70437690/102171665-71ebbf00-3eda-11eb-8166-8a59a38f12f3.jpg" width="400" height="150">
+                    </div>
+                    <div class="picture">
+                                <p>一斉休暇日開始の場合</p>
+                                <img src="https://user-images.githubusercontent.com/70437690/102171694-83cd6200-3eda-11eb-88c2-786e6dbb0be5.jpg" width="400" height="175">
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <input class="calc-button" type="submit" value="計算実行">
+    </form>
+</body>
+</html>

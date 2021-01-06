@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム画面</title>
+    <style>
+        body{
+            background-color: bisque;
+            width : 50% ;
+            height : 50px ;
+            width: auto;
+        }
+        .title-flex{
+            display:flex;
+            border: solid black 2px;
+            margin: 30px 200px;
+            justify-content: center;
+        }
+        .title-flex h2{
+            padding: 20px;
+            text-align: center;
+        }
+        .submit-flex{
+            display: flex;
+            justify-content:center;
+        }
+        .submit-flex button{
+            width: 150px;
+            height : 50px;
+            margin: 10px 20px;
+        }
+        
+    </style>    
+</head>
+<body>
+    <div class="title-flex">
+        <h2>こちらは勤怠管理アプリです</h2>
+    </div>
+    <div class="submit-flex">
+        <form method="GET" action="#" th:action="@{/shift}">
+            <button type="submit" >シフト表</button>
+        </form>
+        <form method="GET" action="#" th:action="@{/calendar}">
+            <button type="submit" >勤怠カレンダー</button>
+        </form>
+    </div>
+</body>
+</html>
