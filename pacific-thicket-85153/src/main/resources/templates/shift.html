@@ -27,25 +27,62 @@
                 border: solid black 1px;
                 margin: 10px;
             }
-            .insert label{
-                padding: 20px;
+            .title{
+                width : 100%;
+                text-align: center;
+                padding: 0px;
+                margin: -1px;
+                border:solid black 1px; 
+            }
+            .insert-p{
+                margin: 1px;
+                display: block;
+                float: left;
+                width :60px;
+                text-align: center;
+            }
+            .insert button{
+                margin: 0px 25px;
+                padding: 0px;
+                height: 25px;
+                
+            }
+            .delete button{
+                margin: 0px 25px;
+                padding: 0px;
+                height: 25px;
+                
             }
             .header-block .delete{
                 border: solid black 1px;
                 margin: 10px;
             }
-            .delete label{
-                padding:0px 30px;
+            
+            .header-block input{
+                width:80px;
+                margin: 2px;
             }
-            .header-block .newId{
-                width:30px;
+            .error-message{
+                width:250px;
+                margin: 10px;
+                border: solid black 1px;
             }
-            .header-block .newName{
-                width:100px;
+            .error-message h6 {
+                margin: -1px;
+                width : auto;
+                padding: 0px;
+                font-size:13px;
+                border: solid black 1px;
             }
-            .header-block .newShift{
-                width:100px;
+            .error-message .message-box{
+                overflow:scroll;
+                height: 110px;
             }
+            .error-message p{
+                margin: 0px;
+                color: red;
+            }
+
             body{
                 margin: 0px 100px;
             }
@@ -122,20 +159,44 @@
             </div>
                 
                 <div class="insert">
-                    <form method="post" action=# th:action="@{/shift}">
-                        <p>新規作成</p>
-                        <label>ID</label><input class="newId" type="text" name="id"><br>
-                        <label>名前</label><input class="newName" type="text" name="nameList"><br>
-                        <label>シフト</label><input class="newShift" type="text" name="shiftName">
-                        <input type="submit" name="insert" value="登録">
+                    <form method="post"  action=# th:action="@{/shift}">
+                        <div>
+                            <p class="title">新規作成</p>
+                        </div>
+                        <div>
+                            <lavel class="insert-p">ID</lavel>
+                                <input type="text" name="id"><br>
+                            <lavel class="insert-p">名前</lavel>
+                                <input type="text" name="nameList"><br>
+                            <lavel class="insert-p">シフト</lavel>
+                                <input type="text" name="shiftName"><br>
+                            <button name="insert">登録</button>
+                        </div>
                     </form>
                 </div>
                 <div class="delete">
                     <form method="post" action=# th:action="@{/shift}">
-                        <p>削除</p>
-                        <label>ID<input class="newId" type="text" name="id"></label>
-                        <input type="submit" name="delete" value="削除">
+                        <div>
+                            <p class="title">削除</p>
+                        </div>
+                        <div>
+                            <label class="insert-p">ID</label>
+                            <input type="text" name="id"><br>
+                            <input type="hidden" name="nameList" value="NONE">
+                            <input type="hidden" name="shiftName" value="シフト1">
+                            <button name="delete">削除</button>
+                        </div>
                     </form>
+                </div>
+                <div class="error-message" th:object="${nameList}">
+                    <div>
+                        <h6>エラーメッセージ</h6>
+                        <div class="message-box">
+                            <p th:if="${#fields.hasErrors('id')}" th:errors="${nameList.id}">エラー</p>
+                            <p th:if="${#fields.hasErrors('nameList')}" th:errors="${nameList.nameList}">エラー</p>
+                            <p th:if="${#fields.hasErrors('shiftName')}" th:errors="${nameList.shiftName}">エラー</p>
+                        </div>
+                    </div>    
                 </div>
             </div>
     </header>

@@ -25,9 +25,6 @@ dependencies {
 	testImplementation 'org.hamcrest:hamcrest:2.2'
 	
 }
-application {
-  mainClassName = 'com.example.days.DaysApplication'
-}
 
 test {
 	useJUnitPlatform()

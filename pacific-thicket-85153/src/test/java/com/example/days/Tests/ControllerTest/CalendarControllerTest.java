@@ -30,15 +30,14 @@ public class CalendarControllerTest {
 
     @Test
     public void カレンダー画面のステータスコードが200であること()throws Exception{
-        mockMvc.perform(get("/list"))
+        mockMvc.perform(get("/calendar"))
         .andExpect(status().isOk())
-        .andExpect(view().name("calendar"));
+        .andExpect(view().name("calendar.html"));
     }
     @Test
     public void カレンダー画面の休暇日登録後にリダイレクトされること()throws Exception{
-        mockMvc.perform(post("/list").param("date","1"))
-        .andExpect(redirectedUrl("/list"));
+        mockMvc.perform(post("/calendar").param("date","1"))
+        .andExpect(redirectedUrl("/calendar"));
     }
-
 
 }

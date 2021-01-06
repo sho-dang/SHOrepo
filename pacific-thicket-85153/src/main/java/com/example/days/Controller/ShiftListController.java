@@ -8,6 +8,8 @@ import com.example.days.domain.NameList.NameList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class ShiftListController {
     AppService service;
     
     @GetMapping
-    public String startView(Model model){
+    public String shiftView(Model model,@ModelAttribute NameList nameList){
 
         List<NameList> shiftOneList = service.listOne("シフト1");
         List<NameList> shiftTwoList = service.listOne("シフト2");
@@ -30,16 +32,22 @@ public class ShiftListController {
         model.addAttribute("shiftTwoList",shiftTwoList );
         model.addAttribute("shiftThreeList",shiftThreeList );
         model.addAttribute("shiftFourList",shiftFourList );
-        return "shift";
+        return "shift.html";
     }
     
     @PostMapping(params = "insert")
-    public String insertName(@ModelAttribute NameList nameList){
+    public String insertName(@Validated @ModelAttribute NameList nameList,BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            return shiftView(model,nameList);
+        }
         service.insertName(nameList);
         return "redirect:/shift";
     }
     @PostMapping(params = "delete")
-    public String deleteName(@ModelAttribute NameList nameList){
+    public String deleteName(@Validated @ModelAttribute NameList nameList,BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            return shiftView(model,nameList);
+        }
         service.deleteName(nameList.getId());
         return "redirect:/shift";
     }

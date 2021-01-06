@@ -1,24 +1,26 @@
 package com.example.days.domain.NameList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShiftList {
     
     private List<NameList> nameList;
-    private List<String> listOne = new ArrayList<>();
-    private List<String> listTwo = new ArrayList<>();
-    private List<String> listThree = new ArrayList<>();
-    private List<String> listFour = new ArrayList<>();
+    //private List<String> listOne = new ArrayList<>();
+    //private List<String> listTwo = new ArrayList<>();
+    //private List<String> listThree = new ArrayList<>();
+    //private List<String> listFour = new ArrayList<>();
 
     public ShiftList(List<NameList> nameList){
         this.nameList = nameList;
-        this.nameList.stream().forEach(s -> addList(s));
+        //this.nameList.stream().forEach(s -> addList(s));
         }
     
     public List<NameList> getNameList(){
         return this.nameList;
     }
+
+
+    /*
     public List<String> getListOne(){
         return this.listOne;
     }
@@ -59,4 +61,5 @@ public class ShiftList {
             break;
     }
 }
+*/
 }

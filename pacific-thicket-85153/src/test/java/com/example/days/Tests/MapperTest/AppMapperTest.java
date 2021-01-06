@@ -26,12 +26,24 @@ public class AppMapperTest {
     @Autowired
     AppMapper appMapper;
 
+
+    /**  shiftテーブル method list 
+     * 
+     * ---List<NameList> listAll()
+     * ---List<NameList> listOne(String shift)
+     * ---String convertId(String nameList)
+     * ---String convertName(String id)
+     * ---void insertName(@Param("id")String id,@Param("nameList")String nameList,@Param("shiftName")String shiftName)
+     * ---void deleteName(String id)
+     */
+
     @Test
     public void shiftテーブルのデータを全て取得できる()throws Exception{
         List<NameList> listAll = appMapper.listAll();
         int matcher = 16;
         assertThat(listAll.size(),is(matcher));
     }
+    
     @Test
     public void shiftテーブルで指定したshiftNameのmemberリストを全て取得できる()throws Exception{
         String shiftName = "シフト1";
@@ -53,6 +65,28 @@ public class AppMapperTest {
         String converted = appMapper.convertId(inputName);
         assertThat(converted, is(matcher));
     }
+    @Test
+    public void shiftテーブルに登録されている名前を削除できる(){
+        String id = "TT";
+        String name = "test";
+        String shift = "シフト4";
+        appMapper.insertName(id, name, shift);
+        assertThat(appMapper.listAll().size(),is(17));
+
+        appMapper.deleteName(id);
+        assertThat(appMapper.listAll().size(),is(16));
+
+    }
+
+    /**  scheduleテーブル method list
+     * ---List<DayList> days()
+     * ---DayList selectDayList(int date)
+     * ---String matchWorkId(int date)
+     * ---String matchVacationCode(int date)
+     * ---void updateWorkId(@Param("workId") String workId,@Param("date")int date)
+     * ---void updateVacationCode(@Param("vacationCode") String vacationCode,@Param("date")int date)
+     */
+
     @Test
     public void scheduleテーブルのデータを全て取得できる()throws Exception{
         List<DayList> days = appMapper.days();
@@ -84,20 +118,7 @@ public class AppMapperTest {
         String vacationCode = appMapper.matchVacationCode(date);
         assertThat(vacationCode, is(matchVacationCode));
     }
-    @Test
-    public void shiftpatternテーブルで指定したpatternIdのnumberを取得()throws Exception{
-        int matchNumber = 1 ;
-        String matchPatternId = "44222" ; 
-        int patternId = appMapper.number(matchPatternId);
-        assertThat(patternId, is(matchNumber));
-    }
-    @Test
-    public void shiftpatternテーブルで指定したnumberのshiftPatternを取得()throws Exception{
-        String matchShiftPattern = "4321" ;
-        int number = 2 ;
-        String shiftPattern = appMapper.shiftPattern(number);
-        assertThat(shiftPattern, is(matchShiftPattern));
-    }
+    
     @Test
     public void scheduleテーブルで指定したdateのworkIdカラムを更新する()throws Exception{
         int date = 1 ;
@@ -122,16 +143,32 @@ public class AppMapperTest {
         //Return WorkId
         appMapper.updateVacationCode(beforeVacationCode,date);
     }
+
+
+    /** shiftpatternテーブル method list
+     * 
+     * ---int number(String patternId)
+     * ---String shiftPattern(int number)
+     */
     @Test
-    public void shiftテーブルに登録されている名前を削除できる(){
-        String id = "TT";
-        String name = "test";
-        String shift = "シフト4";
-        appMapper.insertName(id, name, shift);
-        assertThat(appMapper.listAll().size(),is(17));
-
-        appMapper.deleteName(id);
-        assertThat(appMapper.listAll().size(),is(16));
-
+    public void shiftpatternテーブルで指定したpatternIdのnumberを取得()throws Exception{
+        int matchNumber = 1 ;
+        String matchPatternId = "44222" ; 
+        int patternId = appMapper.number(matchPatternId);
+        assertThat(patternId, is(matchNumber));
     }
+    @Test
+    public void shiftpatternテーブルで指定したnumberのshiftPatternを取得()throws Exception{
+        String matchShiftPattern = "4321" ;
+        int number = 2 ;
+        String shiftPattern = appMapper.shiftPattern(number);
+        assertThat(shiftPattern, is(matchShiftPattern));
+    }
+
+    /**
+     *  table_(テーブル名)テーブル作成 method list
+     * 
+     * void createTable(String tableName)
+     * void deleteTable(String tableName)
+     */
 }

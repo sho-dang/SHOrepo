@@ -7,7 +7,6 @@ import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.Day.DayMerge;
 import com.example.days.domain.Day.DaySplit;
-import com.example.days.domain.NameList.NameList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +29,7 @@ public class CalendarController {
 
         DayMerge init = new DayMerge(service.days());
         List<DayList> days = init.getDayList();
-        days.stream().forEach(d -> service.convertNameList(d));
+        days.stream().forEach(d -> service.convertToNameList(d));
         model.addAttribute("days", days);
 
         List<DayList>  holiday = new ArrayList<>();
@@ -39,13 +38,13 @@ public class CalendarController {
                 .forEach(d -> holiday.add(d));
         model.addAttribute("holiday",holiday);
 
-        return "calendar";
+        return "calendar.html";
     }
 
     @PostMapping
     public String nameSet(@ModelAttribute DayList dayList){
         //名前をIDに変換
-        DayList convertDayList = service.convertIdList(dayList);
+        DayList convertDayList = service.convertToIdList(dayList);
 
         //元のDayListを取得
         DaySplit selectDayList = new DaySplit(service.selectDayList(convertDayList.getDate()));

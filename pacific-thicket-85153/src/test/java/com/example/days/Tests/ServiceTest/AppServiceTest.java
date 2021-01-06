@@ -2,8 +2,7 @@ package com.example.days.Tests.ServiceTest;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assume.assumeThat;
-import static org.mockito.Mockito.calls;
+import static org.mockito.ArgumentMatchers.isNull;
 
 import java.util.List;
 
@@ -11,20 +10,16 @@ import com.example.days.Service.AppService;
 import com.example.days.domain.Day.DayList;
 import com.example.days.domain.NameList.NameList;
 
-import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.junit4.rules.SpringClassRule;
 import org.springframework.test.context.junit4.rules.SpringMethodRule;
 
@@ -39,6 +34,8 @@ public class AppServiceTest{
     @Rule
     public final SpringMethodRule springMethodRule = new SpringMethodRule();
 
+    /** @param shiftテーブル
+     */
             @Test
             public void ーnameListAllメソッドーnameListを全件取得できていること()throws Exception{
                 List<NameList> nameList = service.nameListAll();
@@ -77,13 +74,107 @@ public class AppServiceTest{
                 String convertId = service.convertId(name);
                 assertThat(convertId, is(null));
             }
-            @Test //シフト振り分け用メソッド未完成
+            @Test
+            public void ーinsertNameメソッドーシフトメンバーを新規登録できること()throws Exception{
+                NameList newNameList = new NameList();
+                newNameList.setId("ZZ");
+                newNameList.setNameList("テスト");
+                newNameList.setShiftName("シフト2");
+
+                service.insertName(newNameList);
+
+                assertThat(service.listOne("シフト2").size(),is(5));
+
+                service.deleteName(newNameList.getId());
+            }
+            @Test
+            public void ーdeleteNameメソッドー指定したシフトメンバーを削除できること()throws Exception{
+                service.deleteName("SA");
+
+                assertThat(service.listOne("シフト1").size(),is(3));
+                
+                NameList newNameList = new NameList();
+                newNameList.setId("SA");
+                newNameList.setNameList("伊藤A子");
+                newNameList.setShiftName("シフト1");
+
+                service.insertName(newNameList);
+
+                assertThat(service.listOne("シフト1").size(),is(4));
+
+                
+            }
+            @Test(expected = NullPointerException.class)
+            public void ーconvertToNameListメソッドー()throws Exception{
+                DayList dayList = new DayList();//1直のみ
+                dayList.setVacationNameOne("SA");
+                dayList.setVacationNameTwo(null);
+                dayList.setVacationNameThree(null);
+                dayList.setEarlyNameOne("SB");
+                dayList.setEarlyNameTwo(null);
+                dayList.setEarlyNameThree(null);
+                dayList.setOverNameOne("SC");
+                dayList.setOverNameTwo(null);
+                dayList.setOverNameThree(null);
+
+                DayList result = service.convertToNameList(dayList);
+
+                assertThat(result.getVacationNameOne(),is("伊藤A子"));
+                assertThat(result.getEarlyNameOne(),is("佐藤B男"));
+                assertThat(result.getOverNameOne(),is("後藤C男"));
+                assertThat(result.getVacationNameTwo(),isNull());
+            }
+            @Test (expected = NullPointerException.class)
+            public void ーconvertToNameMethodメソッドー()throws Exception{
+                String convertedString = service.convertToNameMethod("SA");
+                String nullString = service.convertName("ZZ");
+
+                assertThat(convertedString,is("伊藤A子"));
+                assertThat(nullString,isNull());
+            }
+            @Test(expected = NullPointerException.class)
+            public void ーconvertToIdListメソッドー()throws Exception{
+                    DayList dayList = new DayList();//1直のみ
+                    dayList.setVacationNameOne(null);
+                    dayList.setVacationNameTwo("鈴木E子");
+                    dayList.setVacationNameThree(null);
+                    dayList.setEarlyNameOne(null);
+                    dayList.setEarlyNameTwo("佐々木F子");
+                    dayList.setEarlyNameThree(null);
+                    dayList.setOverNameOne(null);
+                    dayList.setOverNameTwo("木村G男");
+                    dayList.setOverNameThree(null);
+    
+                    DayList result = service.convertToIdList(dayList);
+    
+                    assertThat(result.getVacationNameTwo(),is("SE"));
+                    assertThat(result.getEarlyNameTwo(),is("SF"));
+                    assertThat(result.getOverNameTwo(),is("SG"));
+                    assertThat(result.getVacationNameOne(),isNull());
+                }
+            
+            @Test //(expected = NullPointerException.class)
+            public void ーconvertToIdMethodメソッドー()throws Exception{
+                String convertedString = service.convertToIdMethod("鈴木E子");
+                String nullString = service.convertToIdMethod(null);
+                String emptyString = service.convertToIdMethod("");
+
+                assertThat(convertedString,is("SE"));
+                assertThat(nullString,is("XX"));
+                assertThat(emptyString,is("XX"));
+            }
+            /*
+            @Test //シフト振り分け用メソッド未使用
             public void ーshiftListメソッドーインスタンス作成後新しいNameListを取得できていること()throws Exception{
                 List<NameList> listTest = service.nameListAll();
                 List<NameList> resultList = service.shiftList(listTest);
                 int matcher = 16 ;
                 assertThat(resultList, hasSize(matcher));
             }
+            */
+
+    /** @param scheduleテーブル
+     */
             @Test
             public void ーdaysメソッドー取得したDayListの日付件数が一致すること()throws Exception{
                 List<DayList> dayTest = service.days();
@@ -97,6 +188,9 @@ public class AppServiceTest{
                 String matcher = null;
                 assertThat(workId, is(matcher));
             }
+
+    /** @param shiftpatternテーブル
+     */
             @Test
             public void ーshiftPatternメソッドー指定したnumberと一致するshiftPatternを取得できること()throws Exception{
                 int number = 1 ;
