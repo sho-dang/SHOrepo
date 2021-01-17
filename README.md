@@ -14,7 +14,10 @@
   　2直(夕方～夜中 勤務)  
   　3直(夜中～朝 勤務)  
    
-   交替勤務カレンダーサンプル　https://github.com/sho-dang/SHOrepo/issues/1
+   交替勤務カレンダーサンプル　https://github.com/sho-dang/SHOrepo/issues/1  
+   
+### アプリケーション使用時のシミュレーションです。ご参照ください。  
+### https://github.com/sho-dang/SHOrepo/wiki
    
 # 背景  
  
